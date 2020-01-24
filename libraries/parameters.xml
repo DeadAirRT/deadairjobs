@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<diff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+	<!-- Fix Loadouts-->
+<replace sel="//parameters/loadout">
+  <loadout level="0.7" variation="0.2" ammo="1.0" software="1.0">
+    <units min="0.8" max="1.0">
+      <defence min="0.5" max="0.8" />
+    </units>
+    <group threshold="0.75" />
+  </loadout>
+</replace>
+</diff>
+
