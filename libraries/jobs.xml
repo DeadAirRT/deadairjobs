@@ -13,9 +13,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -38,9 +38,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -63,9 +63,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -88,9 +88,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -113,9 +113,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -138,9 +138,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -163,9 +163,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -188,9 +188,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -213,9 +213,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -238,9 +238,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -263,9 +263,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -288,9 +288,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -313,9 +313,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -338,9 +338,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -363,9 +363,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -388,9 +388,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -412,9 +412,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -437,9 +437,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -462,9 +462,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -487,7 +487,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -517,7 +517,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -547,7 +547,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -577,7 +577,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -606,7 +606,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -636,7 +636,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -666,7 +666,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -717,9 +717,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -741,9 +741,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -765,9 +765,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -789,9 +789,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -813,9 +813,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -837,9 +837,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -861,9 +861,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -886,9 +886,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -911,9 +911,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -936,9 +936,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -961,9 +961,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -986,9 +986,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1011,9 +1011,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1036,9 +1036,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -1061,9 +1061,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -1086,9 +1086,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -1111,9 +1111,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -1136,9 +1136,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -1161,9 +1161,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -1186,9 +1186,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -1211,9 +1211,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -1236,9 +1236,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -1261,9 +1261,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -1285,9 +1285,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -1310,9 +1310,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -1335,9 +1335,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -1360,7 +1360,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -1390,7 +1390,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -1420,7 +1420,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -1450,7 +1450,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -1479,7 +1479,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -1509,7 +1509,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -1539,7 +1539,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -1590,9 +1590,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -1614,9 +1614,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1638,9 +1638,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -1662,9 +1662,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -1686,9 +1686,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -1710,9 +1710,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -1734,9 +1734,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -1759,9 +1759,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -1784,9 +1784,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -1809,9 +1809,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -1834,9 +1834,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1859,9 +1859,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1884,9 +1884,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1909,9 +1909,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -1934,9 +1934,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -1959,9 +1959,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -1984,9 +1984,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -2009,9 +2009,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -2034,9 +2034,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -2059,9 +2059,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -2084,9 +2084,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -2109,9 +2109,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -2134,9 +2134,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -2158,9 +2158,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -2183,9 +2183,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -2208,9 +2208,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -2233,7 +2233,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -2263,7 +2263,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -2293,7 +2293,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -2323,7 +2323,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -2352,7 +2352,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -2382,7 +2382,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -2412,7 +2412,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -2463,9 +2463,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -2487,9 +2487,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -2511,9 +2511,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -2535,9 +2535,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -2559,9 +2559,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -2583,9 +2583,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -2607,9 +2607,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -2632,9 +2632,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -2657,9 +2657,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -2682,9 +2682,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -2707,9 +2707,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -2732,9 +2732,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -2757,9 +2757,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -2782,9 +2782,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -2807,9 +2807,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -2832,9 +2832,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -2857,9 +2857,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -2882,9 +2882,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -2907,9 +2907,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -2932,9 +2932,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -2957,9 +2957,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -2982,9 +2982,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3007,9 +3007,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3031,9 +3031,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3056,9 +3056,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -3081,9 +3081,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -3106,7 +3106,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -3136,7 +3136,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -3166,7 +3166,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -3196,7 +3196,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -3225,7 +3225,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -3255,7 +3255,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -3285,7 +3285,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -3336,9 +3336,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -3360,9 +3360,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -3384,9 +3384,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -3408,9 +3408,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -3432,9 +3432,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -3456,9 +3456,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -3480,9 +3480,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3505,9 +3505,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="teladi_agriculture"/>
@@ -3530,9 +3530,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="teladi_agriculture"/>
@@ -3555,9 +3555,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="teladi_agriculture"/>
@@ -3580,9 +3580,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -3605,9 +3605,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -3630,9 +3630,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -3655,9 +3655,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -3680,9 +3680,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -3705,9 +3705,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -3730,9 +3730,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -3755,9 +3755,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -3780,9 +3780,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -3805,9 +3805,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -3830,9 +3830,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -3855,9 +3855,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3880,9 +3880,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3904,9 +3904,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3929,9 +3929,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -3954,9 +3954,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -3979,7 +3979,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -4009,7 +4009,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -4039,7 +4039,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -4069,7 +4069,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -4098,7 +4098,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -4128,7 +4128,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -4158,7 +4158,7 @@
     <orders>
       <order order="MiningRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
         <param name="maxsell" value="5"/>
       </order>
@@ -4209,9 +4209,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="teladi_agriculture"/>
@@ -4233,9 +4233,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -4257,9 +4257,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -4281,9 +4281,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -4305,9 +4305,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -4329,9 +4329,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -4353,9 +4353,9 @@
     <orders>
       <order order="TradeRoutine" default="true">
         <param name="minbuy" value="0"/>
-        <param name="maxbuy" value="5"/>
+        <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="5"/>
+        <param name="maxsell" value="2"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -7200,6 +7200,253 @@
 	<subordinates>
       <subordinate job="teladi_fighter_escort_s_frigate"/>
     </subordinates>
+  </job>
+<!-- STATION TRADERS --><!-- STATION TRADERS --><!-- STATION TRADERS --><!-- STATION TRADERS --><!-- STATION TRADERS --><!-- STATION TRADERS --><!-- STATION TRADERS --><!-- STATION TRADERS -->
+  <job id="argon_stationtrader_m" name="{20204,801}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="argon" tags="[stationtrader]" size="ship_m"/>
+    <quota galaxy="0" maxgalaxy="10"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="argon" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="argon" tags="[trader, container]" size="ship_m"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="argon" overridenpc="true"/>
+    </ship>
+  </job>
+
+  <job id="argon_stationtrader_l" name="{20204,701}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="argon" tags="[stationtrader]" size="ship_l"/>
+    <quota galaxy="0" maxgalaxy="3"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="argon" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="argon" tags="[trader, container]" size="ship_l"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="argon" overridenpc="true"/>
+    </ship>
+  </job>
+  <job id="antigone_stationtrader_m" name="{20204,801}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="antigone" tags="[stationtrader]" size="ship_m"/>
+    <quota galaxy="0" maxgalaxy="10"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="antigone" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="antigone" tags="[trader, container]" size="ship_m"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="antigone" overridenpc="true"/>
+    </ship>
+  </job>
+
+  <job id="antigone_stationtrader_l" name="{20204,701}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="antigone" tags="[stationtrader]" size="ship_l"/>
+    <quota galaxy="0" maxgalaxy="3"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="antigone" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="antigone" tags="[trader, container]" size="ship_l"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="antigone" overridenpc="true"/>
+    </ship>
+  </job>
+  <job id="paranid_stationtrader_m" name="{20204,801}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="paranid" tags="[stationtrader]" size="ship_m"/>
+    <quota galaxy="0" maxgalaxy="10"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="paranid" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="paranid" tags="[trader, container]" size="ship_m"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="paranid" overridenpc="true"/>
+    </ship>
+  </job>
+
+  <job id="paranid_stationtrader_l" name="{20204,701}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="paranid" tags="[stationtrader]" size="ship_l"/>
+    <quota galaxy="0" maxgalaxy="3"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="paranid" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="paranid" tags="[trader, container]" size="ship_l"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="paranid" overridenpc="true"/>
+    </ship>
+  </job>
+  <job id="holyorder_stationtrader_m" name="{20204,801}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="holyorder" tags="[stationtrader]" size="ship_m"/>
+    <quota galaxy="0" maxgalaxy="10"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="holyorder" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="holyorder" tags="[trader, container]" size="ship_m"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="holyorder" overridenpc="true"/>
+    </ship>
+  </job>
+
+  <job id="holyorder_stationtrader_l" name="{20204,701}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="holyorder" tags="[stationtrader]" size="ship_l"/>
+    <quota galaxy="0" maxgalaxy="3"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="holyorder" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="holyorder" tags="[trader, container]" size="ship_l"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="holyorder" overridenpc="true"/>
+    </ship>
+  </job>
+  <job id="teladi_stationtrader_m" name="{20204,801}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="teladi" tags="[stationtrader]" size="ship_m"/>
+    <quota galaxy="0" maxgalaxy="15"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="teladi" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="teladi" tags="[trader, container]" size="ship_m"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="teladi" overridenpc="true"/>
+    </ship>
+  </job>
+
+  <job id="teladi_stationtrader_l" name="{20204,701}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="teladi" tags="[stationtrader]" size="ship_l"/>
+    <quota galaxy="0" maxgalaxy="5"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="teladi" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="teladi" tags="[trader, container]" size="ship_l"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="teladi" overridenpc="true"/>
+    </ship>
+  </job>
+  <job id="ministry_stationtrader_m" name="{20204,801}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="ministry" tags="[stationtrader]" size="ship_m"/>
+    <quota galaxy="0" maxgalaxy="10"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="teladi" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="ministry" tags="[trader, container]" size="ship_m"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="ministry" overridenpc="true"/>
+    </ship>
+  </job>
+
+  <job id="ministry_stationtrader_l" name="{20204,701}">
+    <modifiers rebuild="false" commandeerable="false"/>
+    <orders>
+      <order order="TradeRoutine" default="true">
+        <param name="maxbuy" value="5"/>
+      </order>
+    </orders>
+    <basket basket="all_container"/>
+    <category faction="ministry" tags="[stationtrader]" size="ship_l"/>
+    <quota galaxy="0" maxgalaxy="3"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="teladi" relation="member" comparison="ge"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="ministry" tags="[trader, container]" size="ship_l"/>
+      <loadout>
+        <level min="0" max="0.6"/>
+      </loadout>
+      <owner exact="ministry" overridenpc="true"/>
+    </ship>
   </job>
 </jobs>
 </replace>

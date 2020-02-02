@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<diff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+<!--
+ware.advancedcomposites		equipment				tech
+ware.advancedelectronics	equipment				construction_stations
+ware.antimattercells		energy					refined_gas
+ware.antimatterconverters	equipment				tech
+ware.claytronics			construction_stations
+ware.dronecomponents		equipment				tech
+ware.energycells			energy					construction_stations	
+ware.engineparts			equipment				tech
+ware.fieldcoils				equipment				construction_stations
+ware.foodrations			argon_agriculture
+ware.graphene				energy					refined_gas
+ware.hullparts				equipment				construction_stations	tech
+ware.majadust				global_illegal
+ware.majasnails				paranid_agriculture
+ware.meat					argon_agriculture
+ware.medicalsupplies		argon_agriculture		paranid_agriculture		teladi_agriculture
+ware.microchips				tech
+ware.missilecomponents		equipment				tech
+ware.nostropoil				teladi_agriculture
+ware.plasmaconductors		tech
+ware.quantumtubes			energy					refined_gas
+ware.refinedmetals			refined_mineral
+ware.scanningarrays			equipment				tech
+ware.shieldcomponents		equipment				construction_stations
+ware.siliconwafers			refined_mineral
+ware.smartchips				equipment				tech
+ware.sojabeans				paranid_agriculture
+ware.sojahusk				paranid_agriculture
+ware.spacefuel				global_illegal
+ware.spaceweed				teladi_agriculture		global_illegal
+ware.spices					argon_agriculture		paranid_agriculture		teladi_agriculture		water
+ware.sunriseflowers			teladi_agriculture
+ware.superfluidcoolant		energy					refined_gas
+ware.swampplant				teladi_agriculture
+ware.teladianium			refined_mineral
+ware.turretcomponents		equipment				construction_stations
+ware.water					water
+ware.weaponcomponents		equipment				tech
+ware.wheat					argon_agriculture
+-->
+<replace sel="//baskets/basket[@id='equipment']/wares">
+    <wares>
+      <ware ware="advancedcomposites" />
+	  <ware ware="advancedelectronics" />
+      <ware ware="antimatterconverters" />
+      <ware ware="dronecomponents" />
+	  <ware ware="engineparts" />
+      <ware ware="fieldcoils" />
+      <ware ware="missilecomponents" />
+	  <ware ware="scanningarrays" />
+	  <ware ware="hullparts" />
+      <ware ware="shieldcomponents" />
+      <ware ware="smartchips" />
+      <ware ware="turretcomponents" />
+      <ware ware="weaponcomponents" />
+    </wares>
+</replace>
+<replace sel="//baskets/basket[@id='argon_agriculture']/wares">
+    <wares>
+      <ware ware="medicalsupplies" />
+	  <ware ware="foodrations" />
+      <ware ware="meat" />
+      <ware ware="wheat" />
+	  <ware ware="spices" />
+    </wares>
+	</replace>
+<replace sel="//baskets/basket[@id='paranid_agriculture']/wares">
+    <wares>
+      <ware ware="medicalsupplies" />
+	  <ware ware="majasnails" />
+      <ware ware="sojabeans" />
+      <ware ware="sojahusk" />
+	  <ware ware="spices" />
+    </wares>
+</replace>
+<replace sel="//baskets/basket[@id='teladi_agriculture']/wares">
+    <wares>
+      <ware ware="medicalsupplies" />
+	  <ware ware="nostropoil" />
+      <ware ware="spaceweed" />
+      <ware ware="sunriseflowers" />
+      <ware ware="swampplant" />
+	  <ware ware="spices" />
+    </wares>
+</replace>
+<replace sel="//baskets/basket[@id='energy']/wares">
+    <wares>
+      <ware ware="antimattercells" />
+      <ware ware="energycells" />
+      <ware ware="graphene" />
+	  <ware ware="quantumtubes" />
+      <ware ware="superfluidcoolant" />
+    </wares>
+</replace>
+<replace sel="//baskets/basket[@id='construction_stations']/wares">
+    <wares>
+      <ware ware="advancedelectronics" />
+	  <ware ware="claytronics" />
+      <ware ware="energycells" />
+	  <ware ware="fieldcoils" />
+      <ware ware="hullparts" />
+	  <ware ware="shieldcomponents" />
+	  <ware ware="turretcomponents" />
+    </wares>
+</replace>
+<replace sel="//baskets/basket[@id='refined_gas']/wares">
+    <wares>
+      <ware ware="antimattercells" />
+	  <ware ware="graphene" />
+      <ware ware="quantumtubes" />
+	  <ware ware="superfluidcoolant" />
+    </wares>
+</replace>
+<replace sel="//baskets/basket[@id='tech']/wares">
+    <wares>
+      <ware ware="advancedcomposites" />
+	  <ware ware="antimatterconverters" />
+	  <ware ware="dronecomponents" />
+      <ware ware="engineparts" />
+      <ware ware="hullparts" />
+      <ware ware="microchips" />
+	  <ware ware="missilecomponents" />
+      <ware ware="plasmaconductors" />
+      <ware ware="scanningarrays" />
+	  <ware ware="smartchips" />
+	  <ware ware="weaponcomponents" />
+    </wares>
+</replace>
+<replace sel="//baskets/basket[@id='water']/wares">
+    <wares>
+      <ware ware="spices" />
+	  <ware ware="water" />
+    </wares>
+</replace>
+</diff>
