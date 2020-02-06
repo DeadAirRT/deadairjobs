@@ -4651,13 +4651,30 @@
   <job id="argon_scout_patrol_s" name="{20204,2801}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
-      <order order="Recon" default="true">
-		<param name="exploreupdate" value="true" />
-	  </order>
+      <order order="Recon" default="true" />
     </orders>
     <category faction="argon" tags="[factionlogic, military, scout]" size="ship_s"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="25" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="argon" relation="self" comparison="not" matchextension="false"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="argon" tags="[scout]" size="ship_s"/>
+      <loadout>
+        <level min="0" max="0.2"/>
+		<variation exact="0.2"/>
+      </loadout>
+      <owner exact="argon" overridenpc="true"/>
+    </ship>
+  </job>
+  
+  <job id="argon_scout_patrol_s_hostile" name="{20204,2801}" comment="">
+    <modifiers commandeerable="true"/>
+    <orders>
+      <order order="Recon" default="true" />
+    </orders>
+    <category faction="argon" tags="[factionlogic, military, scout]" size="ship_s"/>
+    <quota galaxy="25" sector="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="argon" relation="killmilitary" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="argon" tags="[scout]" size="ship_s"/>
@@ -4977,13 +4994,30 @@
   <job id="antigone_scout_patrol_s" name="{20204,2801}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
-      <order order="Recon" default="true">
-		<param name="exploreupdate" value="true" />
-	  </order>
+      <order order="Recon" default="true" />
     </orders>
     <category faction="antigone" tags="[factionlogic, military, scout]" size="ship_s"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="25" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="antigone" relation="self" comparison="not" matchextension="false"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="antigone" tags="[scout]" size="ship_s"/>
+      <loadout>
+        <level min="0" max="0.2"/>
+		<variation exact="0.2"/>
+      </loadout>
+      <owner exact="antigone" overridenpc="true"/>
+    </ship>
+  </job>
+  
+  <job id="antigone_scout_patrol_s_hostile" name="{20204,2801}" comment="">
+    <modifiers commandeerable="true"/>
+    <orders>
+      <order order="Recon" default="true" />
+    </orders>
+    <category faction="antigone" tags="[factionlogic, military, scout]" size="ship_s"/>
+    <quota galaxy="25" sector="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="antigone" relation="killmilitary" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="antigone" tags="[scout]" size="ship_s"/>
@@ -5282,13 +5316,30 @@
   <job id="paranid_scout_patrol_s" name="{20204,2801}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
-      <order order="Recon" default="true">
-		<param name="exploreupdate" value="true" />
-	  </order>
+      <order order="Recon" default="true" />
     </orders>
     <category faction="paranid" tags="[factionlogic, military, scout]" size="ship_s"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="25" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="paranid" relation="self" comparison="not" matchextension="false"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="paranid" tags="[scout]" size="ship_s"/>
+      <loadout>
+        <level min="0" max="0.2"/>
+		<variation exact="0.2"/>
+      </loadout>
+      <owner exact="paranid" overridenpc="true"/>
+    </ship>
+  </job>
+  
+  <job id="paranid_scout_patrol_s_hostile" name="{20204,2801}" comment="">
+    <modifiers commandeerable="true"/>
+    <orders>
+      <order order="Recon" default="true" />
+    </orders>
+    <category faction="paranid" tags="[factionlogic, military, scout]" size="ship_s"/>
+    <quota galaxy="25" sector="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="paranid" relation="killmilitary" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="paranid" tags="[scout]" size="ship_s"/>
@@ -5608,13 +5659,30 @@
   <job id="holyorder_scout_patrol_s" name="{20204,2801}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
-      <order order="Recon" default="true">
-		<param name="exploreupdate" value="true" />
-	  </order>
+      <order order="Recon" default="true" />
     </orders>
     <category faction="holyorder" tags="[factionlogic, military, scout]" size="ship_s"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="25" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="holyorder" relation="self" comparison="not" matchextension="false"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="holyorder" tags="[scout]" size="ship_s"/>
+      <loadout>
+        <level min="0" max="0.2"/>
+		<variation exact="0.2"/>
+      </loadout>
+      <owner exact="holyorder" overridenpc="true"/>
+    </ship>
+  </job>
+  
+  <job id="holyorder_scout_patrol_s_hostile" name="{20204,2801}" comment="">
+    <modifiers commandeerable="true"/>
+    <orders>
+      <order order="Recon" default="true" />
+    </orders>
+    <category faction="holyorder" tags="[factionlogic, military, scout]" size="ship_s"/>
+    <quota galaxy="25" sector="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="holyorder" relation="killmilitary" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="holyorder" tags="[scout]" size="ship_s"/>
@@ -5934,13 +6002,30 @@
   <job id="teladi_scout_patrol_s" name="{20204,2801}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
-      <order order="Recon" default="true">
-		<param name="exploreupdate" value="true" />
-	  </order>
+      <order order="Recon" default="true" />
     </orders>
     <category faction="teladi" tags="[factionlogic, military, scout]" size="ship_s"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="25" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="teladi" relation="self" comparison="not" matchextension="false"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="teladi" tags="[scout]" size="ship_s"/>
+      <loadout>
+        <level min="0" max="0.2"/>
+		<variation exact="0.2"/>
+      </loadout>
+      <owner exact="teladi" overridenpc="true"/>
+    </ship>
+  </job>
+  
+  <job id="teladi_scout_patrol_s_hostile" name="{20204,2801}" comment="">
+    <modifiers commandeerable="true"/>
+    <orders>
+      <order order="Recon" default="true" />
+    </orders>
+    <category faction="teladi" tags="[factionlogic, military, scout]" size="ship_s"/>
+    <quota galaxy="25" sector="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="teladi" relation="killmilitary" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="teladi" tags="[scout]" size="ship_s"/>
@@ -6238,13 +6323,30 @@
   <job id="ministry_scout_patrol_s" name="{20204,2801}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
-      <order order="Recon" default="true">
-		<param name="exploreupdate" value="true" />
-	  </order>
+      <order order="Recon" default="true" />
     </orders>
     <category faction="ministry" tags="[factionlogic, military, scout]" size="ship_s"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="25" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="not" matchextension="false"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="ministry" tags="[scout]" size="ship_s"/>
+      <loadout>
+        <level min="0" max="0.2"/>
+		<variation exact="0.2"/>
+      </loadout>
+      <owner exact="ministry" overridenpc="true"/>
+    </ship>
+  </job>
+  
+  <job id="ministry_scout_patrol_s_hostile" name="{20204,2801}" comment="">
+    <modifiers commandeerable="true"/>
+    <orders>
+      <order order="Recon" default="true" />
+    </orders>
+    <category faction="ministry" tags="[factionlogic, military, scout]" size="ship_s"/>
+    <quota galaxy="25" sector="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="ministry" relation="killmilitary" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="ministry" tags="[scout]" size="ship_s"/>
@@ -6446,7 +6548,7 @@
     </orders>
     <category faction="xenon" tags="[factionlogic, military, fighter]" size="ship_s"/>
     <quota galaxy="200" sector="4" zone="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="xenon" relation="self" comparison="exact" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="xenon" relation="self" comparison="ge" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="xenon" tags="[fighter, heavy]" size="ship_s"/>
@@ -6468,7 +6570,7 @@
     </orders>
     <category faction="xenon" tags="[factionlogic, military, frigate]" size="ship_m"/>
     <quota galaxy="25" sector="1" />
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="xenon" relation="self" comparison="not" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="xenon" relation="enemy" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="xenon" tags="[military, medium]" size="ship_m"/>
@@ -6482,13 +6584,26 @@
   <job id="xenon_scout_patrol_s" name="{20204,2801}" disabled="false" comment="few">
     <modifiers commandeerable="true"/>
     <orders>
-      <order order="Recon" default="true">
-		<param name="exploreupdate" value="true" />
-	  </order>
+      <order order="Recon" default="true" />
     </orders>
     <category faction="xenon" tags="[factionlogic, military, scout]" size="ship_s"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="25" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="xenon" relation="self" comparison="not" matchextension="false"/>
+    <environment buildatshipyard="true"/>
+    <ship>
+      <select faction="xenon" tags="[scout]" size="ship_s"/>
+      <owner exact="xenon" overridenpc="true"/>
+    </ship>
+  </job>
+  
+  <job id="xenon_scout_patrol_s_hostile" name="{20204,2801}" disabled="false" comment="few">
+    <modifiers commandeerable="true"/>
+    <orders>
+      <order order="Recon" default="true" />
+    </orders>
+    <category faction="xenon" tags="[factionlogic, military, scout]" size="ship_s"/>
+    <quota galaxy="25" sector="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="xenon" relation="killmilitary" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="xenon" tags="[scout]" size="ship_s"/>
@@ -7075,7 +7190,7 @@
     </orders>
     <category faction="argon" tags="[factionlogic, military, frigate]" size="ship_m"/>
     <quota galaxy="5" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="argon" relation="enemy" comparison="le" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="argon" relation="kill" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="argon" tags="[military, frigate]" size="ship_m"/>
@@ -7103,7 +7218,7 @@
     </orders>
     <category faction="antigone" tags="[factionlogic, military, frigate]" size="ship_m"/>
     <quota galaxy="5" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="antigone" relation="enemy" comparison="le" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="antigone" relation="kill" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="antigone" tags="[military, frigate]" size="ship_m"/>
@@ -7131,7 +7246,7 @@
     </orders>
     <category faction="holyorder" tags="[factionlogic, military, frigate]" size="ship_m"/>
     <quota galaxy="5" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="holyorder" relation="enemy" comparison="le" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="holyorder" relation="kill" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="holyorder" tags="[military, frigate]" size="ship_m"/>
@@ -7159,7 +7274,7 @@
     </orders>
     <category faction="paranid" tags="[factionlogic, military, frigate]" size="ship_m"/>
     <quota galaxy="5" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="paranid" relation="enemy" comparison="le" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="paranid" relation="kill" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="paranid" tags="[military, frigate]" size="ship_m"/>
@@ -7187,7 +7302,7 @@
     </orders>
     <category faction="teladi" tags="[factionlogic, military, frigate]" size="ship_m"/>
     <quota galaxy="5" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="teladi" relation="enemy" comparison="le" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="teladi" relation="kill" comparison="le" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="teladi" tags="[military, frigate]" size="ship_m"/>

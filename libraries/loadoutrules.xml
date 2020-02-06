@@ -44,24 +44,24 @@
 </replace>
 <replace sel="//rules/deployable/rules/ruleset[@type='default']">
       <ruleset type="default">
-        <rule category="lasertower"		  mk="1" weight="5"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" requireundocking="true" />
+        <rule category="lasertower"		  mk="1" weight="3"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" requireundocking="true" />
 		<rule category="lasertower"		  mk="2" weight="10"  classes="ship_s ship_m ship_l ship_xl" purposes="fight" requireundocking="true" />
-		<rule category="mine"			  mk="1" weight="2"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
-		<rule category="mine"			  mk="2" weight="3"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
-		<rule category="mine"			  mk="3" weight="5"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
-		<rule category="satellite"		  mk="1" weight="10"  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
-		<rule category="satellite"		  mk="2" weight="20"  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
+		<rule category="mine"			  mk="1" weight="1"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
+		<rule category="mine"			  mk="2" weight="2"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
+		<rule category="mine"			  mk="3" weight="4"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
+		<rule category="satellite"		  mk="1" weight="5"   classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
+		<rule category="satellite"		  mk="2" weight="5"   classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
 		<rule category="resourceprobe"	  mk="1" weight="5"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
 		<rule category="navbeacon"		  mk="1" weight="5"	  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
-		<rule category=""				  mk="0" weight="35"  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
+		<rule category=""				  mk="0" weight="60"  classes="ship_s ship_m ship_l ship_xl" purposes="fight" />
 		
 		<rule category="lasertower"		  mk="1" weight="5"	  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" requireundocking="true" />
-		<rule category="lasertower"		  mk="2" weight="10"  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" requireundocking="true" />
+		<rule category="lasertower"		  mk="2" weight="5"   classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" requireundocking="true" />
 		<rule category="satellite"		  mk="1" weight="10"  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" />
-		<rule category="satellite"		  mk="2" weight="20"  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" />
+		<rule category="satellite"		  mk="2" weight="10"  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" />
 		<rule category="resourceprobe"	  mk="1" weight="5"	  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" />
 		<rule category="navbeacon"		  mk="1" weight="5"	  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" />
-		<rule category=""				  mk="0" weight="45"  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" />
+		<rule category=""				  mk="0" weight="60"  classes="ship_s ship_m ship_l ship_xl" purposes="mine trade build" />
       </ruleset>
 </replace>
 </diff>
