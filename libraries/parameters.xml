@@ -9,5 +9,8 @@
     <group threshold="0.75" />
   </loadout>
 </replace>
+<replace sel="//parameters/navigation/travelspeed/@space">4000</replace>
+<replace sel="//parameters/aiflight/steering/linear/@start">1.8</replace>
+<replace sel="//parameters/aiflight/steering/linear/@end">10</replace>
 </diff>
 
