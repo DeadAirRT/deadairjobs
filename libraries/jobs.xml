@@ -4761,6 +4761,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <quota wing="5"/>
@@ -4804,6 +4805,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="argon" tags="[military, fighter]" size="ship_s"/>
@@ -5083,6 +5085,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <quota wing="5"/>
@@ -5126,6 +5129,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="antigone" tags="[military, fighter]" size="ship_s"/>
@@ -5424,6 +5428,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <quota wing="5"/>
@@ -5467,6 +5472,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="paranid" tags="[military, fighter]" size="ship_s"/>
@@ -5765,6 +5771,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <quota wing="5"/>
@@ -5808,6 +5815,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="holyorder" tags="[military, fighter]" size="ship_s"/>
@@ -6087,6 +6095,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <quota wing="5"/>
@@ -6130,6 +6139,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="teladi" tags="[military, fighter]" size="ship_s"/>
@@ -6429,6 +6439,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <quota wing="5"/>
@@ -6472,6 +6483,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.pointguard"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="ministry" tags="[military, fighter]" size="ship_s"/>
@@ -6610,6 +6622,7 @@
     <orders>
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.invvshape"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="xenon" tags="[military, destroyer]" size="ship_xl"/>
@@ -6631,6 +6644,7 @@
       <order order="Escort" default="true">
         <param name="formation" value="formationshape.dartvertical"/>
         <param name="formationparam" value="2500m"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="xenon" tags="[military]" size="ship_m"/>
@@ -6650,6 +6664,7 @@
   <job id="xenon_fighter_escort_s_frigate" name="{20204,3401}" startactive="false">
     <orders>
       <order order="Escort" default="true">
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="xenon" tags="[military, fighter]" size="ship_s"/>
@@ -6666,6 +6681,7 @@
   <job id="xenon_fighter_escort_s_patrol" name="{20204,3401}" startactive="false">
     <orders>
       <order order="Escort" default="true">
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="xenon" tags="[military, fighter]" size="ship_s"/>
