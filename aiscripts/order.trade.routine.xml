@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <diff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="aiscripts.xsd">
-<replace sel="//order[@id='TradeRoutine']/params/param[@name='maxbuy']/input_param[@name='max']/@value">([([@this.ship.commander.tradenpc.skill.management, @this.ship.pilot.skill.piloting].max / 3), 1].max) * 2</replace>
-<replace sel="//order[@id='TradeRoutine']/params/param[@name='maxsell']/input_param[@name='max']/@value">([([@this.ship.commander.tradenpc.skill.management, @this.ship.pilot.skill.piloting].max / 3), 1].max) * 2</replace>
-<replace sel="//init/do_if[@value='this.isplayerowned']/set_value[@name='$maxrange']/@exact">([([@this.ship.commander.tradenpc.skill.management, @this.ship.pilot.skill.piloting].max / 3), 1].max) * 2</replace>
+<replace sel="//order[@id='TradeRoutine']/params/param[@name='maxbuy']/input_param[@name='max']/@value">([([@this.ship.commander.tradenpc.skill.management, @this.ship.pilot.skill.piloting].max / 3), 1].max) * 3</replace>
+<replace sel="//order[@id='TradeRoutine']/params/param[@name='maxsell']/input_param[@name='max']/@value">([([@this.ship.commander.tradenpc.skill.management, @this.ship.pilot.skill.piloting].max / 3), 1].max) * 3</replace>
+<replace sel="//init/do_if[@value='this.isplayerowned']/set_value[@name='$maxrange']/@exact">([([@this.ship.commander.tradenpc.skill.management, @this.ship.pilot.skill.piloting].max / 3), 1].max) * 3</replace>
 <replace sel="//order[@id='TradeRoutine']/skill/@min">20</replace>
 </diff>

@@ -4,6 +4,29 @@
 <!-- Sectors: 99 = 60 vanilla + 39 DAG-->
 <!-- Trading intermediates per sector 1L, 1M, 2S-->
 <!-- Trading products per sector 1L, 1M, 2S-->
+<!-- ARG SEC 0.75 = [Cluster_06_macro, Cluster_07_macro, Cluster_08_macro, Cluster_13_macro, Cluster_30_macro, Cluster_46_macro]-->
+<!-- ARG SEC 1.0 = [Cluster_14_macro]-->
+<!-- ANT SEC 0.75 = [Cluster_27_macro, Cluster_40_macro, Cluster_41_macro]-->
+<!-- ANT SEC 1.0 = [Cluster_28_macro]-->
+<!-- HAT SEC 0.75 = [Cluster_29_macro, Cluster_DA2HAT2_macro, Cluster_DA3HAT1_macro]-->
+<!-- HAT SEC 1.0 = [Cluster_DA2HAT1_macro]-->
+<!-- HOP SEC 0.75 = [Cluster_11_macro, Cluster_12_macro, Cluster_35_macro, Cluster_36_macro, Cluster_DA2HOP1_macro, Cluster_DA2HOP2_macro]-->
+<!-- HOP SEC 1.0 = [Cluster_24_macro]-->
+<!-- PAR SEC 0.75 = [Cluster_10_macro, Cluster_22_macro, Cluster_23_macro, Cluster_37_macro, Cluster_38_macro, Cluster_47_macro]-->
+<!-- PAR SEC 1.0 = [Cluster_18_macro]-->
+<!-- ALI SEC 0.75 = [Cluster_DA2ALI2_macro, Cluster_DA3ALI1_macro, Cluster_DA3ALI2_macro]-->
+<!-- ALI SEC 1.0 = [Cluster_DA2ALI1_macro]-->
+<!-- TEL SEC 0.75 = [Cluster_01_macro, Cluster_03_macro, Cluster_05_macro, Cluster_09_macro, Cluster_15_macro, Cluster_20_macro, Cluster_39_macro]-->
+<!-- TEL SEC 1.0 = [Cluster_34_macro]-->
+<!-- MIN SEC 0.75 = [Cluster_19_macro, Cluster_42_macro, Cluster_43_macro]-->
+<!-- MIN SEC 1.0 = [Cluster_02_macro]-->
+<!-- SCA SEC 0.75 = [Cluster_DA2SCA2_macro, Cluster_DA3SCA1_macro, Cluster_DA3SCA2_macro]-->
+<!-- SCA SEC 1.0 = [Cluster_DA2SCA1_macro]-->
+<!-- XEN SEC 0.75 = [Cluster_DA2XEN1_macro, Cluster_DA3XEN1_macro, Cluster_DA3XEN2_macro, Cluster_DA3XEN3_macro, Cluster_DA3XEN4_macro, Cluster_16_macro, Cluster_25_macro, Cluster_32_macro]-->
+<!-- XEN SEC 1.0 = [Cluster_17_macro, Cluster_21_macro, Cluster_26_macro, Cluster_33_macro]-->
+<!-- SEC 0.5 = [Cluster_DA2ARGNE_macro, Cluster_DA2ARGE_macro, Cluster_DA2ARGSE_macro, Cluster_DA2ARGS_macro, Cluster_DA2ARGNW_macro, Cluster_DA2ARGC_macro, Cluster_DA2HOPNE_macro, Cluster_DA2HOPE_macro, Cluster_DA2HOPSE_macro, Cluster_DA2HOPSW_macro, Cluster_DA2HOPN_macro, Cluster_DA2HOPC_macro, Cluster_DA2PARNW_macro, Cluster_DA2PARW_macro, Cluster_DA2PARSW_macro, Cluster_DA2PARSE_macro, Cluster_DA2PARN_macro, Cluster_DA2PARC_macro, Cluster_DA2TELNW_macro, Cluster_DA2TELW_macro, Cluster_DA2TELSW_macro, Cluster_DA2TELS_macro, Cluster_DA2TELNE_macro, Cluster_DA2TELC_macro]-->
+<!-- SEC 0.75 = [Cluster_DA2HOP1_macro, Cluster_DA2HOP2_macro, Cluster_DA2XEN1_macro, Cluster_DA2HAT2_macro, Cluster_DA2ALI2_macro, Cluster_DA2SCA2_macro, Cluster_DA3XEN1_macro, Cluster_DA3XEN2_macro, Cluster_DA3XEN3_macro, Cluster_DA3XEN4_macro, Cluster_DA3HAT1_macro, Cluster_DA3SCA1_macro, Cluster_DA3SCA2_macro, Cluster_DA3ALI1_macro, Cluster_DA3ALI2_macro, Cluster_01_macro, Cluster_03_macro, Cluster_05_macro, Cluster_06_macro, Cluster_07_macro, Cluster_08_macro, Cluster_09_macro, Cluster_10_macro, Cluster_11_macro, Cluster_12_macro, Cluster_13_macro, Cluster_15_macro, Cluster_19_macro, Cluster_20_macro, Cluster_22_macro, Cluster_23_macro, Cluster_27_macro, Cluster_29_macro, Cluster_30_macro, Cluster_35_macro, Cluster_36_macro, Cluster_37_macro, Cluster_38_macro, Cluster_39_macro, Cluster_40_macro, Cluster_41_macro, Cluster_42_macro, Cluster_43_macro, Cluster_46_macro, Cluster_47_macro, Cluster_16_macro, Cluster_25_macro, Cluster_32_macro] -->
+<!-- SEC 1.0 = [Cluster_DA2HAT1_macro, Cluster_DA2ALI1_macro, Cluster_DA2SCA1_macro, Cluster_02_macro, Cluster_14_macro, Cluster_18_macro, Cluster_24_macro, Cluster_28_macro, Cluster_34_macro, Cluster_17_macro, Cluster_21_macro, Cluster_26_macro, Cluster_33_macro]-->
 <replace sel="//jobs">
 <!-- BEGIN ARG ECONOMY -->
 <!-- TRADERS -->
@@ -15,13 +38,13 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
+    <quota galaxy="15" cluster="1"/>
+	<location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="argon" tags="[trader, container]" size="ship_l"/>
@@ -40,7 +63,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -65,7 +88,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -90,12 +113,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -115,7 +138,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -140,7 +163,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -165,12 +188,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -190,7 +213,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -215,12 +238,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -240,12 +263,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_m"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="100" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -265,12 +288,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -290,7 +313,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -315,12 +338,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -340,7 +363,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -365,12 +388,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -390,7 +413,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -414,7 +437,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -439,12 +462,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
     <category faction="argon" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -464,7 +487,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -692,7 +715,7 @@
   </job>
 <!-- CONSTRUCTION SHIPS -->
   <job id="argon_construction_vessel_xl" name="{20204,5101}">
-    <modifiers commandeerable="true"/>
+    <modifiers rebuild="true" commandeerable="true"/>
     <orders>
       <order order="FindBuildTasks" default="true">
         <param name="maxjumps" value="6"/>
@@ -719,7 +742,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -743,7 +766,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -767,7 +790,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -791,7 +814,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -815,7 +838,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -839,7 +862,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -863,7 +886,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -888,12 +911,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -913,7 +936,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -938,7 +961,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -963,12 +986,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -988,7 +1011,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1013,7 +1036,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1038,12 +1061,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1063,7 +1086,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -1088,12 +1111,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1113,12 +1136,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_m"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="100" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1138,12 +1161,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1163,7 +1186,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -1188,12 +1211,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1213,7 +1236,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -1238,12 +1261,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1263,7 +1286,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -1287,7 +1310,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -1312,12 +1335,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
     <category faction="antigone" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1337,7 +1360,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -1565,7 +1588,7 @@
   </job>
 <!-- CONSTRUCTION SHIPS -->
   <job id="antigone_construction_vessel_xl" name="{20204,5101}">
-    <modifiers commandeerable="true"/>
+    <modifiers rebuild="true" commandeerable="true"/>
     <orders>
       <order order="FindBuildTasks" default="true">
         <param name="maxjumps" value="6"/>
@@ -1592,7 +1615,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="argon_agriculture"/>
@@ -1616,7 +1639,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1640,7 +1663,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -1664,7 +1687,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -1688,7 +1711,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -1712,7 +1735,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -1736,7 +1759,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -1761,12 +1784,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1786,7 +1809,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -1811,7 +1834,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -1836,12 +1859,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1861,7 +1884,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1886,7 +1909,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -1911,12 +1934,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1936,7 +1959,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -1961,12 +1984,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -1986,12 +2009,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_m"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="100" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2011,12 +2034,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2036,7 +2059,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -2061,12 +2084,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2086,7 +2109,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -2111,12 +2134,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2136,7 +2159,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -2160,7 +2183,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -2185,12 +2208,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
     <category faction="paranid" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2210,7 +2233,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -2438,7 +2461,7 @@
   </job>
 <!-- CONSTRUCTION SHIPS -->
   <job id="paranid_construction_vessel_xl" name="{20204,5101}">
-    <modifiers commandeerable="true"/>
+    <modifiers rebuild="true" commandeerable="true"/>
     <orders>
       <order order="FindBuildTasks" default="true">
         <param name="maxjumps" value="6"/>
@@ -2465,7 +2488,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -2489,7 +2512,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -2513,7 +2536,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -2537,7 +2560,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -2561,7 +2584,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -2585,7 +2608,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -2609,7 +2632,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -2634,12 +2657,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2659,7 +2682,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -2684,7 +2707,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -2709,12 +2732,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2734,7 +2757,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -2759,7 +2782,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -2784,12 +2807,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2809,7 +2832,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -2834,12 +2857,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2859,12 +2882,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_m"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="100" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2884,12 +2907,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2909,7 +2932,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -2934,12 +2957,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -2959,7 +2982,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -2984,12 +3007,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3009,7 +3032,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3033,7 +3056,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3058,12 +3081,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
     <category faction="holyorder" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3083,7 +3106,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -3311,7 +3334,7 @@
   </job>
 <!-- CONSTRUCTION SHIPS -->
   <job id="holyorder_construction_vessel_xl" name="{20204,5101}">
-    <modifiers commandeerable="true"/>
+    <modifiers rebuild="true" commandeerable="true"/>
     <orders>
       <order order="FindBuildTasks" default="true">
         <param name="maxjumps" value="6"/>
@@ -3338,7 +3361,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="paranid_agriculture"/>
@@ -3362,7 +3385,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -3386,7 +3409,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -3410,7 +3433,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -3434,7 +3457,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -3458,7 +3481,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -3482,7 +3505,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3507,12 +3530,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="teladi_agriculture"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3532,7 +3555,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="teladi_agriculture"/>
@@ -3557,7 +3580,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="teladi_agriculture"/>
@@ -3582,12 +3605,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3607,7 +3630,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -3632,7 +3655,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -3657,12 +3680,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3682,7 +3705,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -3707,12 +3730,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3732,12 +3755,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_m"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="100" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3757,12 +3780,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3782,7 +3805,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -3807,12 +3830,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3832,7 +3855,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -3857,12 +3880,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="30" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3882,7 +3905,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3906,7 +3929,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -3931,12 +3954,12 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
     <category faction="teladi" tags="[factionlogic, freighter, trader]" size="ship_l"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="15" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -3956,7 +3979,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="water"/>
@@ -4184,7 +4207,7 @@
   </job>
 <!-- CONSTRUCTION SHIPS -->
   <job id="teladi_construction_vessel_xl" name="{20204,5101}">
-    <modifiers commandeerable="true"/>
+    <modifiers rebuild="true" commandeerable="true"/>
     <orders>
       <order order="FindBuildTasks" default="true">
         <param name="maxjumps" value="6"/>
@@ -4211,7 +4234,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="teladi_agriculture"/>
@@ -4235,7 +4258,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energy"/>
@@ -4259,7 +4282,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="equipment"/>
@@ -4283,7 +4306,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="construction_stations"/>
@@ -4307,7 +4330,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_gas"/>
@@ -4331,7 +4354,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="refined_mineral"/>
@@ -4355,7 +4378,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="10"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="2"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="tech"/>
@@ -4382,7 +4405,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="4"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="4"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="minerals_xenon"/>
@@ -4408,7 +4431,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="4"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="4"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energycells"/>
@@ -4430,7 +4453,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="4"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="4"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="minerals_xenon"/>
@@ -4456,7 +4479,7 @@
         <param name="minbuy" value="0"/>
         <param name="maxbuy" value="4"/>
         <param name="minsell" value="0"/>
-        <param name="maxsell" value="4"/>
+        <param name="maxsell" value="5"/>
       </order>
     </orders>
     <basket basket="energycells"/>
@@ -4511,7 +4534,7 @@
       </order>
     </orders>
     <category faction="argon" tags="[factionlogic, military, carrier]" size="ship_xl"/>
-    <quota galaxy="5" sector="1"/>
+    <quota galaxy="7" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -4524,13 +4547,14 @@
     </ship>
     <subordinates>
       <subordinate job="argon_destroyer_escort_l"/>
+	  <subordinate job="argon_destroyer_escort_l"/>
 	  <subordinate job="argon_frigate_escort_m"/>
 	  <subordinate job="argon_fighter_escort_s_carrier"/>
 	  <subordinate job="argon_resupplier_escort_xl"/>
     </subordinates>
   </job>
 
-  <job id="argon_destroyer_patrol_l_sector" name="{20204,3301}" comment="">
+  <job id="argon_destroyer_patrol_l_sector_low" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -4555,7 +4579,7 @@
     </subordinates>
   </job>
 
-  <job id="argon_destroyer_patrol_l_comp" name="{20204,3301}" comment="compression">
+  <job id="argon_destroyer_patrol_l_sector_high" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -4563,7 +4587,7 @@
       </order>
     </orders>
     <category faction="argon" tags="[factionlogic, military, destroyer]" size="ship_l"/>
-    <quota galaxy="16" cluster="4"/>
+    <quota galaxy="14" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -4574,6 +4598,11 @@
       </loadout>
       <owner exact="argon" overridenpc="true"/>
     </ship>
+	<subordinates>
+      <subordinate job="argon_destroyer_escort_l"/>
+	  <subordinate job="argon_frigate_escort_m"/>
+	  <subordinate job="argon_frigate_escort_m"/>
+    </subordinates>
   </job>
 
   <job id="argon_frigate_patrol_m_sector_exp" name="{20204,2901}" comment="">
@@ -4692,7 +4721,7 @@
       <order order="Police" default="true"/>
     </orders>
     <category faction="argon" tags="[police]" size="ship_s"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="30" sector="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[argon, antigone]" relation="member" comparison="ge" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -4709,7 +4738,7 @@
   <job id="argon_destroyer_escort_l" name="{20204,3301}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.invvshape"/>
+        <param name="formation" value="formationshape.pointguard"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -4734,8 +4763,7 @@
   <job id="argon_frigate_escort_m" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.dartvertical"/>
-        <param name="formationparam" value="2500m"/>
+        <param name="formation" value="formationshape.invvshape"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -4760,11 +4788,11 @@
   <job id="argon_fighter_escort_s_carrier" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.pointguard"/>
+        <param name="formation" value="formationshape.circle"/>
 		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
-    <quota wing="5"/>
+    <quota wing="10"/>
     <category faction="argon" tags="[military, fighter]" size="ship_s"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" matchextension="false"/>
     <environment buildatshipyard="true"/>
@@ -4854,7 +4882,7 @@
       </order>
     </orders>
     <category faction="antigone" tags="[factionlogic, military, carrier]" size="ship_xl"/>
-    <quota galaxy="1" sector="1"/>
+    <quota galaxy="4" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -4867,13 +4895,14 @@
     </ship>
     <subordinates>
       <subordinate job="antigone_destroyer_escort_l"/>
+	  <subordinate job="antigone_destroyer_escort_l"/>
 	  <subordinate job="antigone_frigate_escort_m"/>
 	  <subordinate job="antigone_fighter_escort_s_carrier"/>
 	  <subordinate job="antigone_resupplier_escort_xl"/>
     </subordinates>
   </job>
 
-  <job id="antigone_destroyer_patrol_l_sector" name="{20204,3301}" comment="">
+  <job id="antigone_destroyer_patrol_l_sector_low" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -4881,7 +4910,7 @@
       </order>
     </orders>
     <category faction="antigone" tags="[factionlogic, military, destroyer]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
+    <quota galaxy="50" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -4898,7 +4927,7 @@
     </subordinates>
   </job>
 
-  <job id="antigone_destroyer_patrol_l_comp" name="{20204,3301}" comment="compression">
+  <job id="antigone_destroyer_patrol_l_sector_high" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -4906,7 +4935,7 @@
       </order>
     </orders>
     <category faction="antigone" tags="[factionlogic, military, destroyer]" size="ship_l"/>
-    <quota galaxy="4" cluster="4"/>
+    <quota galaxy="8" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[antigone]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -4917,6 +4946,11 @@
       </loadout>
       <owner exact="antigone" overridenpc="true"/>
     </ship>
+	<subordinates>
+      <subordinate job="antigone_destroyer_escort_l"/>
+	  <subordinate job="antigone_frigate_escort_m"/>
+	  <subordinate job="antigone_frigate_escort_m"/>
+    </subordinates>
   </job>
 
   <job id="antigone_frigate_patrol_m_sector_exp" name="{20204,2901}" comment="">
@@ -5033,7 +5067,7 @@
   <job id="antigone_destroyer_escort_l" name="{20204,3301}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.invvshape"/>
+        <param name="formation" value="formationshape.pointguard"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -5058,8 +5092,7 @@
   <job id="antigone_frigate_escort_m" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.dartvertical"/>
-        <param name="formationparam" value="2500m"/>
+        <param name="formation" value="formationshape.invvshape"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -5084,11 +5117,11 @@
   <job id="antigone_fighter_escort_s_carrier" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.pointguard"/>
+        <param name="formation" value="formationshape.circle"/>
 		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
-    <quota wing="5"/>
+    <quota wing="10"/>
     <category faction="antigone" tags="[military, fighter]" size="ship_s"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" matchextension="false"/>
     <environment buildatshipyard="true"/>
@@ -5178,7 +5211,7 @@
       </order>
     </orders>
     <category faction="paranid" tags="[factionlogic, military, carrier]" size="ship_xl"/>
-    <quota galaxy="5" sector="1"/>
+    <quota galaxy="7" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -5191,13 +5224,14 @@
     </ship>
     <subordinates>
       <subordinate job="paranid_destroyer_escort_l"/>
+	  <subordinate job="paranid_destroyer_escort_l"/>
 	  <subordinate job="paranid_frigate_escort_m"/>
 	  <subordinate job="paranid_fighter_escort_s_carrier"/>
 	  <subordinate job="paranid_resupplier_escort_xl"/>
     </subordinates>
   </job>
 
-  <job id="paranid_destroyer_patrol_l_sector" name="{20204,3301}" comment="">
+  <job id="paranid_destroyer_patrol_l_sector_low" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -5222,7 +5256,7 @@
     </subordinates>
   </job>
 
-  <job id="paranid_destroyer_patrol_l_comp" name="{20204,3301}" comment="compression">
+  <job id="paranid_destroyer_patrol_l_sector_high" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -5230,7 +5264,7 @@
       </order>
     </orders>
     <category faction="paranid" tags="[factionlogic, military, destroyer]" size="ship_l"/>
-    <quota galaxy="16" cluster="4"/>
+    <quota galaxy="14" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -5241,6 +5275,11 @@
       </loadout>
       <owner exact="paranid" overridenpc="true"/>
     </ship>
+	<subordinates>
+      <subordinate job="paranid_destroyer_escort_l"/>
+	  <subordinate job="paranid_frigate_escort_m"/>
+	  <subordinate job="paranid_frigate_escort_m"/>
+    </subordinates>
   </job>
 
   <job id="paranid_corvette_patrol_m_sector_exp" name="{20204,2901}" comment="">
@@ -5359,7 +5398,7 @@
       <order order="Police" default="true"/>
     </orders>
     <category faction="paranid" tags="[police]" size="ship_s"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="30" sector="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[paranid]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -5376,7 +5415,7 @@
   <job id="paranid_destroyer_escort_l" name="{20204,3301}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.invvshape"/>
+        <param name="formation" value="formationshape.pointguard"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -5401,8 +5440,7 @@
   <job id="paranid_frigate_escort_m" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.dartvertical"/>
-        <param name="formationparam" value="2500m"/>
+        <param name="formation" value="formationshape.invvshape"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -5427,11 +5465,11 @@
   <job id="paranid_fighter_escort_s_carrier" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.pointguard"/>
+        <param name="formation" value="formationshape.circle"/>
 		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
-    <quota wing="5"/>
+    <quota wing="10"/>
     <category faction="paranid" tags="[military, fighter]" size="ship_s"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" matchextension="false"/>
     <environment buildatshipyard="true"/>
@@ -5521,7 +5559,7 @@
       </order>
     </orders>
     <category faction="holyorder" tags="[factionlogic, military, carrier]" size="ship_xl"/>
-    <quota galaxy="5" sector="1"/>
+    <quota galaxy="7" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -5534,13 +5572,14 @@
     </ship>
     <subordinates>
       <subordinate job="holyorder_destroyer_escort_l"/>
+	  <subordinate job="holyorder_destroyer_escort_l"/>
 	  <subordinate job="holyorder_frigate_escort_m"/>
 	  <subordinate job="holyorder_fighter_escort_s_carrier"/>
 	  <subordinate job="holyorder_resupplier_escort_xl"/>
     </subordinates>
   </job>
 
-  <job id="holyorder_destroyer_patrol_l_sector" name="{20204,3301}" comment="">
+  <job id="holyorder_destroyer_patrol_l_sector_low" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -5565,7 +5604,7 @@
     </subordinates>
   </job>
 
-  <job id="holyorder_destroyer_patrol_l_comp" name="{20204,3301}" comment="compression">
+  <job id="holyorder_destroyer_patrol_l_sector_high" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -5573,7 +5612,7 @@
       </order>
     </orders>
     <category faction="holyorder" tags="[factionlogic, military, destroyer]" size="ship_l"/>
-    <quota galaxy="16" cluster="4"/>
+    <quota galaxy="14" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -5584,6 +5623,11 @@
       </loadout>
       <owner exact="holyorder" overridenpc="true"/>
     </ship>
+	<subordinates>
+      <subordinate job="holyorder_destroyer_escort_l"/>
+	  <subordinate job="holyorder_frigate_escort_m"/>
+	  <subordinate job="holyorder_frigate_escort_m"/>
+    </subordinates>
   </job>
 
   <job id="holyorder_corvette_patrol_m_sector_exp" name="{20204,2901}" comment="">
@@ -5702,7 +5746,7 @@
       <order order="Police" default="true"/>
     </orders>
     <category faction="holyorder" tags="[police]" size="ship_s"/>
-    <quota galaxy="50" sector="1"/>
+    <quota galaxy="30" sector="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[holyorder]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -5719,7 +5763,7 @@
   <job id="holyorder_destroyer_escort_l" name="{20204,3301}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.invvshape"/>
+        <param name="formation" value="formationshape.pointguard"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -5744,8 +5788,7 @@
   <job id="holyorder_frigate_escort_m" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.dartvertical"/>
-        <param name="formationparam" value="2500m"/>
+        <param name="formation" value="formationshape.invvshape"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -5770,11 +5813,11 @@
   <job id="holyorder_fighter_escort_s_carrier" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.pointguard"/>
+        <param name="formation" value="formationshape.circle"/>
 		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
-    <quota wing="5"/>
+    <quota wing="10"/>
     <category faction="holyorder" tags="[military, fighter]" size="ship_s"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" matchextension="false"/>
     <environment buildatshipyard="true"/>
@@ -5864,7 +5907,7 @@
       </order>
     </orders>
     <category faction="teladi" tags="[factionlogic, military, carrier]" size="ship_xl"/>
-    <quota galaxy="5" sector="1"/>
+    <quota galaxy="7" cluster="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -5877,13 +5920,14 @@
     </ship>
     <subordinates>
       <subordinate job="teladi_destroyer_escort_l"/>
+	  <subordinate job="teladi_destroyer_escort_l"/>
 	  <subordinate job="teladi_frigate_escort_m"/>
 	  <subordinate job="teladi_fighter_escort_s_carrier"/>
 	  <subordinate job="teladi_resupplier_escort_xl"/>
     </subordinates>
   </job>
 
-  <job id="teladi_destroyer_patrol_l_sector" name="{20204,3301}" comment="">
+  <job id="teladi_destroyer_patrol_l_sector_low" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -5908,7 +5952,7 @@
     </subordinates>
   </job>
 
-  <job id="teladi_destroyer_patrol_l_comp" name="{20204,3301}" comment="compression">
+  <job id="teladi_destroyer_patrol_l_sector_high" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -5916,7 +5960,7 @@
       </order>
     </orders>
     <category faction="teladi" tags="[factionlogic, military, destroyer]" size="ship_l"/>
-    <quota galaxy="16" cluster="4"/>
+    <quota galaxy="14" cluster="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -5927,6 +5971,11 @@
       </loadout>
       <owner exact="teladi" overridenpc="true"/>
     </ship>
+	<subordinates>
+      <subordinate job="teladi_destroyer_escort_l"/>
+	  <subordinate job="teladi_frigate_escort_m"/>
+	  <subordinate job="teladi_frigate_escort_m"/>
+    </subordinates>
   </job>
 
   <job id="teladi_frigate_patrol_m_sector_exp" name="{20204,2901}" comment="">
@@ -6043,7 +6092,7 @@
   <job id="teladi_destroyer_escort_l" name="{20204,3301}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.invvshape"/>
+        <param name="formation" value="formationshape.pointguard"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -6068,8 +6117,7 @@
   <job id="teladi_frigate_escort_m" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.dartvertical"/>
-        <param name="formationparam" value="2500m"/>
+        <param name="formation" value="formationshape.invvshape"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -6094,11 +6142,11 @@
   <job id="teladi_fighter_escort_s_carrier" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.pointguard"/>
+        <param name="formation" value="formationshape.circle"/>
 		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
-    <quota wing="5"/>
+    <quota wing="10"/>
     <category faction="teladi" tags="[military, fighter]" size="ship_s"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" matchextension="false"/>
     <environment buildatshipyard="true"/>
@@ -6188,8 +6236,8 @@
       </order>
     </orders>
     <category faction="ministry" tags="[factionlogic, military, carrier]" size="ship_xl"/>
-    <quota galaxy="1" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="ge" matchextension="false"/>
+    <quota galaxy="4" cluster="1"/>
+	<location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="ministry" tags="[military, carrier]" size="ship_xl"/>
@@ -6201,12 +6249,13 @@
     </ship>
     <subordinates>
       <subordinate job="ministry_destroyer_escort_l"/>
+	  <subordinate job="ministry_destroyer_escort_l"/>
 	  <subordinate job="ministry_frigate_escort_m"/>
 	  <subordinate job="ministry_fighter_escort_s_carrier"/>
     </subordinates>
   </job>
 
-  <job id="ministry_destroyer_patrol_l_sector" name="{20204,3301}" comment="">
+  <job id="ministry_destroyer_patrol_l_sector_low" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -6214,8 +6263,8 @@
       </order>
     </orders>
     <category faction="ministry" tags="[factionlogic, military, destroyer]" size="ship_l"/>
-    <quota galaxy="100" sector="2"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="ge" matchextension="false"/>
+    <quota galaxy="50" sector="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="ministry" tags="[military, destroyer]" size="ship_l"/>
@@ -6231,7 +6280,7 @@
     </subordinates>
   </job>
 
-  <job id="ministry_destroyer_patrol_l_comp" name="{20204,3301}" comment="compression">
+  <job id="ministry_destroyer_patrol_l_sector_high" name="{20204,3301}" comment="">
     <modifiers commandeerable="true"/>
     <orders>
       <order order="Patrol" default="true">
@@ -6239,8 +6288,8 @@
       </order>
     </orders>
     <category faction="ministry" tags="[factionlogic, military, destroyer]" size="ship_l"/>
-    <quota galaxy="4" cluster="4"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="ge" matchextension="false"/>
+    <quota galaxy="8" cluster="2"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="ministry" tags="[military, destroyer]" size="ship_l"/>
@@ -6250,6 +6299,11 @@
       </loadout>
       <owner exact="ministry" overridenpc="true"/>
     </ship>
+	<subordinates>
+      <subordinate job="ministry_destroyer_escort_l"/>
+	  <subordinate job="ministry_frigate_escort_m"/>
+	  <subordinate job="ministry_frigate_escort_m"/>
+    </subordinates>
   </job>
 
   <job id="ministry_frigate_patrol_m_sector_exp" name="{20204,2901}" comment="">
@@ -6261,7 +6315,7 @@
     </orders>
     <category faction="ministry" tags="[factionlogic, military, frigate]" size="ship_m"/>
     <quota galaxy="150" sector="3"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="ge" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="ministry" tags="[military, frigate]" size="ship_m"/>
@@ -6285,7 +6339,7 @@
     </orders>
     <category faction="ministry" tags="[factionlogic, military, frigate]" size="ship_m"/>
     <quota galaxy="150" sector="3"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="ge" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="ministry" tags="[military, frigate]" size="ship_m"/>
@@ -6309,7 +6363,7 @@
     </orders>
     <category faction="ministry" tags="[factionlogic, military, fighter]" size="ship_s"/>
     <quota galaxy="200" sector="4" zone="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="ge" matchextension="false"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="ministry" tags="[fighter, heavy]" size="ship_s"/>
@@ -6370,8 +6424,8 @@
       </order>
     </orders>
     <category faction="ministry" tags="[factionlogic, police]" size="ship_s"/>
-    <quota galaxy="50" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="ge" matchextension="false"/>
+    <quota galaxy="30" sector="1"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ministry, teladi]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="ministry" tags="[fighter, light]" size="ship_s"/>
@@ -6387,7 +6441,7 @@
   <job id="ministry_destroyer_escort_l" name="{20204,3301}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.invvshape"/>
+        <param name="formation" value="formationshape.pointguard"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -6412,8 +6466,7 @@
   <job id="ministry_frigate_escort_m" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.dartvertical"/>
-        <param name="formationparam" value="2500m"/>
+        <param name="formation" value="formationshape.invvshape"/>
         <param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -6438,11 +6491,11 @@
   <job id="ministry_fighter_escort_s_carrier" name="{20204,2901}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.pointguard"/>
+        <param name="formation" value="formationshape.circle"/>
 		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
-    <quota wing="5"/>
+    <quota wing="10"/>
     <category faction="ministry" tags="[military, fighter]" size="ship_s"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" matchextension="false"/>
     <environment buildatshipyard="true"/>
@@ -6510,8 +6563,10 @@
       </order>
     </orders>
     <category faction="xenon" tags="[factionlogic, military, carrier]" size="ship_xl"/>
-    <quota galaxy="4" sector="1"/>
-    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[xenon]" relation="self" comparison="exact" matchextension="false"/>
+    <quota galaxy="12" cluster="1"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[xenon]" relation="self" comparison="exact" matchextension="false">
+ 
+	</location>
     <environment buildatshipyard="true"/>
     <ship>
       <select faction="xenon" tags="[military, carrier]" size="ship_xl"/>
@@ -6519,6 +6574,7 @@
     </ship>
     <subordinates>
       <subordinate job="xenon_destroyer_escort_xl"/>
+	  <subordinate job="xenon_destroyer_escort_xl"/>
 	  <subordinate job="xenon_frigate_escort_m"/>
 	  <subordinate job="xenon_fighter_escort_s_frigate"/>
     </subordinates>
@@ -6532,7 +6588,7 @@
       </order>
     </orders>
     <category faction="xenon" tags="[factionlogic, military, destroyer]" size="ship_xl"/>
-    <quota galaxy="100" sector="3"/>
+    <quota galaxy="100" sector="2"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" faction="[xenon]" relation="self" comparison="exact" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <ship>
@@ -6621,12 +6677,12 @@
   <job id="xenon_destroyer_escort_xl" name="{20204,3801}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.invvshape"/>
+        <param name="formation" value="formationshape.pointguard"/>
 		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
     <category faction="xenon" tags="[military, destroyer]" size="ship_xl"/>
-    <quota wing="2"/>
+    <quota wing="1"/>
     <location class="galaxy" macro="xu_ep2_universe_macro" matchextension="false"/>
     <environment buildatshipyard="true"/>
     <modifiers subordinate="true"/>
@@ -6642,8 +6698,7 @@
   <job id="xenon_frigate_escort_m" name="{20204,3401}" startactive="false">
     <orders>
       <order order="Escort" default="true">
-        <param name="formation" value="formationshape.dartvertical"/>
-        <param name="formationparam" value="2500m"/>
+        <param name="formation" value="formationshape.invvshape"/>
 		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
@@ -6696,107 +6751,44 @@
   </job>
 <!-- END XEN WAR --><!-- END XEN WAR --><!-- END XEN WAR --><!-- END XEN WAR --><!-- END XEN WAR --><!-- END XEN WAR --><!-- END XEN WAR --><!-- END XEN WAR -->
 <!-- BEGIN KHA WAR --><!-- BEGIN KHA WAR --><!-- BEGIN KHA WAR --><!-- BEGIN KHA WAR --><!-- BEGIN KHA WAR --><!-- BEGIN KHA WAR --><!-- BEGIN KHA WAR --><!-- BEGIN KHA WAR -->
-<!-- UNCHANGED, KHAAK ARE DUMB -->  
-  <job id="khaak_fighter_patrol_m_zone002_cluster16_sector001" name="{20204,3401}" disabled="false">
+<!-- SPAWNING IS DUMB, KHAAK ARE DUMB BUT AT LEAST DANGEROUS NOW? -->  
+  <job id="khaak_fighter_patrol_m" name="{20204,3401}" disabled="false">
     <modifiers commandeerable="false"/>
     <orders>
       <order order="Patrol" default="true">
-        <param name="range" value="class.zone"/>
+        <param name="range" value="class.cluster"/>
       </order>
     </orders>
     <category faction="khaak" tags="[military, fighter]" size="ship_m"/>
-    <quota galaxy="3"/>
-    <location class="zone" macro="Zone002_Cluster_16_Sector001_macro" matchextension="false"/>
-    <environment buildatshipyard="false" gate="true"/>
+    <quota maxgalaxy="10"/>
+	<time interval="600"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" faction="[ownerless]" relation="self" comparison="exact" matchextension="false"/>
+    <environment buildatshipyard="false" gate="true" />
     <ship>
       <select faction="khaak" tags="[fighter]" size="ship_m"/>
       <owner exact="khaak" overridenpc="true"/>
     </ship>
-  </job>
-  <job id="khaak_fighter_patrol_m_zone002_cluster_37_sector001" name="{20204,3401}" disabled="false">
-    <modifiers commandeerable="false"/>
-    <orders>
-      <order order="Patrol" default="true">
-        <param name="range" value="class.zone"/>
-      </order>
-    </orders>
-    <category faction="khaak" tags="[military, fighter]" size="ship_m"/>
-    <quota galaxy="3"/>
-    <location class="zone" macro="Zone002_Cluster_37_Sector001_macro" matchextension="false"/>
-    <environment buildatshipyard="false" gate="true"/>
-    <ship>
-      <select faction="khaak" tags="[fighter]" size="ship_m"/>
-      <owner exact="khaak" overridenpc="true"/>
-    </ship>
-  </job>
-  <job id="khaak_fighter_patrol_m_zone005_cluster_45_sector001" name="{20204,3401}" disabled="false">
-    <modifiers commandeerable="false"/>
-    <orders>
-      <order order="Patrol" default="true">
-        <param name="range" value="class.zone"/>
-      </order>
-    </orders>
-    <category faction="khaak" tags="[military, fighter]" size="ship_m"/>
-    <quota galaxy="3"/>
-    <location class="zone" macro="Zone005_Cluster_45_Sector001_macro" matchextension="false"/>
-    <environment buildatshipyard="false" gate="true"/>
-    <ship>
-      <select faction="khaak" tags="[fighter]" size="ship_m"/>
-      <owner exact="khaak" overridenpc="true"/>
-    </ship>
-  </job>
-
-  <job id="khaak_fighter_patrol_s_zone002_cluster_16_sector001" name="{20204,3401}" disabled="false">
-    <modifiers commandeerable="false"/>
-    <orders>
-      <order order="Patrol" default="true">
-        <param name="range" value="class.zone"/>
-      </order>
-    </orders>
-    <category faction="khaak" tags="[military, fighter]" size="ship_s"/>
-    <quota galaxy="3"/>
-    <location class="zone" macro="Zone002_Cluster_16_Sector001_macro" matchextension="false"/>
-    <environment buildatshipyard="false" gate="true"/>
-    <ship>
-      <select faction="khaak" tags="[fighter, leader]" size="ship_s"/>
-      <owner exact="khaak" overridenpc="true"/>
-    </ship>
-    <subordinates>
-      <subordinate job="khaak_fighter_escort_s"/>
+	<subordinates>
+      <subordinate job="khaak_fighter_escort_m"/>
+	  <subordinate job="khaak_fighter_escort_s"/>
     </subordinates>
   </job>
-  <job id="khaak_fighter_patrol_s_zone002_cluster_37_sector001" name="{20204,3401}" disabled="false">
-    <modifiers commandeerable="false"/>
+  
+  <job id="khaak_fighter_escort_m" name="{20204,3401}" startactive="false">
     <orders>
-      <order order="Patrol" default="true">
-        <param name="range" value="class.zone"/>
+      <order order="Escort" default="true">
+        <param name="formation" value="formationshape.dartvertical"/>
+        <param name="formationparam" value="2500m"/>
+		<param name="overrideformationskill" value="true"/>
       </order>
     </orders>
-    <category faction="khaak" tags="[military, fighter]" size="ship_s"/>
-    <quota galaxy="3"/>
-    <location class="zone" macro="Zone002_Cluster_37_Sector001_macro" matchextension="false"/>
-    <environment buildatshipyard="false" gate="true"/>
+    <category faction="khaak" tags="[military, fighter]" size="ship_m"/>
+    <quota wing="4"/>
+    <location class="galaxy" macro="xu_ep2_universe_macro" matchextension="false"/>
+    <environment buildatshipyard="false" gate="true" />
+    <modifiers subordinate="true"/>
     <ship>
-      <select faction="khaak" tags="[fighter, leader]" size="ship_s"/>
-      <owner exact="khaak" overridenpc="true"/>
-    </ship>
-    <subordinates>
-      <subordinate job="khaak_fighter_escort_s"/>
-    </subordinates>
-  </job>
-  <job id="khaak_fighter_patrol_s_zone005_cluster_45_sector001" name="{20204,3401}" disabled="false">
-    <modifiers commandeerable="false"/>
-    <orders>
-      <order order="Patrol" default="true">
-        <param name="range" value="class.zone"/>
-      </order>
-    </orders>
-    <category faction="khaak" tags="[military, fighter]" size="ship_s"/>
-    <quota galaxy="3"/>
-    <location class="zone" macro="Zone005_Cluster_45_Sector001_macro" matchextension="false"/>
-    <environment buildatshipyard="false" gate="true"/>
-    <ship>
-      <select faction="khaak" tags="[fighter, leader]" size="ship_s"/>
+      <select faction="khaak" tags="[fighter]" size="ship_m"/>
       <owner exact="khaak" overridenpc="true"/>
     </ship>
     <subordinates>
