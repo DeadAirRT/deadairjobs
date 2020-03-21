@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<diff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="aiscripts.xsd">
+<!--class.habitation-->
+<replace sel="//do_if[@value='not $tradeforbuildstorage']/do_all[@exact='$table_shortage.keys.count'][3]/do_if[@value='not $resources_shortage.indexof.{$locware} and $resources.indexof.{$locware} and (this.assignedcontrolled.cargo.{$locware}.max gt 0)']/do_if[@value='$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.9)']/@value">$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.4)</replace>
+<!--class.buildmodule-->
+<replace sel="//do_if[@value='not $tradeforbuildstorage']/do_all[@exact='$table_shortage.keys.count'][2]/do_if[@value='not $resources_shortage.indexof.{$locware} and $resources.indexof.{$locware} and (this.assignedcontrolled.cargo.{$locware}.max gt 0)']/do_if[@value='$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.9)']/@value">$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.6)</replace>
+<!--class.production-->
+<replace sel="//do_if[@value='not $tradeforbuildstorage']/do_all[@exact='$table_shortage.keys.count'][1]/do_if[@value='not $resources_shortage.indexof.{$locware} and $resources.indexof.{$locware} and (this.assignedcontrolled.cargo.{$locware}.max gt 0)']/do_if[@value='$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.9)']/@value">$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.5)</replace>
+<!--class.habitation-->
+<replace sel="//do_if[@value='not $tradeforbuildstorage']/do_all[@exact='$table_insufficient.keys.count'][3]/do_if[@value='not $resources_shortage.indexof.{$locware} and $resources.indexof.{$locware} and (this.assignedcontrolled.cargo.{$locware}.max gt 0)']/do_if[@value='$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.9)']/@value">$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.4)</replace>
+<!--class.buildmodule-->
+<replace sel="//do_if[@value='not $tradeforbuildstorage']/do_all[@exact='$table_insufficient.keys.count'][2]/do_if[@value='not $resources_shortage.indexof.{$locware} and $resources.indexof.{$locware} and (this.assignedcontrolled.cargo.{$locware}.max gt 0)']/do_if[@value='$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.9)']/@value">$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.6)</replace>
+<!--class.production-->
+<replace sel="//do_if[@value='not $tradeforbuildstorage']/do_all[@exact='$table_insufficient.keys.count'][1]/do_if[@value='not $resources_shortage.indexof.{$locware} and $resources.indexof.{$locware} and (this.assignedcontrolled.cargo.{$locware}.max gt 0)']/do_if[@value='$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.9)']/@value">$homebase.cargo.{$locware}.count lt ($homebase.cargo.{$locware}.target * 0.5)</replace>
+</diff>

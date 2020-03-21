@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<diff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="aiscripts.xsd">
+<add sel="//do_if[@value='not $waitforsubordinates? and not $waitforatgate.isoperational and not this.zone.isclass.highway']/move_to" type="@travel">true</add>
+<replace sel="//do_if[@value='not $waitforsubordinates? and not $waitforatgate.isoperational and not this.zone.isclass.highway']/@value">(not $waitforsubordinates?) and (not $waitforatgate.isoperational) and (not this.zone.isclass.highway) and (not this.assignedcontrolled.iscapitalship)</replace>
+</diff>
