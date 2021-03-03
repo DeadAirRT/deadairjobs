@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <replace sel="/aiscript/attention/actions/do_if[@value='not $lastcheck or player.age gt $lastcheck + 5s']/do_if[@value='not this.object.isplayerowned and this.object.isclass.station']/do_if[@value='this.station.isshipyard']/set_value/@exact">table[{class.ship_l} = table[$wanted = 2], {class.ship_m} = table[$wanted = 5]]</replace>
+  <replace sel="/aiscript/attention/actions/do_if[@value='not $lastcheck or player.age gt $lastcheck + 5s']/do_if[@value='not this.object.isplayerowned and this.object.isclass.station']/do_elseif[@value='this.station.iswharf']/set_value/@exact">table[{class.ship_l} = table[$wanted = 1], {class.ship_m} = table[$wanted = 5]]</replace>
+</diff>

@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<diff xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="aiscripts.xsd">
-<add sel="//do_if[@value='@this.assignedcontrolled.commander.isclass.station']/do_if[@value='$internalorder and ($tradedeal.owner == $tradedeal.seller) and ($tradedeal.owner != $commander)']/do_if[@value='not $commanderresources.indexof.{$tradedeal.ware}']" position="before">
-<append_to_list name="$commanderresources" exact="ware.smartchips"/>
-<append_to_list name="$commanderresources" exact="ware.dronecomponents"/>
-</add>
-</diff>

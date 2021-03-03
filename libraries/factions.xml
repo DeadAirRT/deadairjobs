@@ -1,0 +1,5 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <replace sel="/factions/faction[@id='argon']/relations/relation[@faction='teladi']/@relation">0.011</replace>
+  <replace sel="/factions/faction[@id='teladi']/relations/relation[@faction='argon']/@relation">0.011</replace>
+</diff>
