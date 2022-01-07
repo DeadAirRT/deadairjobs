@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<content id="DeadAirJobs" name="DeadAir Jobs" description="Redistributes jobs for a war heavy universe and strong trading economy" author="DeadAir" version="003" date="2021-03-02" save="0" enabled="1">
+<content id="DeadAirJobs" name="DeadAir Jobs" description="Redistributes jobs for a war heavy universe and strong trading economy" author="DeadAir" version="003" date="2022-01-07" save="0" enabled="1">
 	<dependency id="ego_dlc_split" optional="false" name="Split Vendetta" />
 	<dependency id="ego_dlc_terran" optional="false" name="Cradle of Humanity" />
 	<text language="7" 	name="DeadAir Jobs" description="Redistributes jobs for a war heavy universe and strong trading economy" author="DeadAir" />
