@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <replace sel="/rules/unit/rules/ruleset[@type='default']/rule[@important='true'][@category='build'][@classes='buildmodule']/@weight">90</replace>
+  <replace sel="/rules/unit/rules/ruleset[@type='default']/rule[@important='true'][@category='transport'][@classes='buildmodule']/@weight">5</replace>
+  
+  <replace sel="/rules/unit/rules/ruleset[@type='default']/rule[@important='true'][@category='build'][@purposes='build dismantling']/@weight">70</replace>
+</diff>

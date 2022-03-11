@@ -4952,19 +4952,9 @@
   </add>
   <replace sel="/jobs/job[@id='fallensplit_fighter_escort_s']/quota/@wing">2</replace>
   <remove sel="/jobs/job[@id='fallensplit_fighter_escort_s']/quota/@variation"/>
-  <replace sel="/jobs/job[@id='fallensplit_fighter_escort_s']/ship/loadout/level/@min">0.2</replace>
-  <replace sel="/jobs/job[@id='fallensplit_fighter_escort_s']/ship/loadout/level/@max">1.0</replace>
-  <add sel="/jobs/job[@id='fallensplit_fighter_escort_s']/ship/loadout">
-    <variation min="0.0" max="0.2"/>
-  </add>
   <remove sel="/jobs/job[@id='fallensplit_fighter_escort_s']/subordinates"/>
   <replace sel="/jobs/job[@id='fallensplit_fighter_escort_s_escort']/quota/@wing">1</replace>
   <remove sel="/jobs/job[@id='fallensplit_fighter_escort_s_escort']/quota/@variation"/>
-  <replace sel="/jobs/job[@id='fallensplit_fighter_escort_s_escort']/ship/loadout/level/@min">0.2</replace>
-  <replace sel="/jobs/job[@id='fallensplit_fighter_escort_s_escort']/ship/loadout/level/@max">1.0</replace>
-  <add sel="/jobs/job[@id='fallensplit_fighter_escort_s_escort']/ship/loadout">
-    <variation min="0.0" max="0.2"/>
-  </add>
   <add sel="/jobs/job[@id='argon_destroyer_patrol_l_sector_spl']" type="@disabled">true</add>
   <replace sel="/jobs/job[@id='argon_destroyer_patrol_l_sector_spl']/orders/order/param[@value='class.cluster']/@value">class.sector</replace>
   <replace sel="/jobs/job[@id='argon_destroyer_patrol_l_sector_spl']/quota/@galaxy">0</replace>
@@ -5105,7 +5095,7 @@
   </add>
   <add sel="/jobs/job[@id='terran_food_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='terran_food_trader_m']/orders/order/@order">TradeRoutine</replace>
@@ -5159,7 +5149,7 @@
   </add>
   <add sel="/jobs/job[@id='terran_energycell_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='terran_energycell_trader_m']/quota/@galaxy">22</replace>
@@ -5193,7 +5183,7 @@
   </add>
   <add sel="/jobs/job[@id='terran_equipment_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='terran_equipment_trader_m']/orders/order/@order">TradeRoutine</replace>
@@ -5229,7 +5219,7 @@
   </add>
   <add sel="/jobs/job[@id='terran_construction_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='terran_construction_trader_m']/orders/order/@order">TradeRoutine</replace>
@@ -5264,7 +5254,7 @@
   </add>
   <add sel="/jobs/job[@id='terran_ship_construction_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='terran_ship_construction_trader_m']/quota/@galaxy">12</replace>
@@ -5288,7 +5278,7 @@
   </add>
   <add sel="/jobs/job[@id='terran_tech_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='terran_tech_trader_m']/orders/order/@order">TradeRoutine</replace>
@@ -5338,7 +5328,7 @@
   </add>
   <add sel="/jobs/job[@id='terran_stationtrader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='terran_free_miner_l_liquid']/quota/@galaxy">8</replace>
@@ -5710,7 +5700,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_food_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_food_trader_m']/orders/order/@order">TradeRoutine</replace>
@@ -5765,7 +5755,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_energycell_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_energycell_trader_m']/location[@macro='xu_ep2_universe_macro'][@faction='pioneers']/@relation">self</replace>
@@ -5792,7 +5782,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_equipment_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_equipment_trader_m']/orders/order/@order">TradeRoutine</replace>
@@ -5828,7 +5818,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_construction_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_construction_trader_m']/orders/order/@order">TradeRoutine</replace>
@@ -5863,7 +5853,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_ship_construction_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_ship_construction_trader_m']/quota/@galaxy">6</replace>
@@ -5884,7 +5874,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_refinedgas_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_refinedgas_trader_m']/quota/@galaxy">6</replace>
@@ -5908,7 +5898,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_refinedmineral_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_refinedmineral_trader_m']/quota/@galaxy">6</replace>
@@ -5933,7 +5923,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_tech_trader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_tech_trader_m']/orders/order/@order">TradeRoutine</replace>
@@ -5982,7 +5972,7 @@
   </add>
   <add sel="/jobs/job[@id='pioneers_stationtrader_l']/ship/owner" pos="before">
     <units>
-      <unit category="unitcategory.transport" min="1"/>
+      <unit category="unitcategory.transport" min="2" max="5"/>
     </units>
   </add>
   <replace sel="/jobs/job[@id='pioneers_free_miner_l_liquid']/quota/@galaxy">6</replace>

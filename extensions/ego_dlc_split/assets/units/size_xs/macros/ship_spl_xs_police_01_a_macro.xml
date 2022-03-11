@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diff>
+<replace sel="//identification/@icon">ship_xs_fight_01</replace>
+<replace sel="//secrecy/@level">2</replace>
+<replace sel="//purpose/@primary">fight</replace>
+</diff>
+<!--
+<macros>
+  <macro name="ship_spl_xs_police_01_a_macro" class="ship_xs">
+    <component ref="ship_spl_xs_police_01_a" />
+    <properties>
+      <identification name="{20101,110901}" description="{20101,110911}" unit="1" icon="ship_xs_neutral_01" />
+      <hull max="281" />
+      <secrecy level="1" />
+      <purpose primary="trade" />
+      <physics mass="2.9">
+        <inertia pitch="0.5" yaw="0.5" roll="0.4" />
+        <drag forward="1.6" reverse="6.3" horizontal="5.6" vertical="5.6" pitch="1.2" yaw="1.2" roll="1.2" />
+      </physics>
+      <loadouts>
+        <loadout id="default">
+          <macros>
+            <engine macro="engine_spl_xs_police_01_macro" path="../con_engine_01" />
+            <weapon macro="weapon_gen_xs_laser_01_macro" path="../connection_weapon_prim01" optional="1" />
+          </macros>
+        </loadout>
+      </loadouts>
+      <ship type="police" />
+    </properties>
+    <connections>
+      <connection ref="connection_cockpit01">
+        <macro ref="cockpit_gen_invisible_01_macro" connection="ship" />
+      </connection>
+    </connections>
+  </macro>
+</macros>-->
