@@ -37,6 +37,7 @@
   <replace sel="/jobs/job[@id='argon_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[argon,hatikvah]']/@relation">self</replace>
   <replace sel="/jobs/job[@id='argon_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[argon,hatikvah]']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='argon_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[argon,hatikvah]']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='argon_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='argon']/@faction">[argon,hatikvah]</replace>
   <replace sel="/jobs/job[@id='argon_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[argon,hatikvah]']/@relation">self</replace>
@@ -74,6 +75,7 @@
   <replace sel="/jobs/job[@id='argon_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[argon,hatikvah]']/@relation">self</replace>
   <replace sel="/jobs/job[@id='argon_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[argon,hatikvah]']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='argon_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[argon,hatikvah]']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_energycell_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_energycell_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='argon_equipment_trader_l']/quota/@galaxy">9</replace>
   <replace sel="/jobs/job[@id='argon_equipment_trader_l']/location[@macro='xu_ep2_universe_macro'][@faction='argon']/@relation">self</replace>
@@ -537,10 +539,15 @@
   <remove sel="/jobs/job[@id='argon_resupplier_escort_xl']/ship/loadout/level/@exact"/>
   <add sel="/jobs/job[@id='argon_resupplier_escort_xl']/ship/loadout/level" type="@min">0.7</add>
   <add sel="/jobs/job[@id='argon_resupplier_escort_xl']/ship/loadout/level" type="@max">1.0</add>
+  <replace sel="/jobs/job[@id='argon_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='argon_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='argon_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='argon_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='argon_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='argon_construction_vessel_xl']/quota/@galaxy">10</replace>
   <replace sel="/jobs/job[@id='argon_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='argon']/@relation">self</replace>
@@ -578,18 +585,25 @@
     <variation min="0.0" max="0.4"/>
   </add>
   <add sel="/jobs/job[@id='argon_resourcescout_s_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='argon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_resourcescout_s_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_resourcescout_s_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='argon_free_miner_ml_solid_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='argon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='argon_free_miner_ml_liquid_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='argon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='argon_free_miner_ml_solid_deepspace_smallgroup']/location[@macro='xu_ep2_universe_macro'][@faction='argon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='argon_free_miner_ml_liquid_deepspace_smallgroup']/location[@macro='xu_ep2_universe_macro'][@faction='argon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='argon_free_miner_l_solid_deepspace_largegroup']/location[@macro='xu_ep2_universe_macro'][@faction='argon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='argon_free_miner_l_liquid_deepspace_largegroup']/location[@macro='xu_ep2_universe_macro'][@faction='argon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='argon_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='argon_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='antigone_bio_trader_l']/basket/@basket">bio_argon</replace>
   <replace sel="/jobs/job[@id='antigone_bio_trader_l']/quota/@cluster">1</replace>
@@ -624,6 +638,7 @@
   <replace sel="/jobs/job[@id='antigone_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@relation">self</replace>
   <replace sel="/jobs/job[@id='antigone_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='antigone_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='antigone_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='antigone_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@relation">self</replace>
   <replace sel="/jobs/job[@id='antigone_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@comparison">exact</replace>
@@ -656,6 +671,7 @@
   <replace sel="/jobs/job[@id='antigone_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@relation">self</replace>
   <replace sel="/jobs/job[@id='antigone_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='antigone_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='antigone_energycell_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_energycell_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='antigone_equipment_trader_l']/quota/@galaxy">5</replace>
   <replace sel="/jobs/job[@id='antigone_equipment_trader_l']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@relation">self</replace>
@@ -1008,10 +1024,15 @@
   <remove sel="/jobs/job[@id='antigone_resupplier_escort_xl']/ship/loadout/level/@exact"/>
   <add sel="/jobs/job[@id='antigone_resupplier_escort_xl']/ship/loadout/level" type="@min">0.7</add>
   <add sel="/jobs/job[@id='antigone_resupplier_escort_xl']/ship/loadout/level" type="@max">1.0</add>
+  <replace sel="/jobs/job[@id='antigone_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='antigone_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@relation">self</replace>
   <replace sel="/jobs/job[@id='antigone_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='antigone']/@comparison">exact</replace>
@@ -1039,12 +1060,19 @@
       <unit category="unitcategory.build" min="30" max="40"/>
     </units>
   </add>
+  <replace sel="/jobs/job[@id='antigone_resourcescout_s_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_resourcescout_s_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='antigone_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='antigone_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='paranid_bio_trader_l']/basket/@basket">bio_paranid</replace>
   <replace sel="/jobs/job[@id='paranid_bio_trader_l']/quota/@galaxy">9</replace>
@@ -1080,6 +1108,7 @@
   <replace sel="/jobs/job[@id='paranid_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='paranid']/@relation">self</replace>
   <replace sel="/jobs/job[@id='paranid_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='paranid']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='paranid_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='paranid']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='paranid_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='paranid_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='paranid']/@relation">self</replace>
   <replace sel="/jobs/job[@id='paranid_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='paranid']/@comparison">exact</replace>
@@ -1114,6 +1143,7 @@
   <replace sel="/jobs/job[@id='paranid_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='paranid']/@relation">self</replace>
   <replace sel="/jobs/job[@id='paranid_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='paranid']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='paranid_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='paranid']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='paranid_energycell_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_energycell_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='paranid_equipment_trader_l']/quota/@galaxy">9</replace>
   <add sel="/jobs/job[@id='paranid_equipment_trader_l']/quota" type="@cluster">1</add>
@@ -1609,16 +1639,27 @@
   <remove sel="/jobs/job[@id='paranid_resupplier_escort_xl']/ship/loadout/level/@exact"/>
   <add sel="/jobs/job[@id='paranid_resupplier_escort_xl']/ship/loadout/level" type="@min">0.7</add>
   <add sel="/jobs/job[@id='paranid_resupplier_escort_xl']/ship/loadout/level" type="@max">1.0</add>
+  <replace sel="/jobs/job[@id='paranid_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='paranid_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='paranid_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='holyorder_bio_trader_l']/basket/@basket">bio_paranid</replace>
   <replace sel="/jobs/job[@id='holyorder_bio_trader_l']/quota/@galaxy">5</replace>
@@ -1653,6 +1694,7 @@
   <replace sel="/jobs/job[@id='holyorder_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='holyorder']/@relation">self</replace>
   <replace sel="/jobs/job[@id='holyorder_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='holyorder']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='holyorder_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='holyorder']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='holyorder_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='holyorder_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='holyorder']/@relation">self</replace>
   <replace sel="/jobs/job[@id='holyorder_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='holyorder']/@comparison">exact</replace>
@@ -1687,6 +1729,7 @@
   <replace sel="/jobs/job[@id='holyorder_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='holyorder']/@relation">self</replace>
   <replace sel="/jobs/job[@id='holyorder_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='holyorder']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='holyorder_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='holyorder']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='holyorder_energycell_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_energycell_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='holyorder_equipment_trader_l']/quota/@galaxy">5</replace>
   <add sel="/jobs/job[@id='holyorder_equipment_trader_l']/quota" type="@cluster">1</add>
@@ -2150,16 +2193,27 @@
   <remove sel="/jobs/job[@id='holyorder_resupplier_escort_xl']/ship/loadout/level/@exact"/>
   <add sel="/jobs/job[@id='holyorder_resupplier_escort_xl']/ship/loadout/level" type="@min">0.7</add>
   <add sel="/jobs/job[@id='holyorder_resupplier_escort_xl']/ship/loadout/level" type="@max">1.0</add>
+  <replace sel="/jobs/job[@id='holyorder_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='holyorder_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='holyorder_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='trinity_bio_trader_l']/basket/@basket">bio_paranid</replace>
   <replace sel="/jobs/job[@id='trinity_bio_trader_l']/quota/@galaxy">12</replace>
@@ -2189,6 +2243,7 @@
   <replace sel="/jobs/job[@id='trinity_food_trader_s']/basket/@basket">bio_paranid</replace>
   <replace sel="/jobs/job[@id='trinity_food_trader_s']/quota/@galaxy">60</replace>
   <add sel="/jobs/job[@id='trinity_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='trinity']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='trinity_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='trinity_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='trinity']" type="@matchextension">false</add>
   <replace sel="/jobs/job[@id='trinity_medical_trader_s']/ship/loadout/level/@max">1.0</replace>
@@ -2216,6 +2271,7 @@
     <variation min="0.0" max="0.2"/>
   </add>
   <add sel="/jobs/job[@id='trinity_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='trinity']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='trinity_energycell_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_energycell_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='trinity_equipment_trader_l']/quota/@galaxy">12</replace>
   <add sel="/jobs/job[@id='trinity_equipment_trader_l']/quota" type="@cluster">1</add>
@@ -2699,16 +2755,27 @@
   <remove sel="/jobs/job[@id='trinity_resupplier_escort_xl']/ship/loadout/level/@exact"/>
   <add sel="/jobs/job[@id='trinity_resupplier_escort_xl']/ship/loadout/level" type="@min">0.7</add>
   <add sel="/jobs/job[@id='trinity_resupplier_escort_xl']/ship/loadout/level" type="@max">1.0</add>
+  <replace sel="/jobs/job[@id='trinity_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='trinity_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='trinity_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='teladi_resupplier_xl']/quota/@galaxy">0</replace>
   <add sel="/jobs/job[@id='teladi_resupplier_xl']/quota" type="@maxgalaxy">1</add>
@@ -2754,6 +2821,7 @@
   <replace sel="/jobs/job[@id='teladi_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@relation">self</replace>
   <replace sel="/jobs/job[@id='teladi_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='teladi_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='teladi_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='teladi_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='teladi']/@faction">[teladi, ministry]</replace>
   <replace sel="/jobs/job[@id='teladi_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@relation">self</replace>
@@ -2792,6 +2860,7 @@
   <replace sel="/jobs/job[@id='teladi_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@relation">self</replace>
   <replace sel="/jobs/job[@id='teladi_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='teladi_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='teladi_energycell_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_energycell_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='teladi_equipment_trader_l']/quota/@galaxy">14</replace>
   <replace sel="/jobs/job[@id='teladi_equipment_trader_l']/quota/@cluster">1</replace>
@@ -3017,6 +3086,7 @@
   <add sel="/jobs/job[@id='teladi_water_trader_m']/ship/loadout">
     <variation min="0.0" max="0.2"/>
   </add>
+  <replace sel="/jobs/job[@id='teladi_scavenger_free_tug_m']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_stationtrader_m']/quota/@maxgalaxy">20</replace>
   <replace sel="/jobs/job[@id='teladi_stationtrader_m']/location[@macro='xu_ep2_universe_macro'][@faction='teladi']/@faction">[teladi, ministry]</replace>
   <replace sel="/jobs/job[@id='teladi_stationtrader_m']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@relation">self</replace>
@@ -3244,17 +3314,29 @@
   <remove sel="/jobs/job[@id='teladi_resupplier_escort_xl']/ship/loadout/level/@exact"/>
   <add sel="/jobs/job[@id='teladi_resupplier_escort_xl']/ship/loadout/level" type="@min">0.7</add>
   <add sel="/jobs/job[@id='teladi_resupplier_escort_xl']/ship/loadout/level" type="@max">1.0</add>
+  <replace sel="/jobs/job[@id='teladi_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_resourcescout_s_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_resourcescout_s_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='teladi_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='teladi_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='ministry_tech_trader_m']/quota/@galaxy">7</replace>
   <remove sel="/jobs/job[@id='ministry_tech_trader_m']/quota/@sector"/>
@@ -3276,6 +3358,7 @@
   <replace sel="/jobs/job[@id='ministry_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@relation">self</replace>
   <replace sel="/jobs/job[@id='ministry_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='ministry_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='ministry_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='ministry_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='ministry_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='teladi']/@faction">[teladi, ministry]</replace>
   <replace sel="/jobs/job[@id='ministry_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='[teladi, ministry]']/@relation">self</replace>
@@ -3600,23 +3683,38 @@
   <replace sel="/jobs/job[@id='khaak_fighter_escort_s']/quota/@wing">6</replace>
   <add sel="/jobs/job[@id='khaak_fighter_s_deepspace_single']/location[@macro='xu_ep2_universe_macro']" type="@matchextension">false</add>
   <add sel="/jobs/job[@id='khaak_fighter_s_deepspace_group']/location[@macro='xu_ep2_universe_macro']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='hatikvah_plunderer_l_cluster']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='hatikvah_scavenger_m_cluster']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='hatikvah_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='hatikvah_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='hatikvah_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='hatikvah_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='hatikvah_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='hatikvah_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='hatikvah_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='hatikvah_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='hatikvah_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='hatikvah_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='hatikvah_scavenger_sm_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='hatikvah_scavenger_sm_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <add sel="/jobs/job[@id='hatikvah_resourcescout_sm_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='hatikvah_resourcescout_sm_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='hatikvah_resourcescout_sm_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='hatikvah_free_miner_ml_liquid_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='hatikvah']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='hatikvah_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='hatikvah_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='hatikvah_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='hatikvah_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='scaleplate_plunderer_l_cluster']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
   <add sel="/jobs/job[@id='scaleplate_plunderer_l_cluster_reduced']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
   <add sel="/jobs/job[@id='scaleplate_scavenger_m_cluster']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
   <add sel="/jobs/job[@id='scaleplate_plunderer_m_cluster']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
   <add sel="/jobs/job[@id='scaleplate_smuggler_s']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='scaleplate_smuggler_s']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='scaleplate_mixed_trader_l']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='scaleplate_mixed_trader_m']/ship/loadout/level/@min">0.1</replace>
   <add sel="/jobs/job[@id='scaleplate_scavenger_sm_deepspace']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='scaleplate_scavenger_sm_deepspace']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='scaleplate_fighter_escort_s']/quota/@wing">3</replace>
   <remove sel="/jobs/job[@id='scaleplate_fighter_escort_s']/quota/@variation"/>
   <replace sel="/jobs/job[@id='scaleplate_fighter_escort_s']/ship/loadout/level/@min">0.2</replace>
@@ -3753,6 +3851,7 @@
   <replace sel="/jobs/job[@id='zyarth_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@relation">self</replace>
   <replace sel="/jobs/job[@id='zyarth_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='zyarth_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='zyarth_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@relation">self</replace>
   <replace sel="/jobs/job[@id='zyarth_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@comparison">exact</replace>
@@ -3787,6 +3886,7 @@
   <replace sel="/jobs/job[@id='zyarth_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@relation">self</replace>
   <replace sel="/jobs/job[@id='zyarth_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='zyarth_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_energycell_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_energycell_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='zyarth_equipment_trader_l']/quota/@galaxy">9</replace>
   <replace sel="/jobs/job[@id='zyarth_equipment_trader_l']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@relation">self</replace>
@@ -3853,7 +3953,6 @@
     </units>
   </add>
   <replace sel="/jobs/job[@id='zyarth_ship_construction_trader_m']/quota/@galaxy">12</replace>
-  <replace sel="/jobs/job[@id='zyarth_ship_construction_trader_m']/quota/@cluster">2</replace>
   <replace sel="/jobs/job[@id='zyarth_ship_construction_trader_m']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@relation">self</replace>
   <replace sel="/jobs/job[@id='zyarth_ship_construction_trader_m']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='zyarth_ship_construction_trader_m']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
@@ -4027,7 +4126,6 @@
     <variation min="0.0" max="0.2"/>
   </add>
   <replace sel="/jobs/job[@id='zyarth_free_miner_s_mineral']/orders/order/param[@value='1']/@value">0</replace>
-  <replace sel="/jobs/job[@id='zyarth_free_miner_s_mineral']/quota/@galaxy">10</replace>
   <replace sel="/jobs/job[@id='zyarth_free_miner_s_mineral']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@relation">self</replace>
   <replace sel="/jobs/job[@id='zyarth_free_miner_s_mineral']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='zyarth_free_miner_s_mineral']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
@@ -4054,10 +4152,15 @@
   <add sel="/jobs/job[@id='zyarth_free_miner_m_ice']/ship/loadout">
     <variation min="0.0" max="0.2"/>
   </add>
+  <replace sel="/jobs/job[@id='zyarth_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='zyarth_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='zyarth_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='zyarth_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='zyarth_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='zyarth_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@relation">self</replace>
   <replace sel="/jobs/job[@id='zyarth_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='split']/@comparison">exact</replace>
@@ -4097,18 +4200,25 @@
     <variation min="0.0" max="0.4"/>
   </add>
   <add sel="/jobs/job[@id='zyarth_resourcescout_s_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_resourcescout_s_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_resourcescout_s_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='zyarth_free_miner_ml_solid_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='zyarth_free_miner_ml_liquid_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='zyarth_free_miner_ml_solid_deepspace_smallgroup']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='zyarth_free_miner_ml_liquid_deepspace_smallgroup']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='zyarth_free_miner_l_solid_deepspace_largegroup']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='zyarth_free_miner_l_liquid_deepspace_largegroup']/location[@macro='xu_ep2_universe_macro'][@faction='split']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='zyarth_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='zyarth_carrier_patrol_xl_center']/orders/order/param[@value='class.zone']/@value">class.sector</replace>
   <replace sel="/jobs/job[@id='zyarth_carrier_patrol_xl_center']/quota/@galaxy">5</replace>
@@ -4317,6 +4427,7 @@
   <add sel="/jobs/job[@id='zyarth_resupplier_escort_xl']/ship/loadout/variation" type="@min">0.0</add>
   <add sel="/jobs/job[@id='zyarth_resupplier_escort_xl']/ship/loadout/variation" type="@max">0.4</add>
   <remove sel="/jobs/job[@id='zyarth_destroyer_escort_l_noescort']/quota/@variation"/>
+  <replace sel="/jobs/job[@id='zyarth_destroyer_escort_l_noescort']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='zyarth_destroyer_escort_l_noescort']/ship/loadout/level/@max">1.0</replace>
   <remove sel="/jobs/job[@id='zyarth_frigate_escort_m']/orders/order/param[@value='2500m']"/>
   <replace sel="/jobs/job[@id='zyarth_frigate_escort_m']/category[@faction='split']/@tags">[military]</replace>
@@ -4484,6 +4595,7 @@
   <add sel="/jobs/job[@id='court_resupplier_escort_xl']/ship/loadout/variation" type="@min">0.0</add>
   <add sel="/jobs/job[@id='court_resupplier_escort_xl']/ship/loadout/variation" type="@max">0.4</add>
   <remove sel="/jobs/job[@id='court_destroyer_escort_l_noescort']/quota/@variation"/>
+  <replace sel="/jobs/job[@id='court_destroyer_escort_l_noescort']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='court_destroyer_escort_l_noescort']/ship/loadout/level/@max">1.0</replace>
   <remove sel="/jobs/job[@id='court_frigate_escort_m']/orders/order/param[@value='2500m']"/>
   <replace sel="/jobs/job[@id='court_frigate_escort_m']/category[@faction='court']/@tags">[military]</replace>
@@ -4581,6 +4693,7 @@
   <replace sel="/jobs/job[@id='freesplit_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@relation">self</replace>
   <replace sel="/jobs/job[@id='freesplit_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='freesplit_food_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_food_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_food_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='freesplit_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@relation">self</replace>
   <replace sel="/jobs/job[@id='freesplit_medical_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@comparison">exact</replace>
@@ -4615,6 +4728,7 @@
   <replace sel="/jobs/job[@id='freesplit_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@relation">self</replace>
   <replace sel="/jobs/job[@id='freesplit_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@comparison">exact</replace>
   <add sel="/jobs/job[@id='freesplit_energycell_trader_s']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_energycell_trader_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_energycell_trader_s']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='freesplit_equipment_trader_l']/quota/@galaxy">7</replace>
   <replace sel="/jobs/job[@id='freesplit_equipment_trader_l']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@relation">self</replace>
@@ -4886,10 +5000,15 @@
   <add sel="/jobs/job[@id='freesplit_free_miner_m_ice']/ship/loadout">
     <variation min="0.0" max="0.2"/>
   </add>
+  <replace sel="/jobs/job[@id='freesplit_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_miningfleet_m_solid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='freesplit_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_miningfleet_m_liquid_small']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='freesplit_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_miningfleet_ml_solid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='freesplit_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_miningfleet_ml_liquid_large']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='freesplit_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_fighter_escort_s_miningfleet']/ship/loadout/level/@max">1.0</replace>
   <replace sel="/jobs/job[@id='freesplit_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@relation">self</replace>
   <replace sel="/jobs/job[@id='freesplit_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']/@comparison">exact</replace>
@@ -4929,20 +5048,30 @@
     <variation min="0.0" max="0.4"/>
   </add>
   <add sel="/jobs/job[@id='freesplit_resourcescout_s_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_resourcescout_s_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_resourcescout_s_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='freesplit_free_miner_ml_solid_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='freesplit_free_miner_ml_liquid_deepspace_single']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='freesplit_free_miner_ml_solid_deepspace_smallgroup']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='freesplit_free_miner_ml_liquid_deepspace_smallgroup']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='freesplit_free_miner_l_solid_deepspace_largegroup']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
   <add sel="/jobs/job[@id='freesplit_free_miner_l_liquid_deepspace_largegroup']/location[@macro='xu_ep2_universe_macro'][@faction='freesplit']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@max">1.0</replace>
+  <replace sel="/jobs/job[@id='freesplit_marauder_mixed_cluster']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='freesplit_scavenger_m_cluster']/ship/loadout/level/@min">0.1</replace>
   <add sel="/jobs/job[@id='freesplit_smuggler_s']/location[@macro='xu_ep2_universe_macro'][@faction='xenon']" type="@matchextension">false</add>
+  <replace sel="/jobs/job[@id='freesplit_smuggler_s']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='freesplit_fighter_escort_s']/quota/@wing">1</replace>
   <remove sel="/jobs/job[@id='freesplit_fighter_escort_s']/quota/@variation"/>
   <replace sel="/jobs/job[@id='freesplit_fighter_escort_s']/ship/loadout/level/@min">0.2</replace>
@@ -5171,8 +5300,10 @@
   </add>
   <replace sel="/jobs/job[@id='terran_energycell_trader_l_longrange']/location[@macro='xu_ep2_universe_macro'][@faction='terran']/@relation">self</replace>
   <replace sel="/jobs/job[@id='terran_energycell_trader_l_longrange']/location[@macro='xu_ep2_universe_macro'][@faction='terran']/@comparison">exact</replace>
+  <replace sel="/jobs/job[@id='terran_energycell_trader_l_longrange']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='terran_energycell_trader_m_longrange']/location[@macro='xu_ep2_universe_macro'][@faction='terran']/@relation">self</replace>
   <replace sel="/jobs/job[@id='terran_energycell_trader_m_longrange']/location[@macro='xu_ep2_universe_macro'][@faction='terran']/@comparison">exact</replace>
+  <replace sel="/jobs/job[@id='terran_energycell_trader_m_longrange']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='terran_equipment_trader_l']/quota/@galaxy">11</replace>
   <replace sel="/jobs/job[@id='terran_equipment_trader_l']/location[@macro='xu_ep2_universe_macro'][@faction='terran']/@relation">self</replace>
   <replace sel="/jobs/job[@id='terran_equipment_trader_l']/location[@macro='xu_ep2_universe_macro'][@faction='terran']/@comparison">exact</replace>
@@ -5386,6 +5517,11 @@
   <add sel="/jobs/job[@id='terran_free_miner_m_ice']/ship/loadout">
     <variation min="0.0" max="0.2"/>
   </add>
+  <replace sel="/jobs/job[@id='terran_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='terran_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='terran']/@relation">self</replace>
   <replace sel="/jobs/job[@id='terran_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='terran']/@comparison">exact</replace>
   <remove sel="/jobs/job[@id='terran_construction_vessel_xl']/ship/loadout/level/@min"/>
@@ -5423,6 +5559,13 @@
   <add sel="/jobs/job[@id='terran_resupplier_xl']/ship/loadout">
     <variation min="0.0" max="0.4"/>
   </add>
+  <replace sel="/jobs/job[@id='terran_resourcescout_s_deepspace_single']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='terran_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='terran_carrier_defence_xl_earth_heavy']/orders/order/param[@value='class.zone']/@value">class.sector</replace>
   <replace sel="/jobs/job[@id='terran_carrier_defence_xl_earth_heavy']/ship/loadout/level/@exact">1.0</replace>
   <add sel="/jobs/job[@id='terran_carrier_defence_xl_earth_heavy']/ship/loadout">
@@ -5955,6 +6098,7 @@
   <add sel="/jobs/job[@id='pioneers_tech_trader_s']/ship/loadout">
     <variation min="0.0" max="0.4"/>
   </add>
+  <replace sel="/jobs/job[@id='pioneers_scavenger_free_tug_m']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='pioneers_stationtrader_m']/quota/@maxgalaxy">20</replace>
   <replace sel="/jobs/job[@id='pioneers_stationtrader_m']/location[@macro='xu_ep2_universe_macro'][@faction='pioneers']/@relation">self</replace>
   <replace sel="/jobs/job[@id='pioneers_stationtrader_m']/location[@macro='xu_ep2_universe_macro'][@faction='pioneers']/@comparison">exact</replace>
@@ -6028,6 +6172,11 @@
   <add sel="/jobs/job[@id='pioneers_free_miner_m_ice']/ship/loadout">
     <variation min="0.0" max="0.2"/>
   </add>
+  <replace sel="/jobs/job[@id='pioneers_miningfleet_m_solid_small']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_miningfleet_m_liquid_small']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_miningfleet_ml_solid_large']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_miningfleet_ml_liquid_large']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_fighter_escort_s_miningfleet']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='pioneers_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='pioneers']/@relation">self</replace>
   <replace sel="/jobs/job[@id='pioneers_construction_vessel_xl']/location[@macro='xu_ep2_universe_macro'][@faction='pioneers']/@comparison">exact</replace>
   <replace sel="/jobs/job[@id='pioneers_construction_vessel_xl']/ship/loadout/level/@min">0.5</replace>
@@ -6063,6 +6212,13 @@
   <add sel="/jobs/job[@id='pioneers_resupplier_xl']/ship/loadout">
     <variation min="0.0" max="0.4"/>
   </add>
+  <replace sel="/jobs/job[@id='pioneers_resourcescout_s_deepspace_single']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_free_miner_ml_solid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_free_miner_ml_liquid_deepspace_single']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_free_miner_ml_solid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_free_miner_ml_liquid_deepspace_smallgroup']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_free_miner_l_solid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='pioneers_free_miner_l_liquid_deepspace_largegroup']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='pioneers_destroyer_patrol_l_segaris']/orders/order/param[@value='class.zone']/@value">class.sector</replace>
   <remove sel="/jobs/job[@id='pioneers_destroyer_patrol_l_segaris']/ship/loadout/level/@exact"/>
   <add sel="/jobs/job[@id='pioneers_destroyer_patrol_l_segaris']/ship/loadout/level" type="@min">0.8</add>
@@ -6182,6 +6338,9 @@
   <add sel="/jobs/job[@id='pioneers_fighter_escort_s']/ship/loadout">
     <variation min="0.0" max="0.2"/>
   </add>
+  <replace sel="/jobs/job[@id='yaki_raider_m_sector']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='yaki_fighter_escort_mixed']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='yaki_fighter_escort_s_escort']/ship/loadout/level/@min">0.1</replace>
   <replace sel="/jobs/job[@id='masstraffic_terran_civilian']/quota/@sector">100</replace>
   <replace sel="/jobs/job[@id='masstraffic_terran_police']/quota/@station">1</replace>
   <replace sel="/jobs/job[@id='masstraffic_terran_criminal']/quota/@sector">5</replace>
@@ -6192,6 +6351,14 @@
   <replace sel="/jobs/job[@id='masstraffic_terran_production']/quota/@station">2</replace>
   <replace sel="/jobs/job[@id='masstraffic_terran_buildmodule']/quota/@station">2</replace>
   <replace sel="/jobs/job[@id='masstraffic_terran_defencemodule']/quota/@station">2</replace>
+  <replace sel="/jobs/job[@id='loanshark_bio_trader_l_iceunion']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='loanshark_energy_trader_l_iceunion']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='loanshark_food_trader_l_iceunion']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='loanshark_water_trader_l_iceunion']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='loanshark_free_miner_l_ice_iceunion']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='scavenger_free_tug_m']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='scavenger_energy_trader_m']/ship/loadout/level/@min">0.1</replace>
+  <replace sel="/jobs/job[@id='scavenger_tech_trader_m_export']/ship/loadout/level/@min">0.1</replace>
   <add sel="/jobs">
     <job id="pioneers_military_patrol_m" name="{20204,2901}">
       <modifiers commandeerable="true"/>
@@ -6593,6 +6760,33 @@
       </ship>
       <subordinates>
         <subordinate job="ministry_fighter_escort_s_patrol"/>
+      </subordinates>
+    </job>
+  </add>
+  <add sel="/jobs">
+    <job id="zyarth_carrier_patrol_xl_zyarthdominion" name="{20204,6201}">
+      <modifiers commandeerable="false"/>
+      <orders>
+        <order order="Patrol" default="true">
+          <param name="range" value="class.sector"/>
+        </order>
+      </orders>
+      <category faction="split" tags="[military, carrier]" size="ship_xl"/>
+      <quota galaxy="1" sector="1"/>
+      <location class="sector" macro="Cluster_404_Sector001_macro" faction="split" relation="self" comparison="exact" matchextension="false"/>
+      <environment buildatshipyard="true"/>
+      <ship>
+        <select faction="split" tags="[military, carrier]" size="ship_xl"/>
+        <loadout>
+          <level exact="1.0"/>
+          <variation min="0.0" max="0.4"/>
+        </loadout>
+        <owner exact="split" overridenpc="true"/>
+      </ship>
+      <subordinates>
+        <subordinate job="zyarth_frigate_escort_m"/>
+        <subordinate job="zyarth_escort_s_carrier"/>
+        <subordinate job="zyarth_destroyer_escort_l_noescort"/>
       </subordinates>
     </job>
   </add>
