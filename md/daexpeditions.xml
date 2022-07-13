@@ -1,0 +1,396 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdscript name="DAExpeditions" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="md.xsd">
+	<cues>
+		<cue name="Init">
+			<actions>
+				<do_if value="not ($ExpeditionFactions?)">
+					<set_value name="$ExpeditionFactions" exact="[@faction.argon,@faction.antigone,@faction.paranid,@faction.holyorder,@faction.teladi,@faction.xenon,@faction.split,@faction.terran,@faction.daldari,@faction.damarr,@faction.galdente,@faction.mindatar]"/>
+				</do_if>
+				<do_if value="not ($ExcludedFactions?)">
+					<set_value name="$ExcludedFactions" exact="[faction.civilian, faction.criminal, faction.khaak, faction.smuggler, faction.visitor]"/>
+				</do_if>
+				<do_if value="not ($JobTags?)">
+					<set_value name="$JobTags" exact="[tag.daexpedition]"/>
+				</do_if>
+				<do_if value="not ($DAEnemiesTable?)">
+					<set_value name="$DAEnemiesTable" exact="table[]"/>
+				</do_if>
+				<do_if value="not ($DAAlliesTable?)">
+					<set_value name="$DAAlliesTable" exact="table[]"/>
+				</do_if>
+				<do_if value="not ($ErrorFactions?)">
+					<set_value name="$ErrorFactions" exact="[]"/>
+				</do_if>
+				<do_if value="not ($ActiveExpeditionFleets?)">
+					<create_group groupname="$ActiveExpeditionFleets"/>
+				</do_if>
+				<do_if value="not ($ReadyExpeditionFleets?)">
+					<create_group groupname="$ReadyExpeditionFleets"/>
+				</do_if>
+				<do_if value="not ($PreparingExpeditionFleets?)">
+					<create_group groupname="$PreparingExpeditionFleets"/>
+				</do_if>
+				<do_if value="not ($ExpeditionFleetsFixedPatrol?)">
+					<create_group groupname="$ExpeditionFleetsFixedPatrol"/>
+				</do_if>
+				<debug_text text="'MOD: DeadAirJobs Init.'" context="false" filter="scripts"/>
+				<include_actions ref="UpdateEnemiesAllies"/>
+			</actions>
+			<cues>
+				<cue name="RunOnce" instantiate="false" checktime="player.age + 1min">
+					<actions>
+						<debug_text text="'MOD: DeadAirJobs RunOnce.'" context="false" filter="scripts"/>
+						<include_actions ref="CheckExpeditionReadiness"/>
+					</actions>
+				</cue>
+				<cue name="Timer" instantiate="true" checkinterval="60min" checktime="[player.age + 30min,120min].max">
+					<actions>
+						<debug_text text="'MOD: DeadAirJobs Timer.'" context="false" filter="scripts"/>
+						<include_actions ref="UpdateEnemiesAllies"/>
+						<include_actions ref="CheckForSurvivor"/>
+						<include_actions ref="CheckExpeditionReadiness"/>
+					</actions>
+				</cue>
+				<cue name="UpdateOnLoad" instantiate="true">
+					<conditions>
+						<event_universe_generated/>
+					</conditions>
+					<actions>
+						<debug_text text="'MOD: DeadAirJobs UpdateOnLoad.'" context="false" filter="scripts"/>
+						<include_actions ref="UpdateEnemiesAllies"/>
+						<include_actions ref="CheckForSurvivor"/>
+						<include_actions ref="CheckExpeditionReadiness"/>
+					</actions>
+				</cue>
+				<library name="UpdateEnemiesAllies">
+					<actions>
+						<!-- Find claimspace factions -->
+						<set_value name="$ClaimspaceList" exact="[]"/>
+						<get_factions_by_tag tag="tag.claimspace" result="$ClaimspaceList"/>
+						<!-- Find visitor factions -->
+						<set_value name="$VisitorList" exact="[]"/>
+						<get_factions_by_tag tag="tag.visitor" result="$VisitorList"/>
+						<!-- Remove excluded, peaceful, and visitors from claimspace list -->
+						<remove_from_list name="$ClaimspaceList" list="$ExcludedFactions" multiple="true"/>
+						<remove_from_list name="$ClaimspaceList" list="$VisitorList" multiple="true"/>
+						<set_value name="$LocFactionList" exact="[]"/>
+						<!-- Check for errors instead of nesting -->
+						<do_for_each name="$ExpeditionFaction" in="$ExpeditionFactions">
+							<do_if value="$ExpeditionFaction.isactive and $ExpeditionFaction.willclaimspace">
+								<find_sector name="$LocSectors" owner="$ExpeditionFaction" multiple="true"/>
+								<do_if value="$ErrorFactions.indexof.{$ExpeditionFaction}">
+									<!-- If faction previously worked then reset error -->
+									<remove_from_list name="$ErrorFactions" exact="$ExpeditionFaction" multiple="true"/>
+								</do_if>
+								<do_if value="$LocSectors.count" min="1">
+									<!-- Only focus on factions who own a sector -->
+									<append_to_list name="$LocFactionList" exact="$ExpeditionFaction"/>
+								</do_if>
+							</do_if>
+							<do_elseif value="not $ErrorFactions.indexof.{$ExpeditionFaction}">
+								<debug_text text="'MOD: DeadAirJobs ; %1 ; isactive: %2 ; willclaimspace: %3.'.[$ExpeditionFaction,$ExpeditionFaction.isactive,$ExpeditionFaction.willclaimspace]" context="false" filter="error"/>
+								<!-- Faction will only error once -->
+								<append_to_list name="$ErrorFactions" exact="$ExpeditionFaction"/>
+							</do_elseif>
+						</do_for_each>
+						<remove_value name="$ExpeditionFaction"/>
+						<remove_value name="$LocSectors"/>
+						<do_for_each name="$LocFaction" in="$LocFactionList">
+							<do_if value="not $DAEnemiesTable.{$LocFaction}?">
+								<set_value name="$DAEnemiesTable.{$LocFaction}" exact="[]"/>
+							</do_if>
+							<do_if value="not $DAAlliesTable.{$LocFaction}?">
+								<set_value name="$DAAlliesTable.{$LocFaction}" exact="[]"/>
+							</do_if>
+							<do_for_each name="$ClaimspaceFaction" in="$ClaimspaceList">
+								<do_if value="($LocFaction != $ClaimspaceFaction) and ($ClaimspaceFaction.isactive) and ($ClaimspaceFaction.willclaimspace)">
+									<!-- Only focus on factions who own a sector -->
+									<find_sector name="$LocSectors" owner="$ClaimspaceFaction" multiple="true"/>
+									<!-- Enemies -->
+									<do_if value="($LocFaction.relationto.{$ClaimspaceFaction} le -0.32) and ($LocSectors.count) and (not $DAEnemiesTable.{$LocFaction}.indexof.{$ClaimspaceFaction})">
+										<!-- (Kill+Sectors) AND (NOT already added) -->
+										<append_to_list name="$DAEnemiesTable.{$LocFaction}" exact="$ClaimspaceFaction"/>
+										<debug_text text="'MOD: DeadAirJobs ; %1 ; enemy added: %2.'.[$LocFaction,$ClaimspaceFaction]" context="false" filter="scripts" chance="0"/>
+									</do_if>
+									<do_elseif value="(not (($LocFaction.relationto.{$ClaimspaceFaction} le -0.32) and ($LocSectors.count))) and ($DAEnemiesTable.{$LocFaction}.indexof.{$ClaimspaceFaction})">
+										<!-- (NOT Kill+Sectors) AND (already added) -->
+										<remove_from_list name="$DAEnemiesTable.{$LocFaction}" exact="$ClaimspaceFaction" multiple="true"/>
+										<debug_text text="'MOD: DeadAirJobs ; %1 ; enemy removed: %2.'.[$LocFaction,$ClaimspaceFaction]" context="false" filter="scripts"/>
+									</do_elseif>
+									<do_else>
+										<!-- (NOT Kill+Sectors) AND (NOT already added) -->
+										<!-- (Kill+Sectors) AND (already added) -->
+									</do_else>
+									<!-- Allies -->
+									<do_if value="($LocFaction.relationto.{$ClaimspaceFaction} ge 0.32) and ($LocSectors.count) and (not $DAAlliesTable.{$LocFaction}.indexof.{$ClaimspaceFaction})">
+										<!-- (Ally+Sectors) AND (NOT already added) -->
+										<append_to_list name="$DAAlliesTable.{$LocFaction}" exact="$ClaimspaceFaction"/>
+										<debug_text text="'MOD: DeadAirJobs ; %1 ; ally added: %2.'.[$LocFaction,$ClaimspaceFaction]" context="false" filter="scripts" chance="0"/>
+									</do_if>
+									<do_elseif value="(not (($LocFaction.relationto.{$ClaimspaceFaction} ge 0.32) and ($LocSectors.count))) and ($DAAlliesTable.{$LocFaction}.indexof.{$ClaimspaceFaction})">
+										<!-- (NOT Ally+Sectors) AND (already added) -->
+										<remove_from_list name="$DAAlliesTable.{$LocFaction}" exact="$ClaimspaceFaction" multiple="true"/>
+										<debug_text text="'MOD: DeadAirJobs ; %1 ; ally removed: %2.'.[$LocFaction,$ClaimspaceFaction]" context="false" filter="scripts"/>
+									</do_elseif>
+									<do_else>
+										<!-- (NOT Ally+Sectors) AND (NOT already added) -->
+										<!-- (Ally+Sectors) AND (already added) -->
+									</do_else>
+									<!-- definite room for optimization -->
+								</do_if>
+								<!-- handle removing old entries -->
+							</do_for_each>
+						</do_for_each>
+						<remove_value name="$LocFaction"/>
+						<remove_value name="$ClaimspaceFaction"/>
+						<remove_value name="$LocSectors"/>
+						<remove_value name="$ClaimspaceList"/>
+						<remove_value name="$VisitorList"/>
+					</actions>
+				</library>
+				<library name="CheckExpeditionReadiness">
+					<actions>
+						<do_if value="$DAEnemiesTable.keys.count" min="1">
+							<set_value name="$LocEnemiesTableFactions" exact="$DAEnemiesTable.keys.list"/>
+							<do_for_each name="$LocEnemiesTableFaction" in="$LocEnemiesTableFactions">
+								<get_suitable_job result="$LocExpeditionJob" tags="$JobTags" faction="$LocEnemiesTableFaction" onlycommandeerable="true" multiple="true"/>
+								<get_suitable_job result="$LocExpeditionJob" tags="$JobTags" faction="$LocEnemiesTableFaction" exceedquota="true" onlycommandeerable="true" multiple="true" chance="if (not $LocExpeditionJob.count) then 100 else 0"/>
+								<do_if value="$LocExpeditionJob.count">
+									<remove_value name="$LocExpeditionJob"/>
+									<find_ship_by_true_owner name="$LocPotentialShips" faction="$LocEnemiesTableFaction" commandeerable="true" requestedjobship="false" jobtags="$JobTags" space="player.galaxy" multiple="true"/>
+									<do_if value="$LocPotentialShips">
+										<do_all exact="$LocPotentialShips.count" counter="$a">
+											<do_if value="($LocPotentialShips.{$a}.exists) and (not $ActiveExpeditionFleets.indexof.{$LocPotentialShips.{$a}}) and (not $ReadyExpeditionFleets.indexof.{$LocPotentialShips.{$a}})">
+												<get_subordinate_jobs jobs="$subordinatejobs" amount="$subordinateamounts" commander="$LocPotentialShips.{$a}"/>
+												<do_if value="not $subordinatejobs.count">
+													<!-- has full subordinates -->
+													<add_to_group groupname="$ReadyExpeditionFleets" object="$LocPotentialShips.{$a}"/>
+													<debug_text text="'MOD: DeadAirJobs ; %1 ; fleet commander ready: %2 %3 %4.'.[$LocEnemiesTableFaction,$LocPotentialShips.{$a}.idcode,$LocPotentialShips.{$a}.knownname,$LocPotentialShips.{$a}.sector.knownname]" context="false" filter="scripts"/>
+													<do_if value="$PreparingExpeditionFleets.indexof.{$LocPotentialShips.{$a}}">
+														<remove_from_group group="$PreparingExpeditionFleets" object="$LocPotentialShips.{$a}"/>
+													</do_if>
+													<include_actions ref="PatrolShipyardSector"/>
+												</do_if>
+												<do_elseif value="$subordinatejobs.count" min="1">
+													<!-- NOT full subordinates -->
+													<add_to_group groupname="$PreparingExpeditionFleets" object="$LocPotentialShips.{$a}"/>
+													<debug_text text="'MOD: DeadAirJobs ; %1 ; fleet commander preparing: %2 %3 %4.'.[$LocEnemiesTableFaction,$LocPotentialShips.{$a}.idcode,$LocPotentialShips.{$a}.knownname,$LocPotentialShips.{$a}.sector.knownname]" context="false" filter="scripts"/>
+													<include_actions ref="PatrolShipyardSector"/>
+													<create_order object="$LocPotentialShips.{$a}" id="'RestockSubordinates'"/>
+												</do_elseif>
+												<remove_value name="$subordinatejobs"/>
+												<remove_value name="$subordinateamounts"/>
+											</do_if>
+										</do_all>
+									</do_if>
+									<do_else>
+										<debug_text text="'MOD: DeadAirJobs ; $LocPotentialShips.count: %1.'.[$LocPotentialShips.count]" context="false" filter="scripts"/>
+									</do_else>
+									<remove_value name="$LocPotentialShips"/>
+								</do_if>
+								<do_else>
+									<debug_text text="'MOD: DeadAirJobs ; $LocEnemiesTableFaction: %1 ; $LocExpeditionJob: %2.'.[$LocEnemiesTableFaction,$LocExpeditionJob]" context="false" filter="scripts"/>
+								</do_else>
+							</do_for_each>
+							<remove_value name="$LocEnemiesTableFactions"/>
+							<remove_value name="$LocEnemiesTableFaction"/>
+							<debug_text text="'MOD: DeadAirJobs ; ActiveExpeditionFleets: %1 ; ReadyExpeditionFleets: %2 ; PreparingExpeditionFleets: %3.'.[$ActiveExpeditionFleets.count,$ReadyExpeditionFleets.count,$PreparingExpeditionFleets.count]" context="false" filter="scripts"/>
+						</do_if>
+						<do_else>
+							<debug_text text="'MOD: DeadAirJobs ; $DAEnemiesTable.keys.count: %1.'.[$DAEnemiesTable.keys.count]" context="false" filter="scripts"/>
+						</do_else>
+					</actions>
+				</library>
+				<library name="PatrolShipyardSector">
+					<actions>
+						<set_value name="$LocExpeditionShip" exact="$LocPotentialShips.{$a}"/>
+						<do_if value="not $ExpeditionFleetsFixedPatrol.indexof.{$LocExpeditionShip}">
+							<!-- Find owned sectors -->
+							<find_sector name="$LocOwnedSectors" owner="$LocExpeditionShip.trueowner" multiple="true"/>
+							<do_if value="$LocOwnedSectors.count" min="1">
+								<!-- Find Shipyards -->
+								<find_station_by_true_owner name="$LocShipyards" space="$LocOwnedSectors" canbuildships="true" faction="$LocExpeditionShip.trueowner" sortbygatedistanceto="$LocExpeditionShip" multiple="true">
+									<match_content class="class.buildmodule" checkoperational="true"/>
+								</find_station_by_true_owner>
+								<set_value name="$LocClosestShipyardSector" exact="$LocShipyards.{1}.sector"/>
+								<do_if value="($LocClosestShipyardSector.exists) and ($LocExpeditionShip.defaultorder.id == 'Patrol') and ($LocExpeditionShip.defaultorder.$space != $LocClosestShipyardSector)">
+									<create_order object="$LocExpeditionShip" id="'Patrol'" default="true">
+										<param name="space" value="$LocClosestShipyardSector" />
+										<param name="range" value="class.sector" />
+									</create_order>
+									<add_to_group groupname="$ExpeditionFleetsFixedPatrol" object="$LocExpeditionShip"/>
+									<debug_text text="'MOD: DeadAirJobs ; Fixed patrol: %1 %2 %3 ; New sector: %4.'.[$LocExpeditionShip.idcode,$LocExpeditionShip.knownname,$LocExpeditionShip.sector.knownname,$LocClosestShipyardSector.knownname]" context="false" filter="scripts"/>
+								</do_if>
+								<do_elseif value="not $LocClosestShipyardSector.exists">
+									<!-- Faction no longer has a shipyard sector -->
+									<debug_text text="'MOD: DeadAirJobs ; No Shipyard Sector: %1 %2 %3 ; order sector: %4.'.[$LocExpeditionShip.idcode,$LocExpeditionShip.knownname,$LocExpeditionShip.sector.knownname,$LocExpeditionShip.defaultorder.$space.knownname]" context="false" filter="error"/>
+								</do_elseif>
+								<do_elseif value="not ($LocExpeditionShip.defaultorder.id == 'Patrol')">
+									<!-- Ship doesn't have a default order of patrol -->
+									<debug_text text="'MOD: DeadAirJobs ; Not patrol order: %1 %2 %3 ; order: %4.'.[$LocExpeditionShip.idcode,$LocExpeditionShip.knownname,$LocExpeditionShip.sector.knownname,$LocExpeditionShip.defaultorder.id]" context="false" filter="scripts"/>
+								</do_elseif>
+								<do_elseif value="$LocExpeditionShip.defaultorder.$space == $LocClosestShipyardSector">
+									<!-- Ship is already patrolling correct sector -->
+									<do_if value="not $ExpeditionFleetsFixedPatrol.indexof.{$LocExpeditionShip}">
+										<add_to_group groupname="$ExpeditionFleetsFixedPatrol" object="$LocExpeditionShip"/>
+									</do_if>
+								</do_elseif>
+								<do_else>
+									<!-- This should never be reached -->
+								</do_else>
+								<remove_value name="$LocShipyards"/>
+								<remove_value name="$LocClosestShipyardSector"/>
+							</do_if>
+							<remove_value name="$LocOwnedSectors"/>
+						</do_if>
+						<remove_value name="$LocExpeditionShip"/>
+					</actions>
+				</library>
+				<library name="CheckForSurvivor">
+					<actions>
+						<do_if value="$ActiveExpeditionFleets.count">
+							<do_for_each name="$LocActiveFleet" in="$ActiveExpeditionFleets" reverse="true">
+								<do_if value="($LocActiveFleet.order.id == $LocActiveFleet.defaultorder.id) and ($LocActiveFleet.trueowner == $LocActiveFleet.sector.owner)">
+									<remove_from_group group="$ActiveExpeditionFleets" object="$LocActiveFleet"/>
+									<remove_from_group group="$ExpeditionFleetsFixedPatrol" object="$LocActiveFleet"/>
+									<debug_text text="'MOD: DeadAirJobs CheckForSurvivor; %1 %2 (%3) removed from ActiveExpeditionFleets.'.[$LocActiveFleet.trueowner,$LocActiveFleet.knownname,$LocActiveFleet.idcode]" context="false" filter="scripts"/>
+								</do_if>
+							</do_for_each>
+							<remove_value name="$LocActiveFleet"/>
+						</do_if>
+					</actions>
+				</library>
+				<cue name="LaunchExpeditionFleet" instantiate="true" checkinterval="15min" checktime="[player.age + 5min,150min].max">
+					<conditions>
+						<check_value value="$ReadyExpeditionFleets.count"/>
+					</conditions>
+					<actions>
+						<set_value name="$ChanceToLaunch" exact="30" chance="(not $ChanceToLaunch?) * 100"/>
+						<do_for_each name="$LocReadyExpeditionShip" in="$ReadyExpeditionFleets" reverse="true">
+							<do_if value="$DAEnemiesTable.{$LocReadyExpeditionShip.trueowner}.count" min="1" chance="$ChanceToLaunch">
+								<set_value name="$ChanceToLaunch" exact="30"/>
+								<!-- Ship is ready and the faction has enemies -->
+								<!-- Chance based to launch, random enemy, TODO prefer helping allies adjacent sector  -->
+								<set_value name="$LocEnemyFaction" exact="$DAEnemiesTable.{$LocReadyExpeditionShip.trueowner}.random"/>
+								<set_value name="$LocThisFaction" exact="$LocReadyExpeditionShip.trueowner"/>
+								<!-- to implement ally assist, will need to change multiple to true -->
+								<find_sector name="$LocEnemyFactionSectors" owner="$LocEnemyFaction" multiple="true" sortbygatedistanceto="$LocReadyExpeditionShip"/>
+								<do_if value="($LocEnemyFaction != null) and ($LocEnemyFaction.isactive) and ($LocEnemyFactionSectors.count)">
+									<set_value name="$AssistAllyConflict" exact="false"/>
+									<!--<do_if value="$DAAlliesTable.{$LocThisFaction}.count" min="1">
+										<do_for_each name="$LocAllyFaction" in="$DAAlliesTable.{$LocThisFaction}">
+											<do_if value="$DAEnemiesTable.{$LocAllyFaction}.indexof.{$LocEnemyFaction}">
+												
+											</do_if>
+										</do_for_each>
+									</do_if>-->
+									<do_if value="$AssistAllyConflict">
+										<!-- TODO ally assist -->
+									</do_if>
+									<do_else>
+										<set_value name="$LocEnemyFactionSector" exact="$LocEnemyFactionSectors.{1}"/>
+										<find_station_by_true_owner name="$LocEnemyStations" space="$LocEnemyFactionSector" faction="$LocEnemyFaction" sortbydistanceto="$LocReadyExpeditionShip" multiple="true"/>
+										<do_if value="$LocEnemyStations.count" min="1">
+											<remove_from_group group="$ExpeditionFleetsFixedPatrol" object="$LocReadyExpeditionShip"/>
+											<cancel_all_orders object="$LocReadyExpeditionShip"/>
+											<create_position name="$position" object="$LocEnemyStations.{1}" space="$LocEnemyFactionSector"/>
+											<set_value name="$mindist" exact="30km"/>
+											<set_value name="$maxdist" exact="40km"/>
+											<include_actions ref="md.LIB_Generic.CreatePositionEclipticNearFar" comment="input: $position, $mindist, $maxdist; output: $position (modified)"/>
+											<create_order object="$LocReadyExpeditionShip" id="'MoveGeneric'">
+												<param name="destination" value="$LocEnemyStations.{1}"/>
+												<param name="position" value="$position"/>
+												<param name="endintargetzone" value="true"/>
+												<param name="activepatrol" value="true"/>
+											</create_order>
+											<remove_value name="$position"/>
+											<remove_value name="$mindist"/>
+											<remove_value name="$maxdist"/>
+											<do_for_each name="$LocEnemyStation" in="$LocEnemyStations">
+												<create_order object="$LocReadyExpeditionShip" id="'Attack'">
+													<param name="primarytarget" value="$LocEnemyStation"/>
+													<param name="pursuetargets" value="true" />
+													<param name="allowothertargets" value="true" />
+												</create_order>
+												<create_order object="$LocReadyExpeditionShip" id="'AttackInRange'">
+													<param name="destination" value="[$LocEnemyFactionSector,$LocEnemyStation.relativeposition.{$LocEnemyFactionSector}]"/>
+												</create_order>
+											</do_for_each>
+											<add_to_group groupname="$ActiveExpeditionFleets" object="$LocReadyExpeditionShip"/>
+											<remove_from_group group="$ReadyExpeditionFleets" object="$LocReadyExpeditionShip"/>
+											<debug_text text="'MOD: DeadAirJobs LaunchExpeditionFleet; %1 %2 (%3) attacking %4 stations owned by %5 in %6.'.[$LocReadyExpeditionShip.trueowner,$LocReadyExpeditionShip.knownname,$LocReadyExpeditionShip.idcode,$LocEnemyStations.count,$LocEnemyFaction,$LocEnemyFactionSector.knownname]" context="false" filter="scripts"/>
+											<remove_value name="$LocEnemyStation"/>
+											<include_actions ref="DynamicWarNewsTrackingExpeditions"/> 
+										</do_if>
+										<do_else>
+											<debug_text text="'MOD: DeadAirJobs LaunchExpeditionFleet; $LocEnemyStations.count: %1.'.[$LocEnemyStations.count]" context="false" filter="error"/>
+										</do_else>
+										<remove_value name="$LocEnemyFactionSector"/>
+										<remove_value name="$LocEnemyStations"/>
+									</do_else>
+								</do_if>
+								<do_else>
+									<debug_text text="'MOD: DeadAirJobs LaunchExpeditionFleet; $LocEnemyFaction: %1 ; $LocEnemyFaction.isactive: %2 ; $LocEnemyFactionSectors: %3.'.[$LocEnemyFaction,$LocEnemyFaction.isactive,$LocEnemyFactionSectors.count]" context="false" filter="scripts"/>
+								</do_else>
+								<remove_value name="$LocEnemyFaction"/>
+								<remove_value name="$LocThisFaction"/>
+								<remove_value name="$LocEnemyFactionSectors"/>
+							</do_if>
+							<do_elseif value="$DAEnemiesTable.{$LocReadyExpeditionShip.trueowner}.count" min="1">
+								<set_value name="$ChanceToLaunch" exact="[$ChanceToLaunch + 15,100].min"/>
+							</do_elseif>
+							<do_else>
+								<!-- No Enemies -->
+							</do_else>
+						</do_for_each>
+						<remove_value name="$LocReadyExpeditionShip"/>
+					</actions>
+					<cues>
+						<library name="DynamicWarNewsTrackingExpeditions">
+							<actions>
+								<!-- only perform if table exists -->
+								<do_if value="(md.$DADynWarNews?)">
+									<!-- $LocReadyExpeditionShip, $LocEnemyFactionSector -->
+									<substitute_text text="$LocationText" source="{1016,1}" comment="in sector $SECTOR$">
+										<replace string="'$SECTOR$'" with="$LocReadyExpeditionShip.sector.knownname"/>
+									</substitute_text>
+									<substitute_text text="$DestinationText" source="{30004,8202}" comment="Invasion started in $DESTINATION$">
+										<replace string="'$DESTINATION$'" with="$LocEnemyFactionSector.knownname"/>
+									</substitute_text>
+									<set_value name="$Reason" exact="'%1(%2) %3. %4.'.[$LocReadyExpeditionShip.knownname,$LocReadyExpeditionShip.idcode,$LocationText,$DestinationText]"/>
+									<substitute_text text="$Message" source="{1015,301}" comment="War update: $REASON$">
+										<replace string="'$REASON$'" with="$Reason"/>
+									</substitute_text>
+									<remove_value name="$LocationText"/>
+									<remove_value name="$DestinationText"/>
+									<remove_value name="$Reason"/>
+									<do_if value="$Message?">
+										<!-- set up the first value -->
+										<!-- md.DADynWarNews.{Index} == [Player.age, Message] -->
+										<do_if value="(not md.$DADynWarNews.{1}?)">
+											<set_value name="md.$DADynWarNews.{1}" exact="[player.age,$Message]"/>
+										</do_if>
+										<do_else>
+											<!-- md.DADynWarNews.{Index} == [Player.age, Message] -->
+											<do_all exact="md.$DADynWarNews.keys.count" counter="$indexcounter" reverse="true">
+												<!-- Move all entries to index+1 so newest is first -->
+												<do_if value="($indexcounter + 1) gt 20">
+													<!-- If index + 1 gt 20 then drop -->
+												</do_if>
+												<do_else>
+													<set_value name="md.$DADynWarNews.{$indexcounter + 1}" exact="md.$DADynWarNews.{$indexcounter}"/>
+												</do_else>
+											</do_all>
+											<!-- Put the new entry as index 1 -->
+											<set_value name="md.$DADynWarNews.{1}" exact="[player.age,$Message]"/>
+										</do_else>
+									</do_if>
+								</do_if>
+							</actions>
+						</library>
+					</cues>
+				</cue>
+			</cues>
+		</cue>
+	</cues>
+</mdscript>

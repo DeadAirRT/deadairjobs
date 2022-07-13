@@ -54,6 +54,9 @@
   <replace sel="/ships/ship[@id='teladi_destroyer_l']/people/@ref">teladi_elite_military_crew</replace>
   <replace sel="/ships/ship[@id='teladi_frigate_m']/people/@ref">teladi_veteran_military_crew</replace>
   <replace sel="/ships/ship[@id='teladi_gunboat_m']/people/@ref">teladi_veteran_military_crew</replace>
+  <replace sel="/ships/ship[@id='buc_carrier_xl']/people/@ref">buccaneers_elite_pirate_crew</replace>
+  <replace sel="/ships/ship[@id='buc_destroyer_l']/people/@ref">buccaneers_elite_pirate_crew</replace>
+  <replace sel="/ships/ship[@id='buc_military_m']/people/@ref">buccaneers_veteran_pirate_crew</replace>
   <replace sel="/ships/ship[@id='split_builder_xl']/people/@ref">split_elite_freighter_crew</replace>
   <replace sel="/ships/ship[@id='split_resupplier_xl']/people/@ref">split_elite_freighter_crew</replace>
   <replace sel="/ships/ship[@id='split_trader_container_l']/people/@ref">split_veteran_freighter_crew</replace>
@@ -81,4 +84,17 @@
   <replace sel="/ships/ship[@id='terran_destroyer_l']/people/@ref">terran_elite_military_crew</replace>
   <replace sel="/ships/ship[@id='terran_military_m']/people/@ref">terran_veteran_military_crew</replace>
   <replace sel="/ships/ship[@id='terran_frigate_m']/people/@ref">terran_veteran_military_crew</replace>
+  <replace sel="/ships/ship[@id='pioneer_builder_xl']/people/@ref">pioneers_elite_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='pioneer_resupplier_xl']/people/@ref">pioneers_elite_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='pioneer_trader_container_l']/people/@ref">pioneers_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='pioneer_miner_solid_l']/people/@ref">pioneers_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='pioneer_miner_liquid_l']/people/@ref">pioneers_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='pioneer_carrier_xl']/people/@ref">pioneers_elite_military_crew</replace>
+  <replace sel="/ships/ship[@id='pioneers_destroyer_l']/people/@ref">pioneers_elite_military_crew</replace>
+  <replace sel="/ships/ship[@id='pioneers_corvette_m']/people/@ref">pioneers_veteran_military_crew</replace>
+  <replace sel="/ships/ship[@id='loanshark_plunderer']/people/@ref">loanshark_elite_pirate_crew</replace>
+  <replace sel="/ships/ship[@id='loanshark_trader_container_l']/people/@ref">loanshark_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='loanshark_miner_solid_l']/people/@ref">loanshark_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='scavenger_builder_xl']/people/@ref">scavenger_elite_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='scavenger_compactor_l']/people/@ref">scavenger_veteran_freighter_crew</replace>
 </diff>

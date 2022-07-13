@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <replace sel="/aiscript/init/set_value[@name='$dronelaunchdelay']/@exact">1s</replace>
+  <replace sel="/aiscript/attention[@min='unknown']/actions/do_while[@value='this.ship.cargo.{$ware}.free gt 0']/do_else/wait/@min">32s</replace>
+  <replace sel="/aiscript/attention[@min='unknown']/actions/do_while[@value='this.ship.cargo.{$ware}.free gt 0']/do_else/wait/@max">48s</replace>
+</diff>

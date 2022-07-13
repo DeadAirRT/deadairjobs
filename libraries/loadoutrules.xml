@@ -1,15 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
 <diff>
-  <replace sel="/rules/unit/rules/ruleset[@type='default']/rule[@important='true'][@category='build'][@classes='buildmodule']/@weight">90</replace>
+  <replace sel="/rules/unit/rules/ruleset[@type='default']/rule[@important='true'][@category='build'][@classes='buildmodule']/@weight">95</replace>
   <replace sel="/rules/unit/rules/ruleset[@type='default']/rule[@important='true'][@category='transport'][@classes='buildmodule']/@weight">5</replace>
-  <replace sel="/rules/unit/rules/ruleset[@type='default']/rule[@important='true'][@category='build'][@purposes='build dismantling']/@weight">70</replace>
+  <replace sel="/rules/unit/rules/ruleset[@type='default']/rule[@important='true'][@category='build'][@purposes='build dismantling']/@weight">90</replace>
   <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='mine'][@purposes='fight'][@mk='1']/@weight">3</replace>
-  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='satellite'][@purposes='build'][@mk='1']/@weight">5</replace>
-  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='resourceprobe'][@purposes='fight']/@weight">5</replace>
-  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='resourceprobe'][@purposes='mine']/@weight">5</replace>
+  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='satellite'][@purposes='fight'][@classes='ship_s'][@mk='1']/@weight">2</replace>
+  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='satellite'][@purposes='fight'][@classes='ship_s'][@mk='2']/@weight">1</replace>
+  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='satellite'][@purposes='build'][@mk='1']/@weight">2</replace>
+  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='satellite'][@purposes='build'][@mk='2']/@weight">1</replace>
+  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='resourceprobe'][@purposes='fight']/@weight">1</replace>
+  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='resourceprobe'][@purposes='mine']/@weight">1</replace>
   <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='navbeacon'][@purposes='fight']/@weight">1</replace>
-  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='navbeacon'][@purposes='mine trade build']/@weight">2</replace>
+  <replace sel="/rules/deployable/rules/ruleset[@type='default']/rule[@category='navbeacon'][@purposes='mine trade build']/@weight">1</replace>
   <add sel="/rules/deployable/rules/ruleset[@type='default']">
-    <rule category="" mk="0" weight="20" purposes="fight build mine trade"/>
+    <rule category="" mk="0" weight="80" purposes="fight build mine trade"/>
   </add>
 </diff>

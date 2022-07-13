@@ -28,9 +28,6 @@
     <ware ware="fieldcoils"/>
   </add>
   <add sel="/baskets/basket[@id='construction_ships']/wares">
-    <ware ware="missilecomponents"/>
-  </add>
-  <add sel="/baskets/basket[@id='construction_ships']/wares">
     <ware ware="scanningarrays"/>
   </add>
   <add sel="/baskets/basket[@id='construction_ships']/wares">
@@ -39,22 +36,100 @@
   <add sel="/baskets/basket[@id='construction_ships']/wares">
     <ware ware="turretcomponents"/>
   </add>
+  <remove sel="/baskets/basket[@id='equipment']/wares/ware[@ware='claytronics']"/>
+  <remove sel="/baskets/basket[@id='equipment']/wares/ware[@ware='smartchips']"/>
+  <replace sel="/baskets/basket[@id='equipment']/wares/ware[@ware='computronicsubstrate']/@ware">advancedcomposites</replace>
+  <replace sel="/baskets/basket[@id='equipment']/wares/ware[@ware='metallicmicrolattice']/@ware">engineparts</replace>
+  <replace sel="/baskets/basket[@id='equipment']/wares/ware[@ware='siliconcarbide']/@ware">hullparts</replace>
+  <add sel="/baskets/basket[@id='equipment']/wares">
+    <ware ware="scanningarrays"/>
+  </add>
   <remove sel="/baskets/basket[@id='minerals']/wares/ware[@ware='ice']"/>
   <remove sel="/baskets/basket[@id='refined']/wares/ware[@ware='energycells']"/>
   <remove sel="/baskets/basket[@id='surface']/wares/ware[@ware='energycells']"/>
-  <add sel="/baskets/basket[@id='tech']/wares">
-    <ware ware="smartchips"/>
+  <remove sel="/baskets/basket[@id='tech']/wares/ware[@ware='advancedcomposites']"/>
+  <remove sel="/baskets/basket[@id='tech']/wares/ware[@ware='engineparts']"/>
+  <remove sel="/baskets/basket[@id='tech']/wares/ware[@ware='hullparts']"/>
+  <replace sel="/baskets/basket[@id='tech']/wares/ware[@ware='scanningarrays']/@ware">smartchips</replace>
+  <replace sel="/baskets/basket[@id='tech']/wares/ware[@ware='computronicsubstrate']/@ware">missilecomponents</replace>
+  <replace sel="/baskets/basket[@id='tech']/wares/ware[@ware='metallicmicrolattice']/@ware">advancedelectronics</replace>
+  <remove sel="/baskets/basket[@id='tech']/wares/ware[@ware='siliconcarbide']"/>
+  <add sel="/baskets/basket[@id='bio_terran']/wares">
+    <ware ware="terranmre"/>
   </add>
-  <add sel="/baskets/basket[@id='tech']/wares">
-    <ware ware="advancedelectronics"/>
+  <add sel="/baskets/basket[@id='bio_terran']/wares">
+    <ware ware="medicalsupplies"/>
   </add>
+  <remove sel="/baskets/basket[@id='refined_gas_terran']/wares/ware[@ware='antimattercells']"/>
+  <remove sel="/baskets/basket[@id='refined_gas_terran']/wares/ware[@ware='graphene']"/>
+  <remove sel="/baskets/basket[@id='refined_gas_terran']/wares/ware[@ware='superfluidcoolant']"/>
+  <remove sel="/baskets/basket[@id='refined_mineral_terran']/wares/ware[@ware='refinedmetals']"/>
+  <remove sel="/baskets/basket[@id='refined_mineral_terran']/wares/ware[@ware='siliconwafers']"/>
+  <remove sel="/baskets/basket[@id='refined_mineral_terran']/wares/ware[@ware='teladianium']"/>
   <add sel="/baskets">
-    <basket id="food_split">
+    <basket id="bio_split_da">
       <wares>
         <ware ware="cheltmeat"/>
         <ware ware="scruffinfruits"/>
         <ware ware="medicalsupplies"/>
         <ware ware="spices"/>
+      </wares>
+    </basket>
+  </add>
+  <add sel="/baskets">
+    <basket id="food_split_da">
+      <wares>
+        <ware ware="cheltmeat"/>
+        <ware ware="scruffinfruits"/>
+      </wares>
+    </basket>
+  </add>
+  <add sel="/baskets">
+    <basket id="legal_common_da">
+      <wares>
+        <ware ware="advancedcomposites"/>
+        <ware ware="advancedelectronics"/>
+        <ware ware="antimattercells"/>
+        <ware ware="antimatterconverters"/>
+        <ware ware="claytronics"/>
+        <ware ware="dronecomponents"/>
+        <ware ware="engineparts"/>
+        <ware ware="fieldcoils"/>
+        <ware ware="graphene"/>
+        <ware ware="hullparts"/>
+        <ware ware="microchips"/>
+        <ware ware="missilecomponents"/>
+        <ware ware="plasmaconductors"/>
+        <ware ware="quantumtubes"/>
+        <ware ware="siliconwafers"/>
+        <ware ware="smartchips"/>
+        <ware ware="superfluidcoolant"/>
+        <ware ware="turretcomponents"/>
+        <ware ware="weaponcomponents"/>
+      </wares>
+    </basket>
+  </add>
+  <add sel="/baskets">
+    <basket id="refined_mineral_normal_da" name="Refined Mineral Wares - Normal">
+      <wares>
+        <ware ware="refinedmetals"/>
+        <ware ware="siliconwafers"/>
+      </wares>
+    </basket>
+  </add>
+  <add sel="/baskets">
+    <basket id="refined_mineral_teladi_da" name="Refined Mineral Wares - Teladi">
+      <wares>
+        <ware ware="teladianium"/>
+        <ware ware="siliconwafers"/>
+      </wares>
+    </basket>
+  </add>
+  <add sel="/baskets">
+    <basket id="water_ec_da" name="Water + Energy Cells">
+      <wares>
+        <ware ware="water"/>
+        <ware ware="energycells"/>
       </wares>
     </basket>
   </add>
