@@ -1,21 +1,21 @@
 <?xml version='1.0' encoding='utf-8'?>
 <diff>
-  <replace sel="/wares/ware[@id='turret_spl_l_beam_01_mk1']/price[@max='203353']/@min" silent="true">59861</replace>
-  <replace sel="/wares/ware[@id='turret_spl_l_beam_01_mk1']/price[@max='203353']/@average" silent="true">96290</replace>
-  <replace sel="/wares/ware[@id='turret_spl_l_beam_01_mk1']/price[@max='203353']/@max" silent="true">132964</replace>
-  <replace sel="/wares/ware[@id='turret_spl_l_plasma_01_mk1']/price[@max='132964']/@min" silent="true">98006</replace>
-  <replace sel="/wares/ware[@id='turret_spl_l_plasma_01_mk1']/price[@max='132964']/@average" silent="true">150548</replace>
-  <replace sel="/wares/ware[@id='turret_spl_l_plasma_01_mk1']/price[@max='132964']/@max" silent="true">203353</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_beam_01_mk1']/price[@max='69808']/@min" silent="true">20258</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_beam_01_mk1']/price[@max='69808']/@average" silent="true">32684</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_beam_01_mk1']/price[@max='69808']/@max" silent="true">45201</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_beam_02_mk1']/price[@max='69808']/@min" silent="true">20258</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_beam_02_mk1']/price[@max='69808']/@average" silent="true">32684</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_beam_02_mk1']/price[@max='69808']/@max" silent="true">45201</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_plasma_01_mk1']/price[@max='45201']/@min" silent="true">32650</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_plasma_01_mk1']/price[@max='45201']/@average" silent="true">51180</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_plasma_01_mk1']/price[@max='45201']/@max" silent="true">69808</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_plasma_02_mk1']/price[@max='45201']/@min" silent="true">32650</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_plasma_02_mk1']/price[@max='45201']/@average" silent="true">51180</replace>
-  <replace sel="/wares/ware[@id='turret_spl_m_plasma_02_mk1']/price[@max='45201']/@max" silent="true">69808</replace>
+  <replace sel="/wares/ware[@id='turret_spl_l_beam_01_mk1'][@name='{20105,5264}']/price[@min='98006'][@max='203353']/@min">59861</replace>
+  <replace sel="/wares/ware[@id='turret_spl_l_beam_01_mk1'][@name='{20105,5264}']/price[@min='59861'][@max='203353']/@average">96290</replace>
+  <replace sel="/wares/ware[@id='turret_spl_l_beam_01_mk1'][@name='{20105,5264}']/price[@min='59861'][@max='203353']/@max">132964</replace>
+  <replace sel="/wares/ware[@id='turret_spl_l_plasma_01_mk1'][@name='{20105,5254}']/price[@min='59861'][@max='132964']/@min">98006</replace>
+  <replace sel="/wares/ware[@id='turret_spl_l_plasma_01_mk1'][@name='{20105,5254}']/price[@min='98006'][@max='132964']/@average">150548</replace>
+  <replace sel="/wares/ware[@id='turret_spl_l_plasma_01_mk1'][@name='{20105,5254}']/price[@min='98006'][@max='132964']/@max">203353</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_beam_01_mk1'][@name='{20105,4364}']/price[@min='32650'][@max='69808']/@min">20258</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_beam_01_mk1'][@name='{20105,4364}']/price[@min='20258'][@max='69808']/@average">32684</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_beam_01_mk1'][@name='{20105,4364}']/price[@min='20258'][@max='69808']/@max">45201</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_beam_02_mk1'][@name='{20105,4364}']/price[@min='32650'][@max='69808']/@min">20258</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_beam_02_mk1'][@name='{20105,4364}']/price[@min='20258'][@max='69808']/@average">32684</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_beam_02_mk1'][@name='{20105,4364}']/price[@min='20258'][@max='69808']/@max">45201</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_plasma_01_mk1'][@name='{20105,4354}']/price[@min='20258'][@max='45201']/@min">32650</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_plasma_01_mk1'][@name='{20105,4354}']/price[@min='32650'][@max='45201']/@average">51180</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_plasma_01_mk1'][@name='{20105,4354}']/price[@min='32650'][@max='45201']/@max">69808</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_plasma_02_mk1'][@name='{20105,4354}']/price[@min='20258'][@max='45201']/@min">32650</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_plasma_02_mk1'][@name='{20105,4354}']/price[@min='32650'][@max='45201']/@average">51180</replace>
+  <replace sel="/wares/ware[@id='turret_spl_m_plasma_02_mk1'][@name='{20105,4354}']/price[@min='32650'][@max='45201']/@max">69808</replace>
 </diff>

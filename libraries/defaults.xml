@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <replace sel="/defaults/dataset[@class='ship_xl']/properties/threatscore/purpose[@value='14'][@purpose='trade']/@value">9</replace>
+  <replace sel="/defaults/dataset[@class='ship_xl']/properties/threatscore/purpose[@value='12'][@purpose='build']/@value">10</replace>
+  <replace sel="/defaults/dataset[@class='ship_xl']/properties/threatscore/purpose[@value='14'][@purpose='mine']/@value">9</replace>
+  <replace sel="/defaults/dataset[@class='ship_l']/properties/threatscore/purpose[@value='8'][@purpose='trade']/@value">6</replace>
+  <replace sel="/defaults/dataset[@class='ship_l']/properties/threatscore/purpose[@value='8'][@purpose='mine']/@value">6</replace>
+  <replace sel="/defaults/dataset[@class='module']/properties/threatscore/purpose[@value='3'][@purpose='defence']/@value">10</replace>
+</diff>

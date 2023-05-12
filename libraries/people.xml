@@ -98,4 +98,14 @@
   <replace sel="/peopledefinitions/people[@id='scavenger_elite_freighter_crew']/fillpercent/@max">100</replace>
   <replace sel="/peopledefinitions/people[@id='scavenger_elite_military_crew']/fillpercent/@min">90</replace>
   <replace sel="/peopledefinitions/people[@id='scavenger_elite_military_crew']/fillpercent/@max">100</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_freighter_crew']/fillpercent/@min">50</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_military_crew']/fillpercent/@min">50</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_veteran_freighter_crew']/fillpercent/@min">75</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_veteran_freighter_crew']/fillpercent/@max">100</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_veteran_military_crew']/fillpercent/@min">75</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_veteran_military_crew']/fillpercent/@max">100</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_elite_freighter_crew']/fillpercent/@min">90</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_elite_freighter_crew']/fillpercent/@max">100</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_elite_military_crew']/fillpercent/@min">90</replace>
+  <replace sel="/peopledefinitions/people[@id='boron_elite_military_crew']/fillpercent/@max">100</replace>
 </diff>

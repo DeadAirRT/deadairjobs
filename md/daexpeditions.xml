@@ -4,7 +4,7 @@
 		<cue name="Init">
 			<actions>
 				<do_if value="not ($ExpeditionFactions?)">
-					<set_value name="$ExpeditionFactions" exact="[@faction.argon,@faction.antigone,@faction.paranid,@faction.holyorder,@faction.teladi,@faction.xenon,@faction.split,@faction.terran,@faction.daldari,@faction.damarr,@faction.galdente,@faction.mindatar]"/>
+					<set_value name="$ExpeditionFactions" exact="[faction.argon,faction.antigone,faction.paranid,faction.holyorder,faction.teladi,faction.xenon,faction.split,faction.terran]"/>
 				</do_if>
 				<do_if value="not ($ExcludedFactions?)">
 					<set_value name="$ExcludedFactions" exact="[faction.civilian, faction.criminal, faction.khaak, faction.smuggler, faction.visitor]"/>
@@ -49,6 +49,22 @@
 						<include_actions ref="UpdateEnemiesAllies"/>
 						<include_actions ref="CheckForSurvivor"/>
 						<include_actions ref="CheckExpeditionReadiness"/>
+					</actions>
+				</cue>
+				<cue name="ActivateExpeditionJobs" checktime="player.age + 30min">
+					<actions>
+						<debug_text text="'MOD: DeadAirJobs Activating expedition jobs.'" context="false" filter="scripts"/>
+						<set_value name="$Jobstoactivate" exact="['argon_expedition_DA','antigone_expedition_DA','paranid_expedition_DA','holyorder_expedition_DA','teladi_expedition_DA','zyarth_expedition_DA','terran_expedition_DA','xenon_expedition_DA']"/>
+						<do_if value="true" comment="patch location if needed"/>
+						<do_for_each name="$Job" in="$Jobstoactivate">
+							<set_job_active activate="true" job="$Job" />
+							<debug_text text="'MOD: DeadAirJobs Activating %1.'.[$Job]" context="false" filter="scripts"/>
+						</do_for_each>
+						<get_suitable_job result="$AreJobsActive" tags="$JobTags" onlycommandeerable="true" multiple="true"/>
+						<debug_text text="'MOD: DeadAirJobs Active count: %1 -- Attempted count: %2.'.[$AreJobsActive.count,$Jobstoactivate.count]" context="false" filter="scripts"/>
+						<remove_value name="$Jobstoactivate"/>
+						<remove_value name="$Job"/>
+						<remove_value name="$AreJobsActive"/>
 					</actions>
 				</cue>
 				<cue name="UpdateOnLoad" instantiate="true">

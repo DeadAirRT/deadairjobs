@@ -1,22 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
 <diff>
-  <replace sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_if[@value='$Mood == moodlevel.verylow']/do_if[@value='$ExpeditionForce']/set_value/@exact">md.$DefaultShipStrengthTable.{class.ship_xl} * 1</replace>
   <add sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_if[@value='$Mood == moodlevel.verylow']/do_if[@value='$ExpeditionForce']">
     <set_value name="$MaximumStrengthFactor" exact="2.0f"/>
   </add>
-  <replace sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_elseif[@value='$Mood == moodlevel.low']/do_if[@value='$ExpeditionForce']/set_value/@exact">md.$DefaultShipStrengthTable.{class.ship_xl} * 1</replace>
   <add sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_elseif[@value='$Mood == moodlevel.low']/do_if[@value='$ExpeditionForce']">
     <set_value name="$MaximumStrengthFactor" exact="2.0f"/>
   </add>
-  <replace sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_elseif[@value='$Mood == moodlevel.normal']/do_if[@value='$ExpeditionForce']/set_value/@exact">md.$DefaultShipStrengthTable.{class.ship_xl} * 1</replace>
   <add sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_elseif[@value='$Mood == moodlevel.normal']/do_if[@value='$ExpeditionForce']">
     <set_value name="$MaximumStrengthFactor" exact="2.0f"/>
   </add>
-  <replace sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_elseif[@value='$Mood == moodlevel.high']/do_if[@value='$ExpeditionForce']/set_value/@exact">md.$DefaultShipStrengthTable.{class.ship_xl} * 1</replace>
   <add sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_elseif[@value='$Mood == moodlevel.high']/do_if[@value='$ExpeditionForce']">
     <set_value name="$MaximumStrengthFactor" exact="2.0f"/>
   </add>
-  <replace sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_elseif[@value='$Mood == moodlevel.veryhigh']/do_if[@value='$ExpeditionForce']/set_value/@exact">md.$DefaultShipStrengthTable.{class.ship_xl} * 1</replace>
   <add sel="/mdscript/cues/cue[@name='Start']/cues/library[@name='UpdateMoodValues']/actions/do_elseif[@value='$Mood == moodlevel.veryhigh']/do_if[@value='$ExpeditionForce']">
     <set_value name="$MaximumStrengthFactor" exact="2.0f"/>
   </add>

@@ -97,4 +97,13 @@
   <replace sel="/ships/ship[@id='loanshark_miner_solid_l']/people/@ref">loanshark_veteran_freighter_crew</replace>
   <replace sel="/ships/ship[@id='scavenger_builder_xl']/people/@ref">scavenger_elite_freighter_crew</replace>
   <replace sel="/ships/ship[@id='scavenger_compactor_l']/people/@ref">scavenger_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='boron_builder_xl']/people/@ref">boron_elite_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='boron_resupplier_xl']/people/@ref">boron_elite_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='boron_trader_container_l']/people/@ref">boron_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='boron_miner_solid_l']/people/@ref">boron_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='boron_miner_liquid_l']/people/@ref">boron_veteran_freighter_crew</replace>
+  <replace sel="/ships/ship[@id='boron_carrier_xl']/people/@ref">boron_elite_military_crew</replace>
+  <replace sel="/ships/ship[@id='boron_carrier_l']/people/@ref">boron_elite_military_crew</replace>
+  <replace sel="/ships/ship[@id='boron_destroyer_l']/people/@ref">boron_elite_military_crew</replace>
+  <replace sel="/ships/ship[@id='boron_corvette_m']/people/@ref">boron_veteran_military_crew</replace>
 </diff>

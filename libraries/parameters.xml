@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <diff>
-  <replace sel="/parameters/scriptparams/category[@name='mining']/param[@name='efficiency'][@value='table[              {ware.ice} = 0.9f,              {ware.ore} = 0.9f,              {ware.silicon} = 0.015f,              {ware.nividium} = 0.9f,              {ware.hydrogen} = 0.9f,              {ware.helium} = 0.9f,              {ware.methane} = 0.9f]']/@value">table[              {ware.ice} = 0.95f,              {ware.ore} = 0.95f,              {ware.silicon} = 0.95f,              {ware.nividium} = 0.95f,              {ware.hydrogen} = 0.95f,              {ware.helium} = 0.95f,              {ware.methane} = 0.95f]</replace>
   <replace sel="/parameters/mining/damagefactors/@turret">1</replace>
   <replace sel="/parameters/mining/speedfactors/@ship">1</replace>
   <replace sel="/parameters/mining/speedfactors/@unit">1</replace>
