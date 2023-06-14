@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diff>
+	<add sel="/mdscript/cues/cue[@name='Start']/cues/cue[@name='Unification_Stage_3_FactionMerge']/cues/cue[@name='Unification_Stage_3_FactionMerge_Complete']/actions/set_value[@name='$JobSetup']" pos="after">
+		<do_if value="true">
+			<set_value name="$JobSetupDA" exact="[['paranid_aux_miner_l_liquid_da','holyorder_aux_miner_l_liquid_da','trinity_aux_miner_l_liquid_da'], ['paranid_aux_miner_l_mineral_da','holyorder_aux_miner_l_mineral_da','trinity_aux_miner_l_mineral_da'], ['paranid_aux_trader_l_da','holyorder_aux_trader_l_da','trinity_aux_trader_l_da'], ['paranid_DACriticalTagparanid_xl_job','holyorder_DACriticalTagholyorder_xl_job','trinity_DACriticalTagtrinity_xl_job'], ['paranid_DACoreTagparanid_l_job','holyorder_DACoreTagholyorder_l_job','trinity_DACoreTagtrinity_l_job'], ['paranid_DABorderTagparanid_l_job','holyorder_DABorderTagholyorder_l_job','trinity_DABorderTagtrinity_l_job'], ['paranid_DAContestedTagparanid_xl_job','holyorder_DAContestedTagholyorder_xl_job','trinity_DAContestedTagtrinity_xl_job']]"/>
+			<append_list_elements name="$JobSetup" other="$JobSetupDA"/>
+			<remove_value name="$JobSetupDA"/>
+		</do_if>
+	</add>
+</diff>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<diff>
+	<add sel="//cue[@name='Sink_Effect_Court_Jobs']/actions">
+		<set_job_active activate="true" job="'court_aux_miner_l_liquid_da'"/>
+		<set_job_active activate="true" job="'court_aux_miner_l_mineral_da'"/>
+		<set_job_active activate="true" job="'court_aux_trader_l_da'"/>
+	</add>
+</diff>

@@ -1,0 +1,799 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mdscript name="DASmartSectorTags" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="md.xsd">
+	<cues>
+		<cue name="Init">
+			<actions>
+				<debug_text text="'MOD: DeadAirJobs SmartSectorTags Init.'" context="false" filter="scripts"/>
+				<set_value name="$DACriticalSectors" exact="table[]"/>
+				<set_value name="$DACoreSectors" exact="table[]"/>
+				<set_value name="$DABorderSectors" exact="table[]"/>
+				<set_value name="$DAContestedSectors" exact="table[]"/>
+				<set_value name="$DAClaimspaceFactions" exact="[]"/>
+				<set_value name="$DAAllSectorList" exact="[]"/>
+				<set_value name="$DASSTJobsActivated" exact="table[]"/>
+				<set_value name="$DASSTDebug" exact="true"/>
+				<set_value name="$DASSTDebugDetailed" exact="false"/>
+				<set_value name="$DASSTAllowScript" exact="true"/>
+			</actions>
+			<cues>
+				<library name="DebugEnableDisable">
+					<actions>
+						<set_value name="$DASSTDebug" exact="true"/>
+						<set_value name="$DASSTDebugDetailed" exact="false"/>
+					</actions>
+				</library>
+				<cue name="CheckVariablesExist" instantiate="true">
+					<conditions>
+						<event_universe_generated/>
+					</conditions>
+					<actions>
+						<include_actions ref="DebugEnableDisable"/>
+						<set_value name="$MissingVarCount" exact="0"/>
+						<do_if value="(not $DACriticalSectors?)">
+							<set_value name="$DACriticalSectors" exact="table[]"/>
+							<set_value name="$MissingVarCount" exact="1" operation="add"/>
+						</do_if>
+						<do_if value="(not $DACoreSectors?)">
+							<set_value name="$DACoreSectors" exact="table[]"/>
+							<set_value name="$MissingVarCount" exact="1" operation="add"/>
+						</do_if>
+						<do_if value="(not $DABorderSectors?)">
+							<set_value name="$DABorderSectors" exact="table[]"/>
+							<set_value name="$MissingVarCount" exact="1" operation="add"/>
+						</do_if>
+						<do_if value="(not $DAContestedSectors?)">
+							<set_value name="$DAContestedSectors" exact="table[]"/>
+							<set_value name="$MissingVarCount" exact="1" operation="add"/>
+						</do_if>
+						<do_if value="(not $DAClaimspaceFactions?)">
+							<set_value name="$DAClaimspaceFactions" exact="[]"/>
+							<set_value name="$MissingVarCount" exact="1" operation="add"/>
+						</do_if>
+						<do_if value="(not $DAAllSectorList?)">
+							<set_value name="$DAAllSectorList" exact="[]"/>
+							<set_value name="$MissingVarCount" exact="1" operation="add"/>
+						</do_if>
+						<do_if value="(not $DASSTJobsActivated?)">
+							<set_value name="$DASSTJobsActivated" exact="table[]"/>
+							<set_value name="$MissingVarCount" exact="1" operation="add"/>
+						</do_if>
+						<do_if value="(not $DASSTAllowScript?)">
+							<set_value name="$DASSTAllowScript" exact="[]"/>
+							<set_value name="$MissingVarCount" exact="1" operation="add"/>
+						</do_if>
+						<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Number of missing variables set: %2.'.[player.age,$MissingVarCount]" context="false" filter="scripts"/>
+						<remove_value name="$MissingVarCount"/>
+					</actions>
+				</cue>
+				<cue name="Timer" instantiate="true" checkinterval="60min" checktime="[player.age + 3min,13min].max">
+					<actions>
+						<do_if value="$DASSTAllowScript">
+							<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Started processing all factions.'.[player.age]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+							<include_actions ref="CheckFactions"/>
+							<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Finished processing all factions.'.[player.age]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+							<!-- Signal CheckSectors which will handle calculation spreading -->
+							<signal_cue_instantly cue="FindSectors"/>
+							<!-- FindSectors will signal CheckJobs when it has completed -->
+						</do_if>
+						<do_elseif value="not $DASSTAllowScript">
+							<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Attempted to run script prior to completion of previous.'.[player.age]" context="false" filter="error" chance="$DASSTDebug * 100"/>
+						</do_elseif>
+					</actions>
+				</cue>
+				<library name="CheckFactions">
+					<actions>
+						<!-- Find claimspace factions -->
+						<set_value name="$LocClaimspaceList" exact="[]"/>
+						<get_factions_by_tag tag="tag.claimspace" result="$LocClaimspaceList"/>
+						<!-- Find visitor factions -->
+						<set_value name="$LocVisitorList" exact="[]"/>
+						<get_factions_by_tag tag="tag.visitor" result="$LocVisitorList"/>
+						<!-- Remove unwanted from LocClaimspaceList -->
+						<remove_from_list name="$LocClaimspaceList" list="$LocVisitorList" multiple="true"/>
+						<remove_value name="$LocVisitorList"/>
+						<set_value name="$ListWasUpdated" exact="false"/>
+						<!-- Check for inactive -->
+						<!-- Remove table value for inaction faction as well? -->
+						<do_for_each name="$LocFaction" in="$LocClaimspaceList" reverse="true">
+							<do_if value="(not ($LocFaction.isactive and $LocFaction.willclaimspace)) and $DAClaimspaceFactions.indexof.{$LocFaction}">
+								<remove_from_list name="$DAClaimspaceFactions" exact="$LocFaction" multiple="true"/>
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Removed Faction from DAClaimspaceFactions: %2.'.[player.age,$LocFaction]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+								<set_value name="$ListWasUpdated" exact="true"/>
+							</do_if>
+							<do_elseif value="($LocFaction.isactive and $LocFaction.willclaimspace) and (not $DAClaimspaceFactions.indexof.{$LocFaction})">
+								<append_to_list name="$DAClaimspaceFactions" exact="$LocFaction"/>
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Added Faction to DAClaimspaceFactions: %2.'.[player.age,$LocFaction]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+								<set_value name="$ListWasUpdated" exact="true"/>
+							</do_elseif>
+							<do_else>
+								<!-- Don't Care -->
+							</do_else>
+						</do_for_each>
+						<remove_value name="$LocFaction"/>
+						<!-- Our list should have all the factions the script cares about -->
+						<do_if value="$ListWasUpdated">
+							<sort_list list="$DAClaimspaceFactions" sortbyvalue="loop.element.id"/>
+						</do_if>
+					</actions>
+				</library>
+				<cue name="FindSectors" instantiate="true">
+					<conditions>
+						<event_cue_signalled/>
+					</conditions>
+					<actions>
+						<set_value name="$DAAllSectorList" exact="[]"/>
+						<set_value name="$TimeStartedProcessing" exact="player.age" chance="$DASSTDebug * 100"/>
+						<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Started processing all sectors.'.[player.age]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+						<!-- We have an updated $DAClaimspaceFactions to check the situation one by one -->
+						<find_sector name="$DAAllSectorList" multiple="true">
+							<match_parent normalcluster="true"/>
+						</find_sector>
+						<sort_list list="$DAAllSectorList" sortbyvalue="loop.element.macro"/>
+					</actions>
+					<cues>
+						<cue name="CheckSectorsLoop">
+							<delay exact="2s"/>
+							<actions>
+								<do_if value="$DAAllSectorList.count">
+									<set_value name="$LocSector" exact="$DAAllSectorList.{1}"/>
+									<include_actions ref="ProcessSector"/>
+									<remove_from_list name="$DAAllSectorList" exact="$LocSector" multiple="true"/>
+									<reset_cue cue="this"/>
+								</do_if>
+								<do_else>
+									<include_actions ref="FactionSituationDebug" chance="$DASSTDebug * 100"/>
+									<remove_value name="$LocSector"/>
+									<signal_cue_instantly cue="FindSectorTags"/>
+									<!-- Signal job check -->
+								</do_else>
+							</actions>
+						</cue>
+					</cues>
+				</cue>
+				<library name="ProcessSector">
+					<actions>
+						<find_sector_in_range name="$LocSectorsInRange" object="$LocSector" maxdistance="1" multiple="true"/>
+						<!-- This should help us only process sectors that are connected to something -->
+						<do_if value="$LocSectorsInRange.count and (($LocSectorsInRange.count gt 1) or (($LocSectorsInRange.count == 1) and ($LocSectorsInRange.{1} != $LocSector)))">
+							<!-- Check for owner in $DAClaimspaceFactions -->
+							<!-- This would miss a sector that isn't owned by a valid faction but is contested by a valid faction -->
+							<do_if value="$LocSector.owner and ($DAClaimspaceFactions.indexof.{$LocSector.owner} or ($LocSector.owner == faction.ownerless))">
+								<!-- Check if Critical, Core, or Border -->
+								<create_group groupname="$LocCriticalStationGroup"/>
+								<find_station groupname="$LocCriticalStationGroup" append="true" multiple="true" space="$LocSector" functional="true" shipyard="true">
+									<match owner="faction.player" negate="true"/>
+									<match owner="$DAClaimspaceFactions"/>
+								</find_station>
+								<find_station groupname="$LocCriticalStationGroup" append="true" multiple="true" space="$LocSector" functional="true" wharf="true">
+									<match owner="faction.player" negate="true"/>
+									<match owner="$DAClaimspaceFactions"/>
+								</find_station>
+								<do_if value="$LocCriticalStationGroup.count">
+									<set_value name="$LocFactionsChecked" exact="[]"/>
+									<do_for_each name="$LocCriticalStation" in="$LocCriticalStationGroup">
+										<do_if value="(not $LocFactionsChecked.indexof.{$LocCriticalStation.owner})">
+											<do_if value="not $DACriticalSectors.{$LocCriticalStation.owner}?">
+												<set_value name="$DACriticalSectors.{$LocCriticalStation.owner}" exact="[$LocSector]"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Created $DACriticalSectors. %2 -- Sector added: %3. Verified: %4'.[player.age,$LocCriticalStation.owner,$LocSector.knownname,$DACriticalSectors.{$LocCriticalStation.owner}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_if>
+											<do_elseif value="not $DACriticalSectors.{$LocCriticalStation.owner}.indexof.{$LocSector}">
+												<append_to_list name="$DACriticalSectors.{$LocCriticalStation.owner}" exact="$LocSector"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Added %2 to $DACriticalSectors. %3 -- Verified: %4'.[player.age,$LocSector.knownname,$LocCriticalStation.owner,$DACriticalSectors.{$LocCriticalStation.owner}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_elseif>
+											<do_elseif value="$DACriticalSectors.{$LocCriticalStation.owner}.indexof.{$LocSector}">
+												<!-- Already in list -->
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Verified $DACriticalSectors. %2 . %3.'.[player.age,$LocCriticalStation.owner,$LocSector.knownname]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_elseif>
+											<append_to_list name="$LocFactionsChecked" exact="$LocCriticalStation.owner"/>
+										</do_if>
+									</do_for_each>
+									<remove_value name="$LocFactionsChecked"/>
+								</do_if>
+								<do_else>
+									<do_if value="$DACriticalSectors.{$LocSector.owner}? and $DACriticalSectors.{$LocSector.owner}.indexof.{$LocSector}">
+										<!-- The owner no longer has a critical station in this sector -->
+										<remove_from_list name="$DACriticalSectors.{$LocSector.owner}" exact="$LocSector" multiple="true"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Removed %2 from $DACriticalSectors. %3.'.[player.age,$LocSector.knownname,$LocCriticalStation.owner]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+									<!-- Need to do a check for other factions who this was previously a critical sector for -->
+								</do_else>
+								<remove_value name="$LocCriticalStationGroup"/>
+								<remove_value name="$LocCriticalStation"/>
+								<!-- Check if Core -->
+								<create_group groupname="$LocStationGroup"/>
+								<set_value name="$OwnerOccupied" exact="false"/>
+								<set_value name="$HostileOccupied" exact="false"/>
+								<set_value name="$FactionsinSector" exact="[]"/>
+								<set_value name="$HostileBordering" exact="false"/>
+								<find_station groupname="$LocStationGroup" append="true" multiple="true" space="$LocSector" functional="true">
+									<match owner="faction.player" negate="true"/>
+								</find_station>
+								<do_for_each name="$LocStation" in="$LocStationGroup">
+									<do_if value="$DAClaimspaceFactions.indexof.{$LocStation.owner}">
+										<append_to_list name="$FactionsinSector" exact="$LocStation.owner" chance="(not $FactionsinSector.indexof.{$LocStation.owner}) * 100"/>
+										<do_if value="($LocSector.owner == $LocStation.owner) and (not $OwnerOccupied)">
+											<set_value name="$OwnerOccupied" exact="true"/>
+											<!-- Owner of sector has a station in sector, only need to check once -->
+										</do_if>
+										<do_elseif value="($LocSector.owner != $LocStation.owner) and ($LocSector.owner.hasrelation.killmilitary.{$LocStation.owner}) and (not $HostileOccupied)">
+											<set_value name="$HostileOccupied" exact="true"/>
+											<!-- Sector has hostile stations in system, only need to check once -->
+											<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- %2 has hostile stations in system. Verified: %3'.[player.age,$LocSector.knownname,$HostileOccupied]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+										</do_elseif>
+									</do_if>
+								</do_for_each>
+								<!-- Check adjacent sectors for hostiles to sector owner -->
+								<do_for_each name="$AdjacentSector" in="$LocSectorsInRange">
+									<do_if value="($AdjacentSector != $LocSector) and (not $HostileBordering)">
+										<do_if value="$AdjacentSector.owner.hasrelation.killmilitary.{$LocSector.owner}">
+											<set_value name="$HostileBordering" exact="true"/>
+											<break/>
+										</do_if>
+									</do_if>
+								</do_for_each>
+								<do_if value="$OwnerOccupied and (not ($HostileOccupied or $HostileBordering))">
+									<!-- Core definition: Contains owner stations, contains no enemy stations, not bordering any hostile sectors -->
+									<!-- Sector is not ownerless, has no hostile stations, and is not bordering hostile owned sectors -->
+									<do_if value="not $DACoreSectors.{$LocSector.owner}?">
+										<set_value name="$DACoreSectors.{$LocSector.owner}" exact="[$LocSector]"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Created $DACoreSectors. %2 -- Sector added: %3. Verified: %4'.[player.age,$LocSector.owner,$LocSector.knownname,$DACoreSectors.{$LocSector.owner}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+									<do_elseif value="not $DACoreSectors.{$LocSector.owner}.indexof.{$LocSector}">
+										<append_to_list name="$DACoreSectors.{$LocSector.owner}" exact="$LocSector"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Added %2 to $DACoreSectors. %3 -- Verified: %4'.[player.age,$LocSector.knownname,$LocSector.owner,$DACoreSectors.{$LocSector.owner}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_elseif>
+									<do_elseif value="$DACoreSectors.{$LocSector.owner}.indexof.{$LocSector}">
+										<!-- Already in list -->
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Verified $DACoreSectors. %2 . %3.'.[player.age,$LocSector.owner,$LocSector.knownname]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_elseif>
+									<!-- Sector can be critical and core but sector can not be core and border -->
+									<do_if value="($DABorderSectors.{$LocSector.owner}?) and ($DABorderSectors.{$LocSector.owner}.indexof.{$LocSector})">
+										<remove_from_list name="$DABorderSectors.{$LocSector.owner}" exact="$LocSector" multiple="true"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Removed %2 from $DABorderSectors. %3.'.[player.age,$LocSector.knownname,$LocSector.owner]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+									<!-- Sector can not be core and contested -->
+									<do_if value="($DAContestedSectors.{$LocSector.owner}?) and ($DAContestedSectors.{$LocSector.owner}.indexof.{$LocSector})">
+										<remove_from_list name="$DAContestedSectors.{$LocSector.owner}" exact="$LocSector" multiple="true"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Removed %2 from $DAContestedSectors. %3.'.[player.age,$LocSector.knownname,$LocSector.owner]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_if>
+								<do_elseif value="$OwnerOccupied and ($HostileOccupied or $HostileBordering)">
+									<!-- Border definition: Contains owner stations, may contain enemy stations, bordering hostile sector -->
+									<!-- Sector is not ownerless, has hostile stations or bordering hostile owned sectors -->
+									<do_if value="$HostileBordering">
+										<do_if value="not $DABorderSectors.{$LocSector.owner}?">
+											<set_value name="$DABorderSectors.{$LocSector.owner}" exact="[$LocSector]"/>
+											<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Created $DABorderSectors. %2 -- Sector added: %3. Verified: %4'.[player.age,$LocSector.owner,$LocSector.knownname,$DABorderSectors.{$LocSector.owner}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+										</do_if>
+										<do_elseif value="not $DABorderSectors.{$LocSector.owner}.indexof.{$LocSector}">
+											<append_to_list name="$DABorderSectors.{$LocSector.owner}" exact="$LocSector"/>
+											<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Added %2 to $DABorderSectors. %3 -- Verified: %4'.[player.age,$LocSector.knownname,$LocSector.owner,$DABorderSectors.{$LocSector.owner}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+										</do_elseif>
+										<do_elseif value="$DABorderSectors.{$LocSector.owner}.indexof.{$LocSector}">
+											<!-- Already in list -->
+											<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Verified $DABorderSectors. %2 . %3.'.[player.age,$LocSector.owner,$LocSector.knownname]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+										</do_elseif>
+									</do_if>
+									<do_if value="$HostileOccupied">
+										<do_if value="not $DAContestedSectors.{$LocSector.owner}?">
+											<set_value name="$DAContestedSectors.{$LocSector.owner}" exact="[$LocSector]"/>
+											<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Created $DAContestedSectors. %2 -- Sector added: %3. Verified: %4'.[player.age,$LocSector.owner,$LocSector.knownname,$DAContestedSectors.{$LocSector.owner}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+										</do_if>
+										<do_elseif value="not $DAContestedSectors.{$LocSector.owner}.indexof.{$LocSector}">
+											<append_to_list name="$DAContestedSectors.{$LocSector.owner}" exact="$LocSector"/>
+											<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Added %2 to $DAContestedSectors. %3 -- Verified: %4'.[player.age,$LocSector.knownname,$LocSector.owner,$DAContestedSectors.{$LocSector.owner}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+										</do_elseif>
+										<do_elseif value="$DAContestedSectors.{$LocSector.owner}.indexof.{$LocSector}">
+											<!-- Already in list -->
+											<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Verified $DAContestedSectors. %2 . %3.'.[player.age,$LocSector.owner,$LocSector.knownname]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+										</do_elseif>
+										<!-- Add sector to $DAContestedSectors for factions that do not own sector -->
+										<do_for_each name="$LocFaction" in="$FactionsinSector">
+											<do_if value="($LocSector.owner != $LocFaction) and ($LocFaction.hasrelation.killmilitary.{$LocSector.owner}) and (not (@$DAContestedSectors.{$LocFaction}.indexof.{$LocSector}))">
+												<do_if value="not $DAContestedSectors.{$LocFaction}?">
+													<set_value name="$DAContestedSectors.{$LocFaction}" exact="[$LocSector]"/>
+													<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Created $DAContestedSectors. %2 -- Sector added: %3. Verified: %4'.[player.age,$LocFaction,$LocSector.knownname,$DAContestedSectors.{$LocFaction}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+												</do_if>
+												<do_elseif value="not $DAContestedSectors.{$LocFaction}.indexof.{$LocSector}">
+													<append_to_list name="$DAContestedSectors.{$LocFaction}" exact="$LocSector"/>
+													<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Added %2 to $DAContestedSectors. %3 -- Verified: %4'.[player.age,$LocSector.knownname,$LocFaction,$DAContestedSectors.{$LocFaction}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+												</do_elseif>
+												<do_elseif value="$DAContestedSectors.{$LocFaction}.indexof.{$LocSector}">
+													<!-- Already in list -->
+													<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Verified $DAContestedSectors. %2 . %3.'.[player.age,$LocFaction,$LocSector.knownname]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+												</do_elseif>
+											</do_if>
+										</do_for_each>
+										<remove_value name="$FactionsinSector2"/>
+									</do_if>
+									<!-- Sector can be critical and border but sector can not be border and core -->
+									<!-- Sector can be border and contested but sector can not be core and contested -->
+									<do_if value="($HostileBordering or $HostileOccupied) and ($DACoreSectors.{$LocSector.owner}?) and ($DACoreSectors.{$LocSector.owner}.indexof.{$LocSector})">
+										<remove_from_list name="$DACoreSectors.{$LocSector.owner}" exact="$LocSector" multiple="true"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Removed %2 from $DACoreSectors. %3.'.[player.age,$LocSector.knownname,$LocSector.owner]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_elseif>
+								<do_elseif value="$FactionsinSector.count gt 1">
+									<!-- Contested sector definition: contains stations from multiple hostile factions -->
+									<!-- Sector is ownerless but more than 1 faction has stations in sector -->
+									<set_value name="$FactionsInSector2" exact="$FactionsinSector"/>
+									<do_for_each name="$LocFaction" in="$FactionsinSector">
+										<set_value name="$HostileOccupied2" exact="false"/>
+										<do_for_each name="$LocFaction2" in="$FactionsInSector2">
+											<do_if value="($LocFaction != $LocFaction2) and ($LocFaction.hasrelation.killmilitary.{$LocFaction2})">
+												<set_value name="$HostileOccupied2" exact="true"/>
+												<break/>
+											</do_if>
+										</do_for_each>
+										<do_if value="$HostileOccupied2">
+											<do_if value="not $DAContestedSectors.{$LocFaction}?">
+												<set_value name="$DAContestedSectors.{$LocFaction}" exact="[$LocSector]"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Created $DAContestedSectors. %2 -- Sector added: %3. Verified: %4'.[player.age,$LocFaction,$LocSector.knownname,$DAContestedSectors.{$LocFaction}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_if>
+											<do_elseif value="not $DAContestedSectors.{$LocFaction}.indexof.{$LocSector}">
+												<append_to_list name="$DAContestedSectors.{$LocFaction}" exact="$LocSector"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Added %2 to $DAContestedSectors. %3 -- Verified: %4'.[player.age,$LocSector.knownname,$LocFaction,$DAContestedSectors.{$LocFaction}.indexof.{$LocSector}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_elseif>
+											<do_elseif value="$DAContestedSectors.{$LocFaction}.indexof.{$LocSector}">
+												<!-- Already in list -->
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Verified $DAContestedSectors. %2 . %3.'.[player.age,$LocFaction,$LocSector.knownname]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_elseif>
+											<do_if value="($DACoreSectors.{$LocFaction}?) and ($DACoreSectors.{$LocFaction}.indexof.{$LocSector})">
+												<remove_from_list name="$DACoreSectors.{$LocFaction}" exact="$LocSector" multiple="true"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Removed %2 from $DACoreSectors. %3.'.[player.age,$LocSector.knownname,$LocFaction]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_if>
+										</do_if>
+										<remove_value name="$HostileOccupied2"/>
+									</do_for_each>
+									<remove_value name="$FactionsinSector2"/>
+								</do_elseif>
+							</do_if>
+						</do_if>
+					</actions>
+				</library>
+				<library name="FactionSituationDebug">
+					<actions>
+						<do_for_each name="$LocFaction3" in="$DAClaimspaceFactions">
+							<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Faction: %2 -- $DACriticalSectors.count: %3 -- $DACoreSectors.count: %4 -- $DABorderSectors.count: %5 -- $DAContestedSectors.count: %6'.[player.age,$LocFaction3,@$DACriticalSectors.{$LocFaction3}.count,@$DACoreSectors.{$LocFaction3}.count,@$DABorderSectors.{$LocFaction3}.count,@$DAContestedSectors.{$LocFaction3}.count]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+						</do_for_each>
+						<do_if value="$TimeStartedProcessing">
+							<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Time to process all sectors: %2'.[player.age,(player.age - $TimeStartedProcessing).formatted.default]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+						</do_if>
+					</actions>
+				</library>
+				<cue name="FindSectorTags" instantiate="true">
+					<conditions>
+						<event_cue_signalled/>
+					</conditions>
+					<actions>
+						<set_value name="$DAAllSectorList2" exact="[]"/>
+						<set_value name="$TimeStartedProcessing2" exact="player.age" chance="$DASSTDebug * 100"/>
+						<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Started processing all sector tags.'.[player.age]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+						<!-- We have an updated $DAClaimspaceFactions to check the situation one by one -->
+						<find_sector name="$DAAllSectorList2" multiple="true">
+							<match_parent normalcluster="true"/>
+						</find_sector>
+						<sort_list list="$DAAllSectorList2" sortbyvalue="loop.element.macro"/>
+					</actions>
+					<cues>
+						<cue name="CheckSectorTagsLoop">
+							<delay exact="2s"/>
+							<actions>
+								<do_if value="$DAAllSectorList2.count">
+									<set_value name="$LocSector2" exact="$DAAllSectorList2.{1}"/>
+									<include_actions ref="ProcessSectorTags"/>
+									<remove_from_list name="$DAAllSectorList2" exact="$LocSector2" multiple="true"/>
+									<reset_cue cue="this"/>
+								</do_if>
+								<do_else>
+									<remove_value name="$LocSector2"/>
+									<do_if value="$TimeStartedProcessing2 and $DASSTDebug">
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Time to process all sector tags: %2'.[player.age,(player.age - $TimeStartedProcessing2).formatted.default]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+									</do_if>
+									<signal_cue_instantly cue="FindJobs"/>
+								</do_else>
+							</actions>
+						</cue>
+					</cues>
+				</cue>
+				<library name="ProcessSectorTags">
+					<actions>
+						<!-- $LocSector2 check if it is in a factions table list // update sector tag for each faction individually -->
+						<do_for_each name="$LocFaction4" in="$DAClaimspaceFactions">
+							<do_if value="$DACriticalSectors.{$LocFaction4}?">
+								<set_value name="$DACriticalTagText" exact="'DACriticalTag' + $LocFaction4.id"/>
+								<set_value name="$DACriticalTag" exact="tag.{$DACriticalTagText}"/>
+								<do_if value="$DACriticalSectors.{$LocFaction4}.indexof.{$LocSector2}">
+									<do_if value="not ($LocSector2.locationtags.indexof.{$DACriticalTag})">
+										<add_space_location_tag space="$LocSector2" tag="$DACriticalTag"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Sector: %2 -- Faction: %3 -- Added Tag: %4 -- Verified: %5'.[player.age,$LocSector2.knownname,$LocFaction4,$DACriticalTag,$LocSector2.locationtags.indexof.{$DACriticalTag}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_if>
+								<do_elseif value="not ($DACriticalSectors.{$LocFaction4}.indexof.{$LocSector2})">
+									<do_if value="$LocSector2.locationtags.indexof.{$DACriticalTag}">
+										<remove_space_location_tag space="$LocSector2" tag="$DACriticalTag"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Sector: %2 -- Faction: %3 -- Removed Tag: %4 -- Verified: %5'.[player.age,$LocSector2.knownname,$LocFaction4,$DACriticalTag,@$LocSector2.locationtags.indexof.{$DACriticalTag}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_elseif>
+								<remove_value name="$DACriticalTagText"/>
+								<remove_value name="$DACriticalTag"/>
+							</do_if>
+							<do_if value="$DACoreSectors.{$LocFaction4}?">
+								<set_value name="$DACoreTagText" exact="'DACoreTag' + $LocFaction4.id"/>
+								<set_value name="$DACoreTag" exact="tag.{$DACoreTagText}"/>
+								<do_if value="$DACoreSectors.{$LocFaction4}.indexof.{$LocSector2}">
+									<do_if value="not ($LocSector2.locationtags.indexof.{$DACoreTag})">
+										<add_space_location_tag space="$LocSector2" tag="$DACoreTag"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Sector: %2 -- Faction: %3 -- Added Tag: %4 -- Verified: %5'.[player.age,$LocSector2.knownname,$LocFaction4,$DACoreTag,$LocSector2.locationtags.indexof.{$DACoreTag}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_if>
+								<do_elseif value="not ($DACoreSectors.{$LocFaction4}.indexof.{$LocSector2})">
+									<do_if value="$LocSector2.locationtags.indexof.{$DACoreTag}">
+										<remove_space_location_tag space="$LocSector2" tag="$DACoreTag"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Sector: %2 -- Faction: %3 -- Removed Tag: %4 -- Verified: %5'.[player.age,$LocSector2.knownname,$LocFaction4,$DACoreTag,@$LocSector2.locationtags.indexof.{$DACoreTag}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_elseif>
+								<remove_value name="$DACoreTagText"/>
+								<remove_value name="$DACoreTag"/>
+							</do_if>
+							<do_if value="$DABorderSectors.{$LocFaction4}?">
+								<set_value name="$DABorderTagText" exact="'DABorderTag' + $LocFaction4.id"/>
+								<set_value name="$DABorderTag" exact="tag.{$DABorderTagText}"/>
+								<do_if value="$DABorderSectors.{$LocFaction4}.indexof.{$LocSector2}">
+									<do_if value="not ($LocSector2.locationtags.indexof.{$DABorderTag})">
+										<add_space_location_tag space="$LocSector2" tag="$DABorderTag"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Sector: %2 -- Faction: %3 -- Added Tag: %4 -- Verified: %5'.[player.age,$LocSector2.knownname,$LocFaction4,$DABorderTag,$LocSector2.locationtags.indexof.{$DABorderTag}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_if>
+								<do_elseif value="not ($DABorderSectors.{$LocFaction4}.indexof.{$LocSector2})">
+									<do_if value="$LocSector2.locationtags.indexof.{$DABorderTag}">
+										<remove_space_location_tag space="$LocSector2" tag="$DABorderTag"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Sector: %2 -- Faction: %3 -- Removed Tag: %4 -- Verified: %5'.[player.age,$LocSector2.knownname,$LocFaction4,$DABorderTag,@$LocSector2.locationtags.indexof.{$DABorderTag}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_elseif>
+								<remove_value name="$DABorderTagText"/>
+								<remove_value name="$DABorderTag"/>
+							</do_if>
+							<do_if value="$DAContestedSectors.{$LocFaction4}?">
+								<set_value name="$DAContestedTagText" exact="'DAContestedTag' + $LocFaction4.id"/>
+								<set_value name="$DAContestedTag" exact="tag.{$DAContestedTagText}"/>
+								<do_if value="$DAContestedSectors.{$LocFaction4}.indexof.{$LocSector2}">
+									<do_if value="not ($LocSector2.locationtags.indexof.{$DAContestedTag})">
+										<add_space_location_tag space="$LocSector2" tag="$DAContestedTag"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Sector: %2 -- Faction: %3 -- Added Tag: %4 -- Verified: %5'.[player.age,$LocSector2.knownname,$LocFaction4,$DAContestedTag,$LocSector2.locationtags.indexof.{$DAContestedTag}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_if>
+								<do_elseif value="not ($DAContestedSectors.{$LocFaction4}.indexof.{$LocSector2})">
+									<do_if value="$LocSector2.locationtags.indexof.{$DAContestedTag}">
+										<remove_space_location_tag space="$LocSector2" tag="$DAContestedTag"/>
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Sector: %2 -- Faction: %3 -- Removed Tag: %4 -- Verified: %5'.[player.age,$LocSector2.knownname,$LocFaction4,$DAContestedTag,@$LocSector2.locationtags.indexof.{$DAContestedTag}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+									</do_if>
+								</do_elseif>
+								<remove_value name="$DAContestedTagText"/>
+								<remove_value name="$DAContestedTag"/>
+							</do_if>
+							<!-- Core, border, contested -->
+						</do_for_each>
+					</actions>
+				</library>
+				<cue name="FindJobs" instantiate="true">
+					<conditions>
+						<event_cue_signalled/>
+					</conditions>
+					<actions>
+						<!-- do for each table.keys, find job by tag, make list of all applicable jobs, process below -->
+						<set_value name="$DAAllJobsToCheck" exact="[]"/>
+						<set_value name="$DAAllJobsToDeactivate" exact="[]"/>
+						<set_value name="$LocCriticalChecked" exact="false"/>
+						<set_value name="$LocCoreChecked" exact="false"/>
+						<set_value name="$LocBorderChecked" exact="false"/>
+						<set_value name="$LocContestedChecked" exact="false"/>
+						<set_value name="$TimeStartedProcessing4" exact="player.age" chance="$DASSTDebug * 100"/>
+						<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Started finding all jobs.'.[player.age]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+						<!-- Using keys means we potentially check less since only factions with their Critital table set up will be checked -->
+					</actions>
+					<cues>
+						<cue name="CheckJobLoop">
+							<delay exact="2s"/>
+							<actions>
+								<do_if value="not $LocCriticalChecked">
+									<do_for_each name="$LocTableFaction" in="$DACriticalSectors.keys.list">
+										<do_if value="$DAClaimspaceFactions.indexof.{$LocTableFaction} and $DACriticalSectors.{$LocTableFaction}.count">
+											<set_value name="$DACriticalTagText" exact="'DACriticalTag' + $LocTableFaction.id"/>
+											<set_value name="$DACriticalTag" exact="tag.{$DACriticalTagText}"/>
+											<get_suitable_job result="$LocJob" faction="$LocTableFaction" tags="$DACriticalTag" includeinactive="true" force="true" multiple="true"/>
+											<do_if value="$LocJob? and $LocJob.count">
+												<set_value name="$LocJob" exact="if ($LocJob.count gt 1) then $LocJob.random else ($LocJob.{1})"/>
+												<append_to_list name="$DAAllJobsToCheck" exact="$LocJob"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- FOUND JOB TO ACTIVATE -- Faction: %2 -- DACriticalTag: %3 -- DACriticalTag Job: %4 -- DACriticalTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DACriticalTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_if>
+											<do_else>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- NO JOB FOUND -- Faction: %2 -- DACriticalTag: %3 -- DACriticalTag Job: %4 -- DACriticalTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DACriticalTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_else>
+											<remove_value name="$DACriticalTagText"/>
+											<remove_value name="$DACriticalTag"/>
+											<remove_value name="$LocJob"/>
+										</do_if>
+										<do_elseif value="$DAClaimspaceFactions.indexof.{$LocTableFaction} and (not $DACriticalSectors.{$LocTableFaction}.count)">
+											<set_value name="$DACriticalTagText" exact="'DACriticalTag' + $LocTableFaction.id"/>
+											<set_value name="$DACriticalTag" exact="tag.{$DACriticalTagText}"/>
+											<get_suitable_job result="$LocJob" faction="$LocTableFaction" tags="$DACriticalTag" includeinactive="false" force="true" multiple="true"/>
+											<do_if value="$LocJob? and $LocJob.count">
+												<do_for_each name="$LocJobDeactivate" in="$LocJob">
+													<append_to_list name="$DAAllJobsToDeactivate" exact="$LocJobDeactivate"/>
+													<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- FOUND JOB TO DEACTIVATE --Faction: %2 -- DACriticalTag: %3 -- DACriticalTag Job: %4 -- DACriticalTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DACriticalTag,@$LocJobDeactivate,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+												</do_for_each>
+											</do_if>
+											<do_else>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- NO JOB FOUND TO DEACTIVATE -- Faction: %2 -- DACriticalTag: %3 -- DACriticalTag Job: %4 -- DACriticalTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DACriticalTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_else>
+											<remove_value name="$DACriticalTagText"/>
+											<remove_value name="$DACriticalTag"/>
+											<remove_value name="$LocJob"/>
+											<remove_value name="$LocJobDeactivate"/>
+										</do_elseif>
+									</do_for_each>
+									<remove_value name="$LocTableFaction"/>
+									<set_value name="$LocCriticalChecked" exact="true"/>
+									<reset_cue cue="this"/>
+								</do_if>
+								<do_elseif value="not $LocCoreChecked">
+									<do_for_each name="$LocTableFaction" in="$DACoreSectors.keys.list">
+										<do_if value="$DAClaimspaceFactions.indexof.{$LocTableFaction} and $DACoreSectors.{$LocTableFaction}.count">
+											<set_value name="$DACoreTagText" exact="'DACoreTag' + $LocTableFaction.id"/>
+											<set_value name="$DACoreTag" exact="tag.{$DACoreTagText}"/>
+											<get_suitable_job result="$LocJob" faction="$LocTableFaction" tags="$DACoreTag" includeinactive="true" force="true" multiple="true"/>
+											<do_if value="$LocJob? and $LocJob.count">
+												<set_value name="$LocJob" exact="if ($LocJob.count gt 1) then $LocJob.random else ($LocJob.{1})"/>
+												<append_to_list name="$DAAllJobsToCheck" exact="$LocJob"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- FOUND JOB TO ACTIVATE -- Faction: %2 -- DACoreTag: %3 -- DACoreTag Job: %4 -- DACoreTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DACoreTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_if>
+											<do_else>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- NO JOB FOUND -- Faction: %2 -- DACoreTag: %3 -- DACoreTag Job: %4 -- DACoreTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DACoreTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_else>
+											<remove_value name="$DACoreTagText"/>
+											<remove_value name="$DACoreTag"/>
+											<remove_value name="$LocJob"/>
+										</do_if>
+										<do_elseif value="$DAClaimspaceFactions.indexof.{$LocTableFaction} and (not $DACoreSectors.{$LocTableFaction}.count)">
+											<set_value name="$DACoreTagText" exact="'DACoreTag' + $LocTableFaction.id"/>
+											<set_value name="$DACoreTag" exact="tag.{$DACoreTagText}"/>
+											<get_suitable_job result="$LocJob" faction="$LocTableFaction" tags="$DACoreTag" includeinactive="false" force="true" multiple="true"/>
+											<do_if value="$LocJob? and $LocJob.count">
+												<do_for_each name="$LocJobDeactivate" in="$LocJob">
+													<append_to_list name="$DAAllJobsToDeactivate" exact="$LocJobDeactivate"/>
+													<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- FOUND JOB TO DEACTIVATE --Faction: %2 -- DACoreTag: %3 -- DACoreTag Job: %4 -- DACoreTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DACoreTag,@$LocJobDeactivate,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+												</do_for_each>
+											</do_if>
+											<do_else>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- NO JOB FOUND TO DEACTIVATE -- Faction: %2 -- DACoreTag: %3 -- DACoreTag Job: %4 -- DACoreTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DACoreTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_else>
+											<remove_value name="$DACoreTagText"/>
+											<remove_value name="$DACoreTag"/>
+											<remove_value name="$LocJob"/>
+											<remove_value name="$LocJobDeactivate"/>
+										</do_elseif>
+									</do_for_each>
+									<remove_value name="$LocTableFaction"/>
+									<set_value name="$LocCoreChecked" exact="true"/>
+									<reset_cue cue="this"/>
+								</do_elseif>
+								<do_elseif value="not $LocBorderChecked">
+									<do_for_each name="$LocTableFaction" in="$DABorderSectors.keys.list">
+										<do_if value="$DAClaimspaceFactions.indexof.{$LocTableFaction} and $DABorderSectors.{$LocTableFaction}.count">
+											<set_value name="$DABorderTagText" exact="'DABorderTag' + $LocTableFaction.id"/>
+											<set_value name="$DABorderTag" exact="tag.{$DABorderTagText}"/>
+											<get_suitable_job result="$LocJob" faction="$LocTableFaction" tags="$DABorderTag" includeinactive="true" force="true" multiple="true"/>
+											<do_if value="$LocJob? and $LocJob.count">
+												<set_value name="$LocJob" exact="if ($LocJob.count gt 1) then $LocJob.random else ($LocJob.{1})"/>
+												<append_to_list name="$DAAllJobsToCheck" exact="$LocJob"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Faction: %2 -- DABorderTag: %3 -- DABorderTag Job: %4 -- DABorderTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DABorderTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_if>
+											<do_else>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- NO JOB FOUND -- Faction: %2 -- DABorderTag: %3 -- DABorderTag Job: %4 -- DABorderTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DABorderTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_else>
+											<remove_value name="$DABorderTagText"/>
+											<remove_value name="$DABorderTag"/>
+											<remove_value name="$LocJob"/>
+										</do_if>
+										<do_elseif value="$DAClaimspaceFactions.indexof.{$LocTableFaction} and (not $DABorderSectors.{$LocTableFaction}.count)">
+											<set_value name="$DABorderTagText" exact="'DABorderTag' + $LocTableFaction.id"/>
+											<set_value name="$DABorderTag" exact="tag.{$DABorderTagText}"/>
+											<get_suitable_job result="$LocJob" faction="$LocTableFaction" tags="$DABorderTag" includeinactive="false" force="true" multiple="true"/>
+											<do_if value="$LocJob? and $LocJob.count">
+												<do_for_each name="$LocJobDeactivate" in="$LocJob">
+													<append_to_list name="$DAAllJobsToDeactivate" exact="$LocJobDeactivate"/>
+													<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- FOUND JOB TO DEACTIVATE --Faction: %2 -- DABorderTag: %3 -- DABorderTag Job: %4 -- DABorderTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DABorderTag,@$LocJobDeactivate,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+												</do_for_each>
+											</do_if>
+											<do_else>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- NO JOB FOUND TO DEACTIVATE -- Faction: %2 -- DABorderTag: %3 -- DABorderTag Job: %4 -- DABorderTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DABorderTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_else>
+											<remove_value name="$DABorderTagText"/>
+											<remove_value name="$DABorderTag"/>
+											<remove_value name="$LocJob"/>
+											<remove_value name="$LocJobDeactivate"/>
+										</do_elseif>
+									</do_for_each>
+									<remove_value name="$LocTableFaction"/>
+									<set_value name="$LocBorderChecked" exact="true"/>
+									<reset_cue cue="this"/>
+								</do_elseif>
+								<do_elseif value="not $LocContestedChecked">
+									<do_for_each name="$LocTableFaction" in="$DAContestedSectors.keys.list">
+										<do_if value="$DAClaimspaceFactions.indexof.{$LocTableFaction} and $DAContestedSectors.{$LocTableFaction}.count">
+											<set_value name="$DAContestedTagText" exact="'DAContestedTag' + $LocTableFaction.id"/>
+											<set_value name="$DAContestedTag" exact="tag.{$DAContestedTagText}"/>
+											<get_suitable_job result="$LocJob" faction="$LocTableFaction" tags="$DAContestedTag" includeinactive="true" force="true" multiple="true"/>
+											<do_if value="$LocJob? and $LocJob.count">
+												<set_value name="$LocJob" exact="if ($LocJob.count gt 1) then $LocJob.random else ($LocJob.{1})"/>
+												<append_to_list name="$DAAllJobsToCheck" exact="$LocJob"/>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Faction: %2 -- DAContestedTag: %3 -- DAContestedTag Job: %4 -- DAContestedTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DAContestedTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_if>
+											<do_else>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- NO JOB FOUND -- Faction: %2 -- DAContestedTag: %3 -- DAContestedTag Job: %4 -- DAContestedTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DAContestedTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_else>
+											<remove_value name="$DAContestedTagText"/>
+											<remove_value name="$DAContestedTag"/>
+											<remove_value name="$LocJob"/>
+										</do_if>
+										<do_elseif value="$DAClaimspaceFactions.indexof.{$LocTableFaction} and (not $DAContestedSectors.{$LocTableFaction}.count)">
+											<set_value name="$DAContestedTagText" exact="'DAContestedTag' + $LocTableFaction.id"/>
+											<set_value name="$DAContestedTag" exact="tag.{$DAContestedTagText}"/>
+											<get_suitable_job result="$LocJob" faction="$LocTableFaction" tags="$DAContestedTag" includeinactive="false" force="true" multiple="true"/>
+											<do_if value="$LocJob? and $LocJob.count">
+												<do_for_each name="$LocJobDeactivate" in="$LocJob">
+													<append_to_list name="$DAAllJobsToDeactivate" exact="$LocJobDeactivate"/>
+													<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- FOUND JOB TO DEACTIVATE --Faction: %2 -- DAContestedTag: %3 -- DAContestedTag Job: %4 -- DAContestedTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DAContestedTag,@$LocJobDeactivate,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+												</do_for_each>
+											</do_if>
+											<do_else>
+												<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- NO JOB FOUND TO DEACTIVATE -- Faction: %2 -- DAContestedTag: %3 -- DAContestedTag Job: %4 -- DAContestedTag Job count: %5'.[player.age,$LocTableFaction.knownname,$DAContestedTag,@$LocJob,@$LocJob.count]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+											</do_else>
+											<remove_value name="$DAContestedTagText"/>
+											<remove_value name="$DAContestedTag"/>
+											<remove_value name="$LocJob"/>
+											<remove_value name="$LocJobDeactivate"/>
+										</do_elseif>
+									</do_for_each>
+									<remove_value name="$LocTableFaction"/>
+									<set_value name="$LocContestedChecked" exact="true"/>
+									<reset_cue cue="this"/>
+								</do_elseif>
+								<do_elseif value="$LocCriticalChecked and $LocCoreChecked and $LocBorderChecked and $LocContestedChecked">
+									<do_if value="$TimeStartedProcessing4 and $DASSTDebug">
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Time to find all jobs: %2'.[player.age,(player.age - $TimeStartedProcessing4).formatted.default]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+									</do_if>
+									<signal_cue_instantly cue="ActivateJobs"/>
+								</do_elseif>
+								<do_else>
+									<!-- Error -->
+									<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- ERROR in FindJobs Cue'.[player.age]" context="false" filter="error"/>
+								</do_else>
+							</actions>
+						</cue>
+					</cues>
+				</cue>
+				<cue name="ActivateJobs" instantiate="true">
+					<conditions>
+						<event_cue_signalled/>
+					</conditions>
+					<actions>
+						<!-- activate each job if appropriate -->
+						<set_value name="$TimeStartedProcessing3" exact="player.age" chance="$DASSTDebug * 100"/>
+						<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Started activating all jobs.'.[player.age]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+					</actions>
+					<cues>
+						<cue name="ActivateJobsLoop">
+							<delay exact="2s"/>
+							<actions>
+								<do_if value="$DAAllJobsToCheck.count">
+									<set_value name="$LocJob2" exact="$DAAllJobsToCheck.{1}"/>
+									<include_actions ref="ActivateJobLibrary"/>
+									<remove_from_list name="$DAAllJobsToCheck" exact="$LocJob2" multiple="true"/>
+									<reset_cue cue="this"/>
+								</do_if>
+								<do_else>
+									<!-- Done with basic functionality -->
+									<signal_cue_instantly cue="DeactivateJobs"/>
+									<do_if value="$TimeStartedProcessing3 and $DASSTDebug">
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Time to activate all jobs: %2'.[player.age,(player.age - $TimeStartedProcessing3).formatted.default]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+									</do_if>
+								</do_else>
+							</actions>
+						</cue>
+					</cues>
+				</cue>
+				<library name="ActivateJobLibrary">
+					<actions>
+						<!-- Check if we need to activate LocJob2 -->
+						<!-- Will need logic to keep track of activated jobs and deactivate if no longer applicable -->
+						<!-- For now, I will just activate the job and allow the job engine to handle -->
+						<!-- Eventually going to transition to FOCW style which requires finding where the ship should go, who should order it, and what zone to set as jobmainzone -->
+						<do_if value="$LocJob2? and $LocJob2 != null">
+							<do_if value="not $DASSTJobsActivated.{'$'+$LocJob2}?">
+								<set_value name="$DASSTJobsActivated.{'$'+$LocJob2}" exact="[$LocJob2,1]"/>
+								<set_job_active job="$LocJob2" activate="true"/>
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Activated Job: %2 -- $DASSTJobsActivated.{$+$LocJob2}.count: %3 -- $DASSTJobsActivated.{$+$LocJob2}.{1}: %4 -- $DASSTJobsActivated.{$+$LocJob2}.{2}: %5'.[player.age,$LocJob2,$DASSTJobsActivated.{'$'+$LocJob2}.count,$DASSTJobsActivated.{'$'+$LocJob2}.{1},$DASSTJobsActivated.{'$'+$LocJob2}.{2}]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+							</do_if>
+							<do_elseif value="($DASSTJobsActivated.{'$'+$LocJob2}?) and (($DASSTJobsActivated.{'$'+$LocJob2}.{2}) == 0)">
+								<!-- previously activated but currently inactive -->
+								<set_value name="$DASSTJobsActivated.{'$'+$LocJob2}.{2}" exact="1" operation="add"/>
+								<set_job_active job="$LocJob2" activate="true"/>
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Activated Job: %2 -- $DASSTJobsActivated.{$+$LocJob2}.count: %3 -- $DASSTJobsActivated.{$+$LocJob2}.{1}: %4 -- $DASSTJobsActivated.{$+$LocJob2}.{2}: %5'.[player.age,$LocJob2,$DASSTJobsActivated.{'$'+$LocJob2}.count,$DASSTJobsActivated.{'$'+$LocJob2}.{1},$DASSTJobsActivated.{'$'+$LocJob2}.{2}]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+							</do_elseif>
+							<do_elseif value="($DASSTJobsActivated.{'$'+$LocJob2}?) and ($DASSTJobsActivated.{'$'+$LocJob2}.{2} gt 0)">
+								<!-- already active -->
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Job already active: %2 -- $DASSTJobsActivated.{$+$LocJob2}.count: %3 -- $DASSTJobsActivated.{$+$LocJob2}.{1}: %4 -- $DASSTJobsActivated.{$+$LocJob2}.{2}: %5'.[player.age,$LocJob2,$DASSTJobsActivated.{'$'+$LocJob2}.count,$DASSTJobsActivated.{'$'+$LocJob2}.{1},$DASSTJobsActivated.{'$'+$LocJob2}.{2}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+							</do_elseif>
+							<do_else>
+								<!-- No clue what would cause reaching here -->
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Unhandled instance in Job activation: %2 -- $DASSTJobsActivated.{$+$LocJob2}.count: %3 -- $DASSTJobsActivated.{$+$LocJob2}.{1}: %4 -- $DASSTJobsActivated.{$+$LocJob2}.{2}: %5'.[player.age,@$LocJob2,@$DASSTJobsActivated.{'$'+$LocJob2}.count,@$DASSTJobsActivated.{'$'+$LocJob2}.{1},@$DASSTJobsActivated.{'$'+$LocJob2}.{2}]" context="false" filter="error"/>
+							</do_else>
+						</do_if>
+					</actions>
+				</library>
+				<cue name="DeactivateJobs" instantiate="true">
+					<conditions>
+						<event_cue_signalled/>
+					</conditions>
+					<actions>
+						<!-- activate each job if appropriate -->
+						<set_value name="$TimeStartedProcessing5" exact="player.age" chance="$DASSTDebug * 100"/>
+						<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Started deactivating jobs.'.[player.age]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+					</actions>
+					<cues>
+						<cue name="DeactivateJobsLoop">
+							<delay exact="2s"/>
+							<actions>
+								<do_if value="$DAAllJobsToDeactivate.count">
+									<set_value name="$LocJob3" exact="$DAAllJobsToDeactivate.{1}"/>
+									<include_actions ref="DeactivateJobLibrary"/>
+									<remove_from_list name="$DAAllJobsToDeactivate" exact="$LocJob3" multiple="true"/>
+									<reset_cue cue="this"/>
+								</do_if>
+								<do_else>
+									<!-- Done with basic functionality -->
+									<set_value name="$DASSTAllowScript" exact="true"/>
+									<do_if value="$TimeStartedProcessing5 and $DASSTDebug">
+										<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Time to deactivate all jobs: %2'.[player.age,(player.age - $TimeStartedProcessing5).formatted.default]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+									</do_if>
+								</do_else>
+							</actions>
+						</cue>
+					</cues>
+				</cue>
+				<library name="DeactivateJobLibrary">
+					<actions>
+						<!-- Check if we need to activate LocJob3 -->
+						<!-- Will need logic to keep track of activated jobs and deactivate if no longer applicable -->
+						<!-- For now, I will just activate the job and allow the job engine to handle -->
+						<!-- Eventually going to transition to FOCW style which requires finding where the ship should go, who should order it, and what zone to set as jobmainzone -->
+						<do_if value="$LocJob3? and $LocJob3 != null">
+							<do_if value="not $DASSTJobsActivated.{'$'+$LocJob3}?">
+								<!-- currently active and untracked -->
+								<set_value name="$DASSTJobsActivated.{'$'+$LocJob3}" exact="[$LocJob3,0]"/>
+								<set_job_active job="$LocJob3" activate="false"/>
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Deactivated untracked Job: %2 -- $DASSTJobsActivated.{$+$LocJob3}.count: %3 -- $DASSTJobsActivated.{$+$LocJob3}.{1}: %4 -- $DASSTJobsActivated.{$+$LocJob3}.{2}: %5'.[player.age,$LocJob3,$DASSTJobsActivated.{'$'+$LocJob3}.count,$DASSTJobsActivated.{'$'+$LocJob3}.{1},$DASSTJobsActivated.{'$'+$LocJob3}.{2}]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+							</do_if>
+							<do_elseif value="($DASSTJobsActivated.{'$'+$LocJob3}?) and (($DASSTJobsActivated.{'$'+$LocJob3}.{2}) != 0)">
+								<!-- currently active and tracked -->
+								<set_value name="$DASSTJobsActivated.{'$'+$LocJob3}.{2}" exact="0"/>
+								<set_job_active job="$LocJob3" activate="false"/>
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Deactivated Job: %2 -- $DASSTJobsActivated.{$+$LocJob3}.count: %3 -- $DASSTJobsActivated.{$+$LocJob3}.{1}: %4 -- $DASSTJobsActivated.{$+$LocJob3}.{2}: %5'.[player.age,$LocJob3,$DASSTJobsActivated.{'$'+$LocJob3}.count,$DASSTJobsActivated.{'$'+$LocJob3}.{1},$DASSTJobsActivated.{'$'+$LocJob3}.{2}]" context="false" filter="scripts" chance="$DASSTDebug * 100"/>
+							</do_elseif>
+							<do_elseif value="($DASSTJobsActivated.{'$'+$LocJob3}?) and ($DASSTJobsActivated.{'$'+$LocJob3}.{2} == 0)">
+								<!-- already deactived -->
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Job already deactivated: %2 -- $DASSTJobsActivated.{$+$LocJob3}.count: %3 -- $DASSTJobsActivated.{$+$LocJob3}.{1}: %4 -- $DASSTJobsActivated.{$+$LocJob3}.{2}: %5'.[player.age,$LocJob3,$DASSTJobsActivated.{'$'+$LocJob3}.count,$DASSTJobsActivated.{'$'+$LocJob3}.{1},$DASSTJobsActivated.{'$'+$LocJob3}.{2}]" context="false" filter="scripts" chance="$DASSTDebugDetailed * 100"/>
+							</do_elseif>
+							<do_else>
+								<!-- No clue what would cause reaching here -->
+								<debug_text text="'MOD: DeadAirJobs SmartSectorTags -- %1 -- Unhandled instance in Job deactivation: %2 -- $DASSTJobsActivated.{$+$LocJob3}.count: %3 -- $DASSTJobsActivated.{$+$LocJob3}.{1}: %4 -- $DASSTJobsActivated.{$+$LocJob3}.{2}: %5'.[player.age,@$LocJob3,@$DASSTJobsActivated.{'$'+$LocJob3}.count,@$DASSTJobsActivated.{'$'+$LocJob3}.{1},@$DASSTJobsActivated.{'$'+$LocJob3}.{2}]" context="false" filter="error"/>
+							</do_else>
+						</do_if>
+					</actions>
+				</library>
+			</cues>
+		</cue>
+	</cues>
+</mdscript>

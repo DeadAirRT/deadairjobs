@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?>
+<diff>
+  <add sel="/aiscript/order[@id='TradeRoutine'][@name='{1041, 161}']/params">
+    <param name="dajobsmyfactionfirst" type="internal" default="false" comment="trade for this faction only until fail"/>
+  </add>
+  <add sel="/aiscript/interrupts/library/actions[@name='SetFindTradeScript']/do_if[@value='this.assignedcontrolled.commander and (this.assignedcontrolled.assignment == assignment.assist)']/do_for_each[@name='$loccommander']" pos="before">
+    <set_value name="$findtradescript" exact="'trade.find.free.deadairjobs'" chance="@$dajobsmyfactionfirst * 100"/>
+  </add>
+</diff>

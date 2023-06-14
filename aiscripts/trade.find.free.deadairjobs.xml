@@ -1,0 +1,571 @@
+<?xml version='1.0' encoding='utf-8'?>
+<aiscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="trade.find.free.deadairjobs" xsi:noNamespaceSchemaLocation="aiscripts.xsd">
+	<params>
+		<param name="warebasket"/>
+		<param name="range" comment="space to base the search on."/>
+		<param name="buyspaces" default="[]" comment="list of allowed spaces to buy (sorted by closest distance)"/>
+		<param name="sellspaces" default="[]" comment="list of allowed spaces to sell (sorted by closest distance)"/>
+		<param name="sellcurrentcargo" default="not this.isplayerowned" comment="allow this to sell current cargo (default false for player faction). NB: this should stay false for player-owned ships. they are allowed to sell wares in their cargo that are also in their warebasket and leave the other wares alone."/>
+		<param name="tradeforbuildstorage" default="null" comment="not used in this script. only added for compatibility."/>
+		<param name="smuggle" default="false"/>
+		<param name="onlyplayerclients" default="false"/>
+		<param name="debugchance" default="0"/>
+		<param name="debugchance2" default="0"/>
+	</params>
+	<init>
+		<set_command_action commandaction="commandaction.searchingtrades"/>
+		<include_interrupt_actions ref="GetBlacklistgroup"/>
+	</init>
+	<attention min="unknown">
+		<actions>
+			<set_value name="$currentcargo" exact="this.ship.cargo.list"/>
+			<set_value name="$transporttypes" exact="[waretransport.container, waretransport.solid, waretransport.liquid]"/>
+			<set_value name="$freevolume" exact="table[]"/>
+			<set_value name="$minvolume" exact="table[]"/>
+			<do_if value="this.ship.cargo.free.universal gt 0">
+				<set_value name="$useuniversalstorage"/>
+				<set_value name="$freevolume.{-1}" exact="this.ship.cargo.free.universal"/>
+				<set_value name="$minvolume.{-1}" exact="[$freevolume.{-1}, this.ship.cargo.capacity.universal / 20].min"/>
+			</do_if>
+			<do_else>
+				<set_value name="$freevolume.{waretransport.container}" exact="this.ship.cargo.free.container"/>
+				<set_value name="$minvolume.{waretransport.container}" exact="[$freevolume.{waretransport.container}, this.ship.cargo.capacity.container / 20].min"/>
+				<set_value name="$freevolume.{waretransport.solid}" exact="this.ship.cargo.free.solid"/>
+				<set_value name="$minvolume.{waretransport.solid}" exact="[$freevolume.{waretransport.solid}, this.ship.cargo.capacity.solid / 20].min"/>
+				<set_value name="$freevolume.{waretransport.liquid}" exact="this.ship.cargo.free.liquid"/>
+				<set_value name="$minvolume.{waretransport.liquid}" exact="[$freevolume.{waretransport.liquid}, this.ship.cargo.capacity.liquid / 20].min"/>
+			</do_else>
+			<do_if value="$useuniversalstorage?">
+				<set_value name="$totalminvolume" exact="$minvolume.{-1}"/>
+				<set_value name="$totalfreevolume" exact="$freevolume.{-1}"/>
+			</do_if>
+			<do_else>
+				<set_value name="$totalminvolume" exact="0"/>
+				<set_value name="$totalfreevolume" exact="0"/>
+				<do_all exact="$transporttypes.count" counter="$t">
+					<set_value name="$totalminvolume" exact="$minvolume.{$transporttypes.{$t}}" operation="add"/>
+					<set_value name="$totalfreevolume" exact="$freevolume.{$transporttypes.{$t}}" operation="add"/>
+				</do_all>
+			</do_else>
+			<do_if value="$debugchance">
+				<do_if value="$useuniversalstorage?">
+					<debug_text text="'min universal trade volume for ship is %1, range %2 (%3) its space %4 (%5)'.[$minvolume.{-1}, $range, $range.knownname, @$range.cluster, @$range.cluster.knownname]"/>
+				</do_if>
+				<do_else>
+					<set_value name="$debug_str" exact="'min trade volume for ship is ('"/>
+					<do_all exact="$transporttypes.count" counter="$t">
+						<set_value name="$debug_str" exact="$debug_str + (if $t gt 1 then ', ' else '') + '%1: %2'.[$transporttypes.{$t}, $minvolume.{$transporttypes.{$t}}]"/>
+					</do_all>
+					<debug_text text="$debug_str + '), range %1 (%2) its space %3 (%4)'.[$range, $range.knownname, @$range.cluster, @$range.cluster.knownname]"/>
+				</do_else>
+				<debug_text text="'$sellspaces %1, $buyspaces %2'.[$sellspaces, $buyspaces]"/>
+			</do_if>
+			<set_value name="$tradefails" exact="0"/>
+			<set_value name="$DAtradefails" exact="0"/>
+			<set_value name="$bestbuyoffers" exact="table[]"/>
+			<set_value name="$bestselloffers" exact="table[]"/>
+			<set_value name="$table_buyoffers" exact="table[]"/>
+			<set_value name="$table_selloffers" exact="table[]"/>
+			<label name="start"/>
+			<set_value name="$buyoffer" exact="null"/>
+			<set_value name="$selloffer" exact="null"/>
+			<debug_text text="player.age + ' current cargo: ' + $currentcargo" chance="$debugchance"/>
+			<label name="find_sell_offers"/>
+			<set_value name="$selloffers" exact="[]"/>
+			<set_value name="$filteredwarebasket" exact="[]"/>
+			<set_value name="$baskettransporttypes" exact="[]"/>
+			<set_value name="$minsellvolume" exact="-1"/>
+			<do_if value="$tradefails" min="1">
+				<set_value name="$DAtradefails" operation="add"/>
+				<do_if value="$useuniversalstorage?">
+					<do_if value="$minvolume.{-1}">
+						<debug_text text="'reducing universal minvolume from %1 to %2'.[$minvolume.{-1}, $minvolume.{-1} / 5]" chance="$debugchance"/>
+						<set_value name="$minvolume.{-1}" exact="$minvolume.{-1} / 5"/>
+						<set_value name="$totalminvolume" exact="$minvolume.{-1} "/>
+					</do_if>
+					<set_value name="$freevolume.{-1}" exact="this.ship.cargo.free.universal"/>
+					<set_value name="$totalfreevolume" exact="$freevolume.{-1}"/>
+				</do_if>
+				<do_else>
+					<set_value name="$totalminvolume" exact="0"/>
+					<set_value name="$totalfreevolume" exact="0"/>
+					<do_all exact="$transporttypes.count" counter="$t">
+						<do_if value="$minvolume.{$transporttypes.{$t}}">
+							<debug_text text="'reducing %1 minvolume from %2 to %3'.[$transporttypes.{$t}, $minvolume.{$transporttypes.{$t}}, $minvolume.{$transporttypes.{$t}} / 5]" chance="$debugchance"/>
+							<set_value name="$minvolume.{$transporttypes.{$t}}" exact="$minvolume.{$transporttypes.{$t}} / 5"/>
+							<set_value name="$totalminvolume" exact="$minvolume.{$transporttypes.{$t}}" operation="add"/>
+						</do_if>
+						<do_if value="$transporttypes.{$t} == waretransport.container">
+							<set_value name="$freevolume.{$transporttypes.{$t}}" exact="this.ship.cargo.free.container"/>
+						</do_if>
+						<do_elseif value="$transporttypes.{$t} == waretransport.solid">
+							<set_value name="$freevolume.{$transporttypes.{$t}}" exact="this.ship.cargo.free.solid"/>
+						</do_elseif>
+						<do_elseif value="$transporttypes.{$t} == waretransport.liquid">
+							<set_value name="$freevolume.{$transporttypes.{$t}}" exact="this.ship.cargo.free.liquid"/>
+						</do_elseif>
+						<set_value name="$totalfreevolume" exact="$freevolume.{$transporttypes.{$t}}" operation="add"/>
+					</do_all>
+				</do_else>
+				<do_if value="$totalminvolume lt 1">
+					<debug_text text="'minvolume reduced to zero. The trade find has failed'" chance="$debugchance"/>
+					<debug_text text="'Looking for offers: too many times: %1. This job %2, warebasket %3, number of buy spaces %4, number of sell spaces %5'.[$tradefails, this.ship.job, $warebasket, $buyspaces.count, $sellspaces.count]" chance="$debugchance"/>
+					<resume label="finish"/>
+				</do_if>
+				<set_value name="$skippricecheck"/>
+				<remove_value name="$totalminvolume"/>
+				<set_value name="$indexbuyspaces" exact="0"/>
+				<set_value name="$tradefails" exact="0"/>
+				<set_value name="$bestbuyoffers" exact="table[]"/>
+				<set_value name="$bestselloffers" exact="table[]"/>
+				<set_value name="$table_buyoffers" exact="table[]"/>
+				<set_value name="$table_selloffers" exact="table[]"/>
+			</do_if>
+			<set_value name="$cargoforsale" exact="[]"/>
+			<do_if value="this.isplayerowned">
+				<do_all exact="$currentcargo.count" counter="$i">
+					<do_if value="$warebasket.indexof.{$currentcargo.{$i}}">
+						<append_to_list name="$cargoforsale" exact="$currentcargo.{$i}"/>
+					</do_if>
+				</do_all>
+			</do_if>
+			<do_else>
+				<set_value name="$cargoforsale" exact="$currentcargo.clone"/>
+			</do_else>
+			<do_if value="$cargoforsale.count">
+				<set_value name="$filteredwarebasket" exact="$cargoforsale"/>
+				<set_value name="$sellcurrentcargo_internal"/>
+				<set_value name="$minsellvolume" exact="0"/>
+				<do_for_each name="$locware" in="$cargoforsale">
+					<set_value name="$locvolume" exact="this.assignedcontrolled.cargo.{$locware}.count * $locware.volume"/>
+					<do_if value="$locvolume gt $minsellvolume">
+						<set_value name="$minsellvolume" exact="$locvolume"/>
+					</do_if>
+				</do_for_each>
+				<remove_value name="$locvolume"/>
+				<debug_text text="'ship will attempt to sell current cargo: %1, minsellvolume: %2'.[$filteredwarebasket, $minsellvolume]" chance="$debugchance"/>
+			</do_if>
+			<do_elseif value="$totalfreevolume lt 1">
+				<debug_text text="'we do not have any free cargo capacity and are not authorized to sell wares in current cargo that are not in the basket. looking to sell. \n Capacities: \n Universal: %1, \n Container: %2, \n Solid: %3, \n Liquid: %4'.[this.ship.cargo.free.universal, this.ship.cargo.free.container, this.ship.cargo.free.solid, this.ship.cargo.free.liquid]" chance="$debugchance"/>
+			</do_elseif>
+			<do_elseif value="$buyspaces.count">
+				<do_all exact="$warebasket.count" counter="$i">
+					<set_value name="$tempware" exact="$warebasket.{$i}"/>
+					<do_if value="this.ship.cargo.{$tempware}.max">
+						<do_if value="($useuniversalstorage? and $minvolume.{-1} gt 0) or $minvolume.{$tempware.waretransport} gt 0">
+							<do_if value="this.ship.cargo.{$tempware}.free gt (this.ship.cargo.{$tempware}.max / 10)">
+								<append_to_list name="$filteredwarebasket" exact="$tempware"/>
+								<do_if value="$baskettransporttypes.indexof.{$tempware.waretransport} == 0">
+									<append_to_list name="$baskettransporttypes" exact="$tempware.waretransport"/>
+								</do_if>
+								<debug_text text="'has space for ' + $tempware.name + '. can buy more'" chance="$debugchance"/>
+							</do_if>
+							<do_else>
+								<debug_text text="'has no space for ' + $tempware.name + '. do not look to buy more'" chance="$debugchance"/>
+							</do_else>
+						</do_if>
+						<do_else>
+							<debug_text text="'can NOT transport ware ' + $tempware.name + ' due to minvolume restrictions'" chance="$debugchance"/>
+						</do_else>
+					</do_if>
+					<do_else>
+						<debug_text text="'%1 (job %2) can NOT transport %3 (Wrong $warebasket?). Do not try to buy'.[this.ship.knownname, this.ship.job, $tempware.name]" filter="error"/>
+					</do_else>
+				</do_all>
+				<remove_value name="$tempware"/>
+				<do_if value="$filteredwarebasket.count">
+					<do_if value="$useuniversalstorage? and $minvolume.{-1} gt 0">
+						<set_value name="$practicalminvolume" exact="$minvolume.{-1}"/>
+						<set_value name="$practicalfreevolume" exact="$freevolume.{-1}"/>
+					</do_if>
+					<do_elseif value="$baskettransporttypes.count == 1">
+						<set_value name="$practicalminvolume" exact="$minvolume.{$baskettransporttypes.{1}}"/>
+						<set_value name="$practicalfreevolume" exact="$freevolume.{$baskettransporttypes.{1}}"/>
+					</do_elseif>
+					<do_elseif value="$baskettransporttypes.count gt 1">
+						<set_value name="$practicalminvolume" exact="1000000000"/>
+						<set_value name="$practicalfreevolume" exact="0"/>
+						<do_all exact="$baskettransporttypes.count" counter="$t">
+							<set_value name="$practicalminvolume" exact="[$practicalminvolume, $minvolume.{$baskettransporttypes.{$t}}].min"/>
+							<set_value name="$practicalfreevolume" exact="[$practicalfreevolume, $freevolume.{$baskettransporttypes.{$t}}].max"/>
+						</do_all>
+					</do_elseif>
+					<do_else>
+						<debug_text text="'error, $baskettransporttypes = %1, ship %2'.[$baskettransporttypes, this.ship.macro]"/>
+					</do_else>
+					<set_value name="$maxrelprice" exact="1.0"/>
+					<do_if value="$buyspaces.count == 1">
+						<set_value name="$maxrelprice" exact="1.0"/>
+					</do_if>
+					<do_all exact="$buyspaces.count" counter="$i">
+						<do_if value="$i le @$indexbuyspaces">
+							<continue/>
+						</do_if>
+						<shuffle_list list="$filteredwarebasket"/>
+						<find_sell_offer tradepartner="this.ship" space="$buyspaces.{$i}" result="$selloffers" wares="$filteredwarebasket" multiple="true">
+							<match_seller tradesknownto="this.owner" owner="if $DAtradefails then null else this.owner" negateownerfilter="$DAtradefails">
+								<match_use_blacklist group="$blacklistgroup" type="blacklisttype.objectactivity" object="this.ship"/>
+							</match_seller>
+							<totalvolume min="$practicalminvolume"/>
+							<mintotalvolume max="$practicalfreevolume"/>
+							<relativeprice max="$maxrelprice" comment="a value less than 0 means the sellprice must be below average"/>
+						</find_sell_offer>
+						<do_if value="not $useuniversalstorage? and $baskettransporttypes.count gt 1">
+							<do_all exact="$selloffers.count" counter="$i" reverse="true">
+								<do_if value="$selloffers.{$i}.minvolume gt $freevolume.{$selloffers.{$i}.ware.waretransport}">
+									<remove_value name="$selloffers.{$i}"/>
+								</do_if>
+							</do_all>
+						</do_if>
+						<do_if value="not $smuggle">
+							<do_all exact="$selloffers.count" counter="$j" reverse="true">
+								<do_if value="$selloffers.{$j}.owner.zone.policefaction and $selloffers.{$j}.ware.illegalto.{$selloffers.{$j}.owner.zone.policefaction}.{this.owner} and ($selloffers.{$j}.owner.zone.policefaction != this.owner)">
+									<debug_text text="'%s illegal in %s %s and we are not smuggling. discarding trade.'.[$selloffers.{$j}.ware, $buyspaces.{$i}.class, $buyspaces.{$i}.knownname]" chance="$debugchance"/>
+									<remove_value name="$selloffers.{$j}"/>
+								</do_if>
+							</do_all>
+						</do_if>
+						<debug_text text="player.age + ' Checking if we can buy in %1 (%2): found %3 selloffers'.[$buyspaces.{$i}.knownname, $buyspaces.{$i}, $selloffers.count]" chance="$debugchance"/>
+						<do_if value="$selloffers.count">
+							<shuffle_list list="$selloffers"/>
+							<do_all exact="$selloffers.count" counter="$j">
+								<set_value name="$tradevalue" exact="[$selloffers.{$j}.offeramount.{this.assignedcontrolled}, this.ship.cargo.{$selloffers.{$j}.ware}.free].min * $selloffers.{$j}.ware.volume * -($selloffers.{$j}.relativeprice - 2)"/>
+								<debug_text text="'Evaluating purchase: ware: %1, trade value: %2, trade amount: %3, capacity: %5, relprice: %4'.[$selloffers.{$j}.ware, $tradevalue, $selloffers.{$j}.offeramount.{this.assignedcontrolled}, $selloffers.{$j}.relativeprice, this.ship.cargo.{$selloffers.{$j}.ware}.free]" chance="$debugchance"/>
+								<debug_text text="'buying.\n initial trade value: %1\n modified trade value (not used): %2\n gate distance to trade partner: %3'.[$tradevalue, $tradevalue / (this.ship.gatedistance.{$selloffers.{$j}.owner} / 2.0 + 1), this.ship.gatedistance.{$selloffers.{$j}.owner}]" chance="0"/>
+								<do_if value="not $table_selloffers.{$tradevalue}?">
+									<set_value name="$table_selloffers.{$tradevalue}" exact="$selloffers.{$j}"/>
+								</do_if>
+								<remove_value name="$tradevalue"/>
+							</do_all>
+							<set_value name="$list_sortedsellofferkeys" exact="$table_selloffers.keys.list"/>
+							<set_value name="$tempoffer" exact="$table_selloffers.{$list_sortedsellofferkeys.max}"/>
+							<debug_text text="'list: %1 \n\n best trade (buying): %6, ware: %2, amount: %3, relprice: %4, price: %5, seller: %7(%8) in %9. distance to trade partner: %s \n\n'.[@$list_sortedsellofferkeys, $tempoffer.ware, $tempoffer.offeramount.{this.assignedcontrolled}, $tempoffer.relativeprice, $tempoffer.unitprice, $tempoffer, $tempoffer.seller.knownname, $tempoffer.seller, $tempoffer.seller.sector.knownname, this.ship.gatedistance.{$tempoffer.seller}]" chance="$debugchance"/>
+							<do_if value="$debugchance">
+								<do_all exact="$selloffers.count" counter="$counter">
+									<debug_text text="'selloffer %1, amount %2, unitprice %3'.[$selloffers.{$counter}.ware, $selloffers.{$counter}.offeramount.{this.assignedcontrolled}, $selloffers.{$counter}.unitprice.formatted.{'%6cs %Cr'}]"/>
+								</do_all>
+							</do_if>
+							<clear_list list="$filteredwarebasket"/>
+							<do_all exact="$list_sortedsellofferkeys.count" counter="$Counter" reverse="true">
+								<do_if value="$table_selloffers.{$list_sortedsellofferkeys.{$Counter}}.available">
+									<set_value name="$tempoffer" exact="$table_selloffers.{$list_sortedsellofferkeys.{$Counter}}"/>
+									<set_value name="$tempware" exact="$tempoffer.ware"/>
+									<debug_text text="'evaluating sell offers in %s %s %s to find best offers. current ware: %s. trade value: %s'.[$buyspaces.{$i}.class, $buyspaces.{$i}.knownname, $buyspaces.{$i}, $tempware, $list_sortedsellofferkeys.{$Counter}]" chance="$debugchance2"/>
+									<do_if value="not $filteredwarebasket.indexof.{$tempware}">
+										<append_to_list name="$filteredwarebasket" exact="$tempware"/>
+										<set_value name="$bestvalue" exact="0"/>
+										<do_if value="@$bestselloffers.{$tempware}.available">
+											<set_value name="$bestvalue" exact="[$bestselloffers.{$tempware}.offeramount.{this.assignedcontrolled}, this.ship.cargo.{$tempware}.free].min * $tempware.volume * -($bestselloffers.{$tempware}.relativeprice - 2)"/>
+										</do_if>
+										<do_if value="$list_sortedsellofferkeys.{$Counter} gt $bestvalue">
+											<set_value name="$bestselloffers.{$tempware}" exact="$tempoffer"/>
+											<do_if value="$minsellvolume lt 0 or $tempoffer.minvolume lt $minsellvolume">
+												<set_value name="$minsellvolume" exact="$tempoffer.minvolume"/>
+											</do_if>
+											<debug_text text="'best sell offer for ware: %s is now at %s %s %s at trade value: %s. num best sell offers: %s'.[$tempware, $buyspaces.{$i}.class, $buyspaces.{$i}.knownname, $buyspaces.{$i}, $list_sortedsellofferkeys.{$Counter}, $bestselloffers.keys.count]" chance="$debugchance"/>
+										</do_if>
+									</do_if>
+								</do_if>
+								<do_else>
+									<remove_value name="$table_selloffers.{$list_sortedsellofferkeys.{$Counter}}"/>
+									<remove_value name="$list_sortedsellofferkeys.{$Counter}"/>
+								</do_else>
+							</do_all>
+							<set_value name="$indexbuyspaces" exact="$i"/>
+							<set_value name="$breakchance" exact="[100, ($i * 100) / $buyspaces.count].min"/>
+							<break chance="$breakchance"/>
+						</do_if>
+						<wait min="150ms" max="1s" comment="Avoid performance peaks with find functions"/>
+					</do_all>
+					<remove_value name="$breakchance"/>
+					<remove_value name="$practicalfreevolume"/>
+					<remove_value name="$tempoffer"/>
+					<remove_value name="$tempware"/>
+					<remove_value name="$bestvalue"/>
+					<remove_value name="$maxrelprice"/>
+					<do_if value="not $selloffers.count">
+						<debug_text text="'no sell offers in %1 buyspaces'.[$buyspaces.count]" chance="$debugchance"/>
+						<clear_list list="$filteredwarebasket"/>
+					</do_if>
+				</do_if>
+			</do_elseif>
+			<do_else>
+				<debug_text text="'No wares to buy (either no filtered wares or no spaces to buy). Num filtered wares %1, Num buy spaces %2'.[$filteredwarebasket.count, $buyspaces.count]" chance="$debugchance"/>
+				<clear_list list="$filteredwarebasket"/>
+			</do_else>
+			<do_if value="not $filteredwarebasket.count">
+				<debug_text text="'No wares to work with: cargo %1, warebasket %2'.[$currentcargo, $warebasket.count]" chance="$debugchance"/>
+				<set_value name="$sellcurrentcargo_internal" exact="true"/>
+				<set_value name="$tradefails" operation="add"/>
+				<resume label="fail"/>
+			</do_if>
+			<do_else>
+				<debug_text text="'Wares to work with: $filteredwarebasket %3 cargo %1, warebasket %2'.[$currentcargo, $warebasket, $filteredwarebasket]" chance="$debugchance2"/>
+				<remove_value name="$baskettransporttypes"/>
+			</do_else>
+			<label name="find_buy_offers"/>
+			<do_all exact="$sellspaces.count" counter="$i">
+				<shuffle_list list="$filteredwarebasket"/>
+				<find_buy_offer tradepartner="this.ship" wares="$filteredwarebasket" space="$sellspaces.{$i}" result="$buyoffers" multiple="true">
+					<offervolume min="if $sellcurrentcargo_internal? then 1 else (if $practicalminvolume? then $practicalminvolume else 1)" tradepartner="this.ship"/>
+					<match_buyer tradesknownto="this.owner" owner="if $DAtradefails then null else this.owner" negateownerfilter="$DAtradefails">
+						<match_use_blacklist group="$blacklistgroup" type="blacklisttype.objectactivity" object="this.ship"/>
+					</match_buyer>
+				</find_buy_offer>
+				<do_if value="not $smuggle">
+					<do_all exact="$buyoffers.count" counter="$k" reverse="true">
+						<do_if value="$buyoffers.{$k}.owner.zone.policefaction and $buyoffers.{$k}.ware.illegalto.{$buyoffers.{$k}.owner.zone.policefaction}.{this.owner} and ($buyoffers.{$k}.owner.zone.policefaction != this.owner)">
+							<debug_text text="'%s illegal in %s %s and we are not smuggling. discarding trade.'.[$buyoffers.{$k}.ware, $sellspaces.{$i}.class, $sellspaces.{$i}.knownname]" chance="$debugchance"/>
+							<remove_value name="$buyoffers.{$k}"/>
+						</do_if>
+					</do_all>
+				</do_if>
+				<debug_text text="'Buy offers in %1 (%2): %3'.[$sellspaces.{$i}, $sellspaces.{$i}.knownname, $buyoffers]" chance="$debugchance"/>
+				<do_if value="$buyoffers.count">
+					<shuffle_list list="$buyoffers"/>
+					<set_value name="$freespacetable" exact="table[]"/>
+					<do_all exact="$buyoffers.count" counter="$k">
+						<set_value name="$tempoffer" exact="$buyoffers.{$k}"/>
+						<do_if value="$bestselloffers.{$tempoffer.ware}? and $bestselloffers.{$tempoffer.ware}.available">
+							<do_if value="$tempoffer.buyer == $bestselloffers.{$tempoffer.ware}.seller">
+								<debug_text text="'$bestselloffers.{$tempoffer.ware}.seller: %s == $tempoffer.buyer: %s. continue.'.[$bestselloffers.{$tempoffer.ware}.seller, $tempoffer.buyer]" chance="$debugchance"/>
+								<remove_value name="$tradevalue"/>
+								<continue/>
+							</do_if>
+							<do_if value="not $freespacetable.{$tempoffer.ware}?">
+								<set_value name="$freespacetable.{$tempoffer.ware}" exact="this.ship.cargo.{$tempoffer.ware}.free"/>
+							</do_if>
+							<set_value name="$tradevalue" exact="[$tempoffer.offeramount.{this.assignedcontrolled}, $bestselloffers.{$tempoffer.ware}.offeramount.{this.assignedcontrolled}, $freespacetable.{$tempoffer.ware}].min * $tempoffer.ware.volume * ($tempoffer.relativeprice + 2)"/>
+							<debug_text text="'Evaluating sale: ware: %1, trade value: %2, trade amount: %3, capacity: %5, relprice: %4'.[$tempoffer.ware, $tradevalue, $tempoffer.offeramount.{this.assignedcontrolled}, $tempoffer.relativeprice, $freespacetable.{$tempoffer.ware}]" chance="$debugchance"/>
+							<debug_text text="'selling 1.\n initial trade value: %1\n modified trade value (not used): %2\n gate distance to trade partner: %3\nbuyer: %s %s %s'.[$tradevalue, $tradevalue / ($bestselloffers.{$tempoffer.ware}.owner.gatedistance.{$tempoffer.owner} / 2.0 + 1), $bestselloffers.{$tempoffer.ware}.owner.gatedistance.{$tempoffer.owner}, $tempoffer.buyer.idcode, $tempoffer.buyer.knownname, $tempoffer.buyer]" chance="$debugchance2"/>
+						</do_if>
+						<do_elseif value="$sellcurrentcargo or $sellcurrentcargo_internal?">
+							<remove_value name="$sellcurrentcargo_internal"/>
+							<set_value name="$tradevalue" exact="[$tempoffer.offeramount.{this.assignedcontrolled}, this.ship.cargo.{$tempoffer.ware}.count].min * $tempoffer.ware.volume * ($tempoffer.relativeprice + 2)"/>
+							<debug_text text="'Evaluating sale: ware: %1, trade value: %2, trade amount: %3, cargo: %5, relprice: %4'.[$tempoffer.ware, $tradevalue, $tempoffer.offeramount.{this.assignedcontrolled}, $tempoffer.relativeprice, this.ship.cargo.{$tempoffer.ware}.count]" chance="$debugchance"/>
+							<debug_text text="'selling 2.\n initial trade value: %1\n modified trade value (not used): %2\n gate distance to trade partner: %3\nbuyer: %s %s %s'.[$tradevalue, $tradevalue / (this.ship.gatedistance.{$tempoffer.owner} / 2.0 + 1), this.ship.gatedistance.{$tempoffer.owner}, $tempoffer.buyer.idcode, $tempoffer.buyer.knownname, $tempoffer.buyer]" chance="$debugchance2"/>
+						</do_elseif>
+						<do_else>
+							<do_if value="not $freespacetable.{$tempoffer.ware}?">
+								<set_value name="$freespacetable.{$tempoffer.ware}" exact="this.ship.cargo.{$tempoffer.ware}.free"/>
+							</do_if>
+							<set_value name="$tradevalue" exact="[$tempoffer.offeramount.{this.assignedcontrolled}, this.ship.cargo.{$tempoffer.ware}.count + $freespacetable.{$tempoffer.ware}].min * $tempoffer.ware.volume * ($tempoffer.relativeprice + 2)"/>
+							<debug_text text="'Evaluating sale: ware: %1, trade value: %2, trade amount: %3, cargo: %5, relprice: %4'.[$tempoffer.ware, $tradevalue, $tempoffer.offeramount.{this.assignedcontrolled}, $tempoffer.relativeprice, this.ship.cargo.{$tempoffer.ware}.count]" chance="$debugchance"/>
+							<debug_text text="'selling 3.\n initial trade value: %1\n modified trade value (not used): %2\n gate distance to trade partner: %3'.[$tradevalue, $tradevalue / (this.ship.gatedistance.{$tempoffer.owner} / 2.0 + 1), this.ship.gatedistance.{$tempoffer.owner}]" chance="0"/>
+						</do_else>
+						<do_if value="not $table_buyoffers.{$tradevalue}?">
+							<do_if value="$tempoffer.buyer.isclass.buildstorage">
+								<do_if value="not this.isplayerowned">
+									<set_value name="$tradevalue" exact="[300000, $tradevalue + 300000].max"/>
+								</do_if>
+							</do_if>
+							<do_elseif value="$tempoffer.offervolume.{this.assignedcontrolled} lt $minsellvolume">
+								<debug_text text="'offer volume (%s) less than minsellvolume (%s). discarded.'.[$tempoffer.offervolume.{this.assignedcontrolled}, $minsellvolume]" chance="$debugchance"/>
+								<continue/>
+							</do_elseif>
+							<debug_text text="'recording buy offer'" chance="$debugchance"/>
+							<set_value name="$table_buyoffers.{$tradevalue}" exact="$tempoffer"/>
+						</do_if>
+						<remove_value name="$tradevalue"/>
+					</do_all>
+					<remove_value name="$freespacetable"/>
+					<set_value name="$list_sortedbuyofferkeys" exact="[]"/>
+					<do_if value="@$table_buyoffers.keys.count">
+						<set_value name="$list_sortedbuyofferkeys" exact="$table_buyoffers.keys.list"/>
+						<set_value name="$tempoffer" exact="$table_buyoffers.{$list_sortedbuyofferkeys.last}"/>
+						<debug_text text="'list: %1 \n\n best trade (selling): %6, ware: %2, amount: %3, relprice: %4, price: %5, buyer: %7(%8) in %9. distance to trade partner: %s \n\n'.[@$list_sortedbuyofferkeys, $tempoffer.ware, $tempoffer.offeramount.{this.assignedcontrolled}, $tempoffer.relativeprice, $tempoffer.unitprice, $tempoffer, $tempoffer.buyer.knownname, $tempoffer.buyer, $tempoffer.buyer.sector.knownname, this.ship.gatedistance.{$tempoffer.buyer}]" chance="$debugchance"/>
+					</do_if>
+					<create_list name="$spacetradablewares"/>
+					<set_value name="$betteroffer" exact="false"/>
+					<do_all exact="$list_sortedbuyofferkeys.count" counter="$Counter" reverse="true" comment="starting from the last (paying the most)">
+						<do_if value="$table_buyoffers.{$list_sortedbuyofferkeys.{$Counter}}.available">
+							<set_value name="$tempoffer" exact="$table_buyoffers.{$list_sortedbuyofferkeys.{$Counter}}"/>
+							<set_value name="$tempware" exact="$tempoffer.ware"/>
+							<do_if value="not $spacetradablewares.indexof.{$tempware}">
+								<append_to_list name="$spacetradablewares" exact="$tempware"/>
+								<do_if value="this.ship.cargo.{$tempware}.exists">
+									<set_value name="$bestvalue" exact="[[$minsellvolume, $tempoffer.minvolume, 1].max, this.ship.cargo.{$tempware}.count * $tempware.volume].min"/>
+								</do_if>
+								<do_else>
+									<set_value name="$bestvalue" exact="0"/>
+								</do_else>
+								<do_if value="@$bestbuyoffers.{$tempware}.available">
+									<set_value name="$bestoffer" exact="$bestbuyoffers.{$tempware}"/>
+									<set_value name="$bestvalue" exact="[$bestoffer.offeramount.{this.assignedcontrolled}, this.ship.cargo.{$tempware}.free].min * $tempware.volume * ($bestoffer.relativeprice + 2)"/>
+								</do_if>
+								<debug_text text="'$list_sortedbuyofferkeys.{$Counter}: %s, $bestvalue: %s'.[$list_sortedbuyofferkeys.{$Counter}, $bestvalue]" chance="$debugchance2"/>
+								<do_if value="not $bestbuyoffers.keys.count and $list_sortedbuyofferkeys.{$Counter} ge $bestvalue">
+									<set_value name="$bestbuyoffers.{$tempware}" exact="$tempoffer"/>
+									<set_value name="$betteroffer" exact="true"/>
+								</do_if>
+								<do_elseif value="$list_sortedbuyofferkeys.{$Counter} gt $bestvalue">
+									<set_value name="$bestbuyoffers.{$tempware}" exact="$tempoffer"/>
+									<set_value name="$betteroffer" exact="true"/>
+								</do_elseif>
+								<do_else>
+									<debug_text text="'rejecting offer %1 for %2 because value %3 is not greater than bestvalue %4'.[$tempoffer, $tempware, [$tempoffer.offeramount.{this.assignedcontrolled}, this.ship.cargo.{$tempware}.free].min * $tempware.volume * ($tempoffer.relativeprice + 2), $bestvalue]" chance="$debugchance2"/>
+								</do_else>
+								<do_if value="$filteredwarebasket.count == $spacetradablewares.count">
+									<break/>
+								</do_if>
+							</do_if>
+						</do_if>
+						<do_else>
+							<remove_value name="$table_buyoffers.{$list_sortedbuyofferkeys.{$Counter}}"/>
+						</do_else>
+					</do_all>
+					<remove_value name="$tempoffer"/>
+					<remove_value name="$tempware"/>
+					<remove_value name="$bestvalue"/>
+					<remove_value name="$spacetradablewares"/>
+					<do_if value="$debugchance">
+						<set_value name="$bestbuyofferslist" exact="$bestbuyoffers.keys.list"/>
+						<do_all exact="$bestbuyofferslist.count" counter="$counter">
+							<set_value name="$tempware" exact="$bestbuyofferslist.{$counter}"/>
+							<debug_text text="'%1 $bestbuyoffer %2 price %3'.[$bestbuyoffers.{$tempware}, $tempware, $bestbuyoffers.{$tempware}.unitprice.formatted.{'%6cs %Cr'}]"/>
+						</do_all>
+						<remove_value name="$bestbuyofferslist"/>
+					</do_if>
+					<wait min="150ms" max="1s" comment="Avoid performance peaks with find functions"/>
+					<do_if value="$bestselloffers.keys.count">
+						<do_if value="not $betteroffer">
+							<debug_text text="'no better offers in %1 for wares %2'.[$sellspaces.{$i}.knownname, $filteredwarebasket]" chance="$debugchance"/>
+							<continue/>
+						</do_if>
+						<set_value name="$bestsellofferslist" exact="$bestselloffers.keys.list"/>
+						<do_all exact="$bestsellofferslist.count" counter="$j" reverse="true">
+							<set_value name="$selloffer" exact="$bestselloffers.{$bestsellofferslist.{$j}}"/>
+							<do_if value="$selloffer.available">
+								<set_value name="$checkoffer" exact="@$bestbuyoffers.{$selloffer.ware}"/>
+								<do_if value="@$checkoffer.available">
+									<do_if value="(this.isplayerowned or not $skippricecheck?) and ($checkoffer.relativeprice le $selloffer.relativeprice)">
+										<debug_text text="'buyoffer is cheaper than selloffer. skipping trade pair.\n would have bought at relprice: %s, unitprice: %s\n would have sold at relprice: %s, unitprice: %s'.[$selloffer.relativeprice, $selloffer.unitprice, $checkoffer.relativeprice, $checkoffer.unitprice]" chance="$debugchance"/>
+										<continue/>
+									</do_if>
+									<set_value name="$checkamount" exact="[this.ship.cargo.{$selloffer.ware}.free, $selloffer.offeramount.{this.assignedcontrolled}, $checkoffer.offeramount.{this.assignedcontrolled}].min"/>
+									<do_if value="$checkamount">
+										<debug_text text="' sell offer found and buy offer found'" chance="$debugchance"/>
+										<set_value name="$buyoffer" exact="$checkoffer"/>
+										<resume label="finish"/>
+									</do_if>
+									<wait min="150ms" max="1s" comment="Avoid performance peaks with find functions"/>
+								</do_if>
+								<do_else>
+									<remove_value name="$bestbuyoffers.{$selloffer.ware}"/>
+								</do_else>
+								<remove_value name="$checkoffer"/>
+							</do_if>
+							<do_else>
+								<debug_text text="'Sell offer not available anymore, remove it from the $bestselloffers'" chance="$debugchance"/>
+								<remove_value name="$bestselloffers.{$bestsellofferslist.{$j}}"/>
+							</do_else>
+						</do_all>
+						<remove_value name="$bestsellofferslist"/>
+						<debug_text text="'sell offer found, but no buy offer in space %1, Try next Sell space'.[$sellspaces.{$i}.knownname]" chance="$debugchance"/>
+					</do_if>
+					<do_elseif value="$bestbuyoffers.keys.count gt 0 and this.ship.cargo.count gt 0">
+						<debug_text text="'sell case only, No selloffers, I can not buy anything so just sell what I have'" chance="$debugchance"/>
+						<create_list name="$tempbuyoffers"/>
+						<set_value name="$bestbuyofferslist" exact="$bestbuyoffers.keys.list"/>
+						<do_all exact="$bestbuyofferslist.count" counter="$i">
+							<debug_text text="'ware %1: %2. in cargo: %3'.[$i, $bestbuyofferslist.{$i}, this.ship.cargo.{$bestbuyofferslist.{$i}}.exists]" chance="$debugchance"/>
+							<do_if value="$bestbuyoffers.{$bestbuyofferslist.{$i}}.available and this.ship.cargo.{$bestbuyofferslist.{$i}}.exists">
+								<append_to_list name="$tempbuyoffers" exact="$bestbuyoffers.{$bestbuyofferslist.{$i}}"/>
+							</do_if>
+						</do_all>
+						<remove_value name="$bestbuyofferslist"/>
+						<do_if value="$tempbuyoffers.count">
+							<shuffle_list list="$tempbuyoffers"/>
+							<sort_trades tradelist="$tempbuyoffers" name="$sorted_offers" sorter="amount"/>
+							<set_value name="$randomindex" min="1" max="$sorted_offers.count" profile="increasing"/>
+							<set_value name="$buyoffer" exact="$sorted_offers.{$randomindex}"/>
+							<debug_text text="'Take a random buyoffer (index %1), buy offer %2 amount %3'.[$randomindex, $buyoffer, $buyoffer.offeramount.{this.ship}]" chance="$debugchance"/>
+							<remove_value name="$randomindex"/>
+							<remove_value name="$sorted_offers"/>
+						</do_if>
+						<remove_value name="$tempbuyoffers"/>
+						<remove_value name="$minamount"/>
+						<do_if value="$buyoffer.exists">
+							<debug_text text="player.age + ' buy offer found!'" chance="$debugchance"/>
+							<resume label="finish"/>
+						</do_if>
+					</do_elseif>
+					<do_else>
+						<debug_text text="'no $bestbuyoffers %1, no buy offers match what we have, or nothing to sell. wares in cargo: %2'.[$bestbuyoffers, this.ship.cargo.count]" chance="$debugchance"/>
+					</do_else>
+				</do_if>
+				<wait min="150ms" max="1s" comment="Avoid performance peaks with find functions"/>
+			</do_all>
+			<do_if value="$bestselloffers.keys.count">
+				<debug_text text="'sell offer found, but no buy offer! Try again with the next Buy space: index %1'.[@$indexbuyspaces]" chance="$debugchance"/>
+			</do_if>
+			<do_else>
+				<set_value name="$tradefails" operation="add"/>
+				<debug_text text="'no sell offers, and no buy offer! Try again :  TRADE FAIL +1 we are at Buy space: index %1. num times failed: %s'.[@$indexbuyspaces, $tradefails]" chance="$debugchance"/>
+			</do_else>
+			<label name="fail"/>
+			<do_if value="$sellcurrentcargo_internal? and @$cargoforsale.count and not this.isplayerowned">
+				<do_for_each name="$locware" in="$cargoforsale" reverse="true">
+					<do_if value="not $warebasket.indexof.{$locware}">
+						<debug_text text="'unable to trade due to full cargo storage. dropping %s %s, not in basket.'.[this.assignedcontrolled.cargo.{$locware}.count, $locware]" chance="$debugchance"/>
+						<drop_cargo object="this.assignedcontrolled" ware="$locware" exact="this.assignedcontrolled.cargo.{$locware}.count"/>
+					</do_if>
+				</do_for_each>
+				<remove_value name="$sellcurrentcargo_internal"/>
+				<resume label="start"/>
+			</do_if>
+			<do_if value="$debugchance">
+				<do_if value="$useuniversalstorage?">
+					<debug_text text="'trade fails %1, buy space index %2 of %3 buyspaces. Universal minvolume %4'.[$tradefails, @$indexbuyspaces, $buyspaces.count, $minvolume.{-1}]"/>
+				</do_if>
+				<do_else>
+					<set_value name="$debug_str" exact="'trade fails %1, buy space index %2 of %3 buyspaces. '.[$tradefails, @$indexbuyspaces, $buyspaces.count]"/>
+					<do_all exact="$transporttypes.count" counter="$t">
+						<set_value name="$debug_str" exact="$debug_str + (if $t gt 1 then ', ' else '') + '%1: %2'.[$transporttypes.{$t}, $minvolume.{$transporttypes.{$t}}]"/>
+					</do_all>
+					<debug_text text="$debug_str"/>
+				</do_else>
+			</do_if>
+			<debug_text text="player.age + ' no good trade offer found in %1, range %2 (sellspaces %3, buyspaces %4)'.[$range.knownname, $range.class, $sellspaces.count, $buyspaces.count]" chance="$debugchance"/>
+			<debug_text text="'%1\'(job: \'%5\'), looking for offers in \'%2\', warebasket: \'%3\', cargo: \'%4\''.[this.ship.knownname, $range.knownname, $warebasket, $currentcargo, this.ship.job]" chance="$debugchance2"/>
+			<do_if value="this.sector">
+				<do_if value="not $anchorpos_sector?">
+					<create_position name="$anchorpos_sector" space="this.sector" object="this.ship"/>
+				</do_if>
+				<set_value name="$idleduration" min="10s" max="120s"/>
+				<do_if value="this.isplayerowned">
+					<set_value name="$idleduration" min="5s" max="10s"/>
+				</do_if>
+				<run_script name="'move.idle'">
+					<param name="TimeOut" value="$idleduration"/>
+					<param name="anchorpos_sector" value="$anchorpos_sector"/>
+				</run_script>
+			</do_if>
+			<do_else>
+				<wait min="10s" max="25s"/>
+			</do_else>
+			<resume label="start"/>
+			<label name="finish"/>
+			<do_if value="$debugchance">
+				<do_if value="$buyoffer.exists and $selloffer.exists">
+					<debug_text text="player.age + ' Traderun found for [' + this.ship + '] ' + this.ship.knownname + ' in ' + this.ship.sector.knownname"/>
+					<debug_text text="player.age + ' SELLOFFER INFO:\'%1\' sells %2 units of %3 for %4 each; total price of %5 Cr.'.[$selloffer.seller.knownname, $selloffer.offeramount.{this.ship}, $selloffer.ware.name, $selloffer.unitprice.formatted.default, $selloffer.price.formatted.default]"/>
+					<debug_text text="player.age + ' BUYOFFER INFO:\'%1\' wants %2 units of %3 for %4 each; total price of %5 Cr.'.[$buyoffer.buyer.knownname, $buyoffer.offeramount.{this.ship}, $buyoffer.ware.name, $buyoffer.unitprice.formatted.default, $buyoffer.price.formatted.default]"/>
+				</do_if>
+				<do_else>
+					<do_if value="$buyoffer.exists">
+						<debug_text text="player.age + ' BUYOFFER INFO:\'%1\' wants %2 units of %3 for %4 each; total price of %5 Cr.'.[$buyoffer.buyer.knownname, $buyoffer.offeramount.{this.ship}, $buyoffer.ware.name, $buyoffer.unitprice.formatted.default, $buyoffer.price.formatted.default]"/>
+					</do_if>
+					<do_if value="$selloffer.exists">
+						<debug_text text="player.age + ' SELLOFFER INFO:\'%1\' sells %2 units of %3 for %4 each; total price of %5 Cr.'.[$selloffer.seller.knownname, $selloffer.offeramount.{this.ship}, $selloffer.ware.name, $selloffer.unitprice.formatted.default, $selloffer.price.formatted.default]"/>
+					</do_if>
+				</do_else>
+			</do_if>
+			<return>
+				<retval name="buyoffer" value="$buyoffer"/>
+				<retval name="selloffer" value="$selloffer"/>
+				<retval name="failurereason" value="@$failurereason"/>
+			</return>
+		</actions>
+	</attention>
+</aiscript>

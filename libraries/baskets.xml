@@ -67,7 +67,7 @@
   <remove sel="/baskets/basket[@id='refined_mineral_terran'][@name='Refined Mineral Wares']/wares/ware[@ware='siliconwafers']"/>
   <remove sel="/baskets/basket[@id='refined_mineral_terran'][@name='Refined Mineral Wares']/wares/ware[@ware='teladianium']"/>
   <add sel="/baskets">
-    <basket id="bio_split_da">
+    <basket id="bio_split_da" name="Split Bio Wares - DA">
       <wares>
         <ware ware="cheltmeat"/>
         <ware ware="scruffinfruits"/>
@@ -77,7 +77,7 @@
     </basket>
   </add>
   <add sel="/baskets">
-    <basket id="food_split_da">
+    <basket id="food_split_da" name="Split Food Wares - DA">
       <wares>
         <ware ware="cheltmeat"/>
         <ware ware="scruffinfruits"/>
@@ -85,7 +85,7 @@
     </basket>
   </add>
   <add sel="/baskets">
-    <basket id="legal_common_da">
+    <basket id="legal_common_da" name="Legal Common Wares - DA">
       <wares>
         <ware ware="advancedcomposites"/>
         <ware ware="advancedelectronics"/>

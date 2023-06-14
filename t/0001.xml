@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<language>
+	<page id="4816309" title="DeadAir Jobs T Files" descr="used in DeadAir Jobs" voice="no">
+		<t id="100">DA Jobs Menu</t>
+		<t id="200">DA Jobs Options</t>
+		<t id="300">DA Jobs Job Names</t>
+		<t id="301">Critical Sector Patrol</t>
+		<t id="302">Core Sector Patrol</t>
+		<t id="303">Border Sector Patrol</t>
+		<t id="304">Contested Sector Patrol</t>
+	</page>
+</language>
